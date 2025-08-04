@@ -7,18 +7,31 @@ import ImageCard from "../components/ImageCard.astro";
 ---
 
 <MainLayout title="Welcome to My Website">
-	<h1>Dainty words</h1>
-	<p>because words always stay.</p>
+  <h1>Dainty words</h1>
+  <p>because words always stay.</p>
 
-	<!-- Example of using a component with props -->
-	<Button text="Read" />
+  <!-- Example of using a component with props -->
+  <Button text="Read" />
 
-	<h2>Features</h2>
-	<ImageCard link="https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg" height="400" caption="Beauty"/>
-	<!-- Example of using another component with props -->
-	<Card title="Simple Design" content="Clean and minimal design that's easy to understand." />
-	<Card title="Easy to Edit" content="Change text, colors, and layout with simple code." />
-	<Card title="Learn by Doing" content="Every file has helpful comments to guide you." />
-	<h2>I am tinkering around on this site</h2>
-<Button text="Read" />
-</Layout>
+  <h2>Features</h2>
+  <ImageCard
+    link="https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg"
+    height="400"
+    caption="Beauty"
+  />
+  <!-- Example of using another component with props -->
+  <Card
+    title="Simple Design"
+    content="Clean and minimal design that's easy to understand."
+  />
+  <Card
+    title="Easy to Edit"
+    content="Change text, colors, and layout with simple code."
+  />
+  <Card
+    title="Learn by Doing"
+    content="Every file has helpful comments to guide you."
+  />
+  <h2>I am tinkering around on this site</h2>
+  <Button text="Read" />
+</MainLayout>
