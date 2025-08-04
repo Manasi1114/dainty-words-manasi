@@ -3,7 +3,9 @@
 
 import { defineConfig } from 'astro/config';
 
+import sitemap from '@astrojs/sitemap';
+
 // https://astro.build/config
 export default defineConfig({
-  // This is where we can add extra features later
+  integrations: [sitemap()]
 });
