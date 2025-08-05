@@ -1,0 +1,37 @@
+---
+// MainLayout
+import MainLayout from "../../layouts/MainLayout.astro";
+import ImageCard from "../../components/ImageCard.astro";
+---
+
+<MainLayout title="Blog Page">
+  <h1>Blog</h1>
+  <p>Welcome to the blog!</p>
+
+  <article>
+    <ImageCard
+    link="https://d1ee3oaj5b5ueh.cloudfront.net/thumbs/1440xAUTO_processed_article_2021_07_60ec5a5781c6c.webp"
+    height="200"
+    excerpt="A Shakespearean comedy of love with errors"
+  />
+    <h2><a href="/blog/my-first-post">A Midsummer night's dream</a></h2>
+    <p><small>Published on January 15, 2024</small></p>
+    <p>A Shakespearean comedy of love with errors</p>
+    <a href="/blog/my-first-post">Read more →</a>
+  </article>
+
+  <hr />
+</MainLayout>
+
+<style>
+  article {
+    margin: 30px 0;
+    padding: 20px 0;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 30px 0;
+  }
+</style>

@@ -1,8 +1,4 @@
 ---
-// This component creates the basic structure for every page
-// It takes a "title" prop to set the page title
-import '../styles/global.css';
-
 const { title } = Astro.props;
 ---
 
@@ -14,25 +10,113 @@ const { title } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<title>{title}</title>
-	</head>
-	<body>
-		<!-- Navigation appears on every page -->
-		<nav>
-			<ul>
-				<li><a href="/">Home</a></li>
-				<li><a href="/about">About</a></li>
-				<li><a href="/blog">Blog</a></li>
-			</ul>
-		</nav>
-
-		<!-- This is where each page's content goes -->
-		<main>
-			<slot />
-		</main>
-
-		<!-- Footer appears on every page -->
-		<footer>
-			<p>&copy; 2025 My Website</p>
-		</footer>
+		<body>
+		<div class="layout">
+			<aside class="sidebar">
+				<ul class="menu"><a href="/">Home</a></ul>
+					<ul class="menu"><a href="/">Directory</a></ul>
+				<div class="category">
+						<p>Creation</p>
+				</div>
+					<ul class="link"><a href="/directory/project-index">Projects</a></ul>
+					<ul class="link"><a href="/directory/blog-index">Blog</a></ul>
+				  <ul class="link"><a href="/directory/poetry-index">Poetry</a></ul>
+				<div class="category">
+					<p>Curation</p>
+				</div>
+				  <ul class="link"><a href="/directory/quote-index">Quotes</a></ul>
+				  <ul class="link"><a href="/">Bookhouse</a></ul>
+				  <ul class="link"><a href="/">Magazine</a></ul>
+				<div>
+					<ul class="logo"><a href="/about">About</a></ul>
+				</div>
+				<div class="socials">Socials</div>
+			</aside>
+			<main class="main-content">
+				<slot />
+			</main>
+		</div>
 	</body>
+		<style>
+			* {
+				margin-top: 0px;
+				margin-left: 10px;
+				padding: 0px;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: system-ui, sans-serif;
+				margin: 10px;
+				background: f7f7f7;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.layout {
+				display: flex;
+				align-items: center;
+				margin: 0px;
+				min-height: 100vh;
+			}
+
+			.sidebar {
+				position: fixed;
+				top: 10px;
+				left: 0;
+				width: 300px;
+				height: 100vh;
+				background: lightblue;
+				padding: 60px;
+				overflow-y: auto;
+				border-right: 1px solid #e9ecef;
+				border-radius: 20px;
+			}
+
+			.main-content {
+				margin-left: 80px;
+				max-width: 700px;
+				flex: 1;
+				padding: 0px;
+			}
+
+			.logo
+				font-size: 18px;
+				padding: 20px;
+				margin-bottom: 30px;
+				color: #89023E;
+			}
+
+			.menu {
+				font-size: 20px;
+				margin-bottom: 0px;
+				color: #89023E;
+			}
+
+			.category {
+				font-size: 20px;
+				font-weight: bold;
+				margin-top: 30px;
+				color: #05162e;
+			}
+
+			.link {
+				font-size: 18px;
+				margin-top: 10px;
+				color: #64769c;
+				text-decoration: none;
+				cursor: pointer;
+			}
+
+			.socials {
+				bottom: 20px;
+				font-size: 18px;
+				font-weight: bold;
+				color: #333;
+				cursor: pointer;
+
+			}
+		</style>
+	</head>
 </html>

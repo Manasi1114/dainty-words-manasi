@@ -4,7 +4,7 @@ layout: ../../layouts/BlogLayout.astro
 title: "Getting Started with Web Development"
 date: "2024-01-20"
 excerpt: "A beginner's guide to web development. Learn about HTML, CSS, JavaScript, and modern tools that will help you build amazing websites."
----
+--- 
 
 # Getting Started with Web Development
 

@@ -1,0 +1,99 @@
+---
+const { image, title, date, excerpt } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content="My website description" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+
+  </head>
+  <body>
+    <article>
+      <div class="grid">
+				{image && <img src={image} alt="Blog post image" />}
+        <h1 class="blog-heading">{title}</h1>
+        {date && <p class="date">Published {date}</p>}
+        {excerpt && <p class="excerpt">{excerpt}</p>}
+      </div>
+
+      <div class="content">
+        <slot />
+      </div>
+    </article>
+
+			<main class="main-content">
+				<slot />
+			</main>
+
+    <!-- Sticky Buttons -->
+    <!-- <div class="buttons"> -->
+      <!-- <a href="#" class="button back-links">Back links</a> -->
+      <!-- <a href="#" class="button entrance">Entrance</a> -->
+      <!-- <a href="#" class="button directory">Directory</a> -->
+    </div>
+  </body>
+</html>
+
+<style>
+      body {
+        font-family: Georgia, serif;
+        margin: 0;
+        padding: 2rem;
+        background: #f7f7f7;
+      }
+
+      h1 {
+        font-size: 3rem;
+        font-weight: bold;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 3rem;
+      }
+
+      .excerpt {
+        background-color: #ecc830;
+        padding: 0.3rem 0.5rem;
+        font-weight: bold;
+        font-size: 0.9rem;
+        line-height: 1.2;
+        display: inline-block;
+      }
+
+      .buttons {
+        position: fixed;
+        right: 2rem;
+        top: 40%;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .button {
+        padding: 0.5rem 1rem;
+        color: black;
+        font-weight: bold;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .back-links {
+        background-color: crimson;
+        color: white;
+      }
+
+      .entrance {
+        background-color: #ffec99;
+      }
+
+      .directory {
+        background-color: gold;
+      }
+    </style>

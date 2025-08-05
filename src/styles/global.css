@@ -1,49 +1,72 @@
 /* Minimal starter CSS with good defaults */
 /* Add your own styles below these basics */
 
-body {
-    margin: 40px auto;
-    max-width: 1050px;
-    line-height: 1.6;
-    font-size: 18px;
-    color: #444;
-    padding: 0 10px;
-    font-family: Arial, sans-serif;
+@import url("https://p.typekit.net/p.css?s=1&k=sxc6rjm&ht=tk&f=6080.6081&a=30983716&app=typekit&e=css");
+
+@font-face {
+  font-family: "jaf-lapture";
+  src: url("https://use.typekit.net/af/04e5be/000000000000000077359abd/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
+      format("woff2"),
+    url("https://use.typekit.net/af/04e5be/000000000000000077359abd/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
+      format("woff"),
+    url("https://use.typekit.net/af/04e5be/000000000000000077359abd/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
+      format("opentype");
+  font-display: auto;
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: normal;
 }
 
-h1, h2, h3 {
-    line-height: 1.2;
+body {
+  margin: 10px auto;
+  max-width: 800px;
+  line-height: 1.8rem;
+  color: #444;
+  padding: 0 10px;
+  font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD",
+    "Book Antiqua", Georgia, serif;
+  font-size: 18px;
+  background: #f7f7f7;
+}
+h1 {
+  font-family: "jaf-lapture", serif;
+  padding: 4px;
+  border-bottom: 1px solid black;
+}
+h2,
+h3 {
+  line-height: 1.2;
 }
 
 /* Simple navigation */
 nav ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 nav ul li {
-    display: inline;
-    margin-right: 20px;
+  display: inline;
+  margin-right: 20px;
 }
 
 nav a {
-    text-decoration: none;
-    color: #444;
+  text-decoration: none;
+  color: #444;
 }
 
 nav a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 /* Basic button style */
 .btn {
-    display: inline-block;
-    background: #444;
-    color: white;
-    padding: 8px 16px;
-    text-decoration: none;
+  display: inline-block;
+  background: #444;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
 }
 
 .btn:hover {
-    background: #666;
+  background: #666;
 }

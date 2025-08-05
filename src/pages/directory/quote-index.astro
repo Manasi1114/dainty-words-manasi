@@ -1,0 +1,38 @@
+---
+// MainLayout
+import Card from "../../components/Card.astro";
+import DirectoryLayout from "../../layouts/DirectoryLayout.astro";
+import MainLayout from "../../layouts/MainLayout.astro";
+---
+
+<MainLayout class="layout"></MainLayout>
+
+<DirectoryLayout title="Quotes">
+
+  <article>
+    <Card
+    
+    <ImageCard
+    link="https://d1ee3oaj5b5ueh.cloudfront.net/thumbs/1440xAUTO_processed_article_2021_07_60ec5a5781c6c.webp"
+    height="200"
+    excerpt="A Shakespearean comedy of love with errors"
+  />
+    <h2><a href="/blog/my-first-post">A Midsummer night's dream</a></h2>
+    <p><small>Published on January 15, 2024</small></p>
+    <p>A Shakespearean comedy of love with errors</p>
+    <a href="/blog/my-first-post">Read more →</a>
+  </article>
+</DirectoryLayout>
+
+<style>
+  article {
+    margin: 30px 0;
+    padding: 20px 0;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 30px 0;
+  }
+</style>

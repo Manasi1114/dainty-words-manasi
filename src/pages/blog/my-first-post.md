@@ -1,65 +1,24 @@
 ---
 # Blog posts use BlogLayout instead of MainLayout - notice the difference!
 layout: ../../layouts/BlogLayout.astro
-title: "My First Blog Post"
-date: "2024-01-15"
-excerpt: "Welcome to my blog! This is my first post written in Markdown. Learn about the basics of Markdown and how to use it in Astro."
+title: "A Midsummer Night's Dream"
+date: "04-07-2025"
+excerpt: "A Shakespearean comedy of love with errors"
 ---
 
-# My First Blog Post
+# Midsummer Night's Dream
 
-Welcome to my blog! This is my first post written in **Markdown**.
+HIPPOLYTA
+My dear Theseus, what these lovers are describing is strange.
 
-## What is Markdown?
+THESEUS
+I think the story is more strange than it is true. I don't believe any of these ancient stories or fairy tales. Lovers and madmen have so much going on in their heads, such active imaginations, that they see and hear things that cool, calm, rational people can't understand. Madmen, lovers, and poets all are all controlled by their imaginations: The ones who see devils and monsters all over the place—those are the madmen. _Lovers_, who are just as wild, see a gypsy's face and think it is as beautiful as Helen of Troy's. Poets, who are always glancing around as if they are overcome by passion, make constant connections between things that are earthly and things that are heavenly. And they take the unreal things that tumble out of their imagination and write about them as if they were actual places or things. When people who have such strong imaginations feel some kind of joy, they imagine that it must be some entity or power that brings or creates that joy. Or if, in the night, they feel some fear, they see a bush and imagine it’s a bear!
 
-Markdown is a lightweight markup language that allows you to format text using simple syntax. It's perfect for writing blog posts, documentation, and other content for the web.
-
-### Some Markdown Examples
-
-Here are some basic Markdown formatting examples:
-
-- **Bold text** using `**text**`
-- _Italic text_ using `*text*`
-- `Code snippets` using backticks
-- [Links](https://astro.build) using `[text](url)`
-
-### Code Blocks
-
-You can also include code blocks:
-
-```javascript
-function greet(name) {
-  return `Hello, ${name}!`;
-}
-
-console.log(greet("World"));
-```
-
-### Lists
-
-Ordered lists:
-
-1. First item
-2. Second item
-3. Third item
-
-Unordered lists:
-
-- Item one
-- Item two
-- Item three
-
-## Why Use Astro?
-
-Astro is fantastic for content-driven websites because:
-
-1. **Fast by default** - Generates static HTML
-2. **Framework agnostic** - Use React, Vue, Svelte, or plain HTML
-3. **Great developer experience** - Hot reloading, TypeScript support
-4. **SEO friendly** - Perfect for blogs and marketing sites
-
-## Conclusion
-
-This is just the beginning! Markdown makes it easy to write formatted content without worrying about HTML tags. Combined with Astro, you can create beautiful, fast websites with ease.
-
-Happy coding! 🚀
+THESEUS
+The kinder we, to give them thanks for nothing.
+Our sport shall be to take what they mistake,
+And what poor duty cannot do, noble respect
+Takes it in might, not merit.
+Where I have come, great clerks have purposèd To greet me with premeditated welcomes,
+Where I have seen them shiver and look pale,
+Make periods in the midst of sentences, Throttle their practiced accent in their fears, And in conclusion dumbly have broke off, 105 Not paying me a welcome. Trust me, sweet, Out of this silence yet I picked a welcome, And in the modesty of fearful duty I read as much as from the rattling tongue Of saucy and audacious eloquence. Love, therefore, and tongue-tied simplicity In least speak most, to my capacity.

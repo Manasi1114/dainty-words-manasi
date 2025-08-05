@@ -1,0 +1,37 @@
+---
+// MainLayout
+import MainLayout from "../../layouts/MainLayout.astro";
+---
+
+<MainLayout title="Blog Page">
+  <h1>Blog</h1>
+  <p>Welcome to the blog! Here are some example posts written in Markdown.</p>
+
+  <article>
+    <h2><a href="/blog/my-first-post">A Midsummer night's dream</a></h2>
+    <p><small>Published on January 15, 2024</small></p>
+    <p>A Shakespearean comedy of love with errors</p>
+    <a href="/blog/my-first-post">Read more →</a>
+  </article>
+
+  <hr />
+  <article>
+    <h2><a href="/poems/poetry1">Nuremberg</a></h2>
+    <p><small>Published on January 15, 2024</small></p>
+    <p>A Shakespearean comedy of love with errors</p>
+    <a href="/blog/">Read more →</a>
+  </article>
+</MainLayout>
+
+<style>
+  article {
+    margin: 30px 0;
+    padding: 20px 0;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 30px 0;
+  }
+</style>
