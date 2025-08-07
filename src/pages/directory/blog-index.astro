@@ -1,19 +1,31 @@
 ---
 // MainLayout
+import DirectoryLayout from "../../layouts/DirectoryLayout.astro";
 import MainLayout from "../../layouts/MainLayout.astro";
 import ImageCard from "../../components/ImageCard.astro";
 ---
 
-<MainLayout title="Blog Page">
-  <h1>Blog</h1>
-  <p>Welcome to the blog!</p>
+<MainLayout class="layout" />
+
+<DirectoryLayout title="Writings">
+  <article>
+    <ImageCard
+      link="https://d1ee3oaj5b5ueh.cloudfront.net/thumbs/1440xAUTO_processed_article_2021_07_60ec5a5781c6c.webp"
+      height="200"
+      excerpt="A Shakespearean comedy of love with errors"
+    />
+    <h2><a href="/blog/my-first-post">A Midsummer night's dream</a></h2>
+    <p><small>Published on January 15, 2024</small></p>
+    <p>A Shakespearean comedy of love with errors</p>
+    <a href="/blog/my-first-post">Read more →</a>
+  </article>
 
   <article>
     <ImageCard
-    link="https://d1ee3oaj5b5ueh.cloudfront.net/thumbs/1440xAUTO_processed_article_2021_07_60ec5a5781c6c.webp"
-    height="200"
-    excerpt="A Shakespearean comedy of love with errors"
-  />
+      link="https://d1ee3oaj5b5ueh.cloudfront.net/thumbs/1440xAUTO_processed_article_2021_07_60ec5a5781c6c.webp"
+      height="200"
+      excerpt="A Shakespearean comedy of love with errors"
+    />
     <h2><a href="/blog/my-first-post">A Midsummer night's dream</a></h2>
     <p><small>Published on January 15, 2024</small></p>
     <p>A Shakespearean comedy of love with errors</p>
@@ -21,7 +33,7 @@ import ImageCard from "../../components/ImageCard.astro";
   </article>
 
   <hr />
-</MainLayout>
+</DirectoryLayout>
 
 <style>
   article {
