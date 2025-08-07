@@ -10,6 +10,7 @@ const { title } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<title>{title}</title>
+	</head>
 		<body>
 		<div class="layout">
 			<aside class="sidebar">
@@ -46,9 +47,8 @@ const { title } = Astro.props;
 			}
 
 			body {
-				font-family: system-ui, sans-serif;
 				margin: 10px;
-				background: f7f7f7;
+				background: #f7f7f7;
 				display: flex;
 				justify-content: center;
 				align-items: center;
@@ -81,7 +81,7 @@ const { title } = Astro.props;
 				padding: 0px;
 			}
 
-			.logo
+			.logo {
 				font-size: 18px;
 				padding: 20px;
 				margin-bottom: 30px;
@@ -118,5 +118,4 @@ const { title } = Astro.props;
 
 			}
 		</style>
-	</head>
 </html>
