@@ -1,17 +1,7 @@
 ---
-const { title } = Astro.props;
+const { title, type } = Astro.props;
 ---
-
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="My website description" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{title}</title>
-  </head>
-  <body>
+<body>
     <div class="container">
       <header class="header">
         <slot name="header">
@@ -19,72 +9,51 @@ const { title } = Astro.props;
           <div class="subtitle">Books that have shaped me</div>
         </slot>
       </header>
-
-      <div class="grid">
-        <slot>
-          <div class="card">Card 1</div>
-          <div class="card">Card 2</div>
-          <div class="card">Card 3</div>
-          <div class="card">Card 4</div>
-        </slot>
-      </div>
+  <main>
+    <h1>{title}</h1>
+    <div class={`grid ${type}`}>
+      <slot />
     </div>
-  </body>
-</html>
+  </main>
+</body>
 
 <style>
-  * {
-    margin: 0;
-    margin-left: 100px;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  body {
-    background: #f7f7f7;
-    padding: 40px 20px;
-  }
 
   .container {
     max-width: 1200px;
     margin: 0 auto;
   }
-
-  .header {
-    text-align: center;
-    margin-bottom: 60px;
-  }
-
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
+    gap: 15px;
   }
 
-  .card {
-    background: #f8f9fa;
-		border: 4px solid black;
-    border-radius: 10px;
-    color: #333;
-    text-align: center;
-    font-size: 18px;
+  .grid.bookhouse {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
 
-  h1 {
-    color: #333;
-    font-size: 32px;
-    font-weight: normal;
-    margin-bottom: 20px;
+  .grid.bookhouse img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   }
 
-  .subtitle {
-    color: #666;
-    font-size: 18px;
+  .grid.magazine {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-auto-rows: 180px;
   }
+
+  .grid.magazine img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
 
   @media (max-width: 768px) {
     .grid {
       grid-template-columns: 1fr;
     }
-  }
 </style>
