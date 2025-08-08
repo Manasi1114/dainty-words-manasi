@@ -5,12 +5,12 @@ const { title, type } = Astro.props;
     <div class="container">
       <header class="header">
         <slot name="header">
-          <h1>BookHouse</h1>
-          <div class="subtitle">Books that have shaped me</div>
         </slot>
       </header>
   <main>
-    <h1>{title}</h1>
+    <div class="title">
+      <h1>{title}</h1>
+    </div>
     <div class={`grid ${type}`}>
       <slot />
     </div>
@@ -19,9 +19,13 @@ const { title, type } = Astro.props;
 
 <style>
 
+  .title {
+    margin-left: -100px;
+  }
   .container {
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 900px;
+    margin: 200 auto;
+    margin-left: 450px;
   }
   .grid {
     display: grid;
@@ -41,7 +45,8 @@ const { title, type } = Astro.props;
 
   .grid.magazine {
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    grid-auto-rows: 180px;
+    grid-auto-rows: 400px;
+    grid-auto-columns: 500px;
   }
 
   .grid.magazine img {
