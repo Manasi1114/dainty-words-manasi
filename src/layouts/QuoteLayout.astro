@@ -1,0 +1,56 @@
+---
+const { title, author, bibliography, thoughts, quote } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <main class="quote-layout">
+      <h1>{title}</h1>
+      <blockquote>"{quote}"</blockquote>
+      <p class="author">— {author}</p>
+      <p class="bibliography">{bibliography}</p>
+      <p class="thoughts">{thoughts}</p>
+
+      <slot />
+    </main>
+  </body>
+</html>
+
+<style>
+body {
+  font-family: Georgia, serif;
+  background: #faf8f4;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.quote-layout {
+  font-family: Georgia, serif;
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #fffbe7;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.quote-layout blockquote {
+  font-style: italic;
+  margin: 1rem 0;
+  padding-left: 1rem;
+  border-left: 4px solid #555;
+}
+
+.author {
+  font-weight: bold;
+  margin-top: 1rem;
+}
+</style>
+</html>
