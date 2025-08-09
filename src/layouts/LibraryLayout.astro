@@ -29,10 +29,12 @@ const { title, type } = Astro.props;
   .grid {
     display: grid;
     gap: 15px;
+    grid-auto-flow: dense;
   }
 
   .grid.bookhouse {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    grid-auto-rows: 140px;
   }
 
   .grid.bookhouse img {
@@ -47,6 +49,11 @@ const { title, type } = Astro.props;
     grid-template-rows: auto;
     grid-auto-flow: dense;
   }
+
+  .grid.magazine img.portrait {
+    grid-row: span 2;
+  }
+
 
   .grid.magazine img {
     width: 100%;

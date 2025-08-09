@@ -1,8 +1,8 @@
 ---
-const { link, height } = Astro.props;
+const { link, height, orientation} = Astro.props;
 ---
 
-<div class="container">
+<div class={`container ${orientation}`}>
   <img src={link} height={height} />
 </div>
 
@@ -23,4 +23,11 @@ const { link, height } = Astro.props;
     object-fit: cover;
   }
 
+.container.portrait {
+    grid-row: span 2;
+  }
+
+  .container.landscape {
+    grid-column: span 2;
+  }
 </style>
