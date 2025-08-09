@@ -1,9 +1,24 @@
 ---
 // Simple component example 1: A button that takes custom text
 // Usage: <Button text="Click me!" />
-const { text = "Click me" } = Astro.props;
+const { text, link } = Astro.props;
 ---
+<a href={link} class="sidebar-button">{text}</a>
 
-<button class="btn">
-  {text}
-</button>
+<style>
+.sidebar-button {
+  display: inline-block;
+  padding: 4px 8px;
+  background: white;
+  border: 2px solid black;
+  border-radius: 6px;
+  text-decoration: none;
+  color: black;
+  font-weight: 200;
+  transition: all 0.2s ease;
+}
+.sidebar-button:hover {
+  background: black;
+  color: white;
+}
+</style>
