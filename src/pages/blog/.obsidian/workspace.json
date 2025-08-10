@@ -155,8 +155,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -168,7 +167,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "ab5c7640083499bd",
+  "active": "9da0aa6c05b86a71",
   "lastOpenFiles": [
     "blog-index.astro",
     "index1.astro",

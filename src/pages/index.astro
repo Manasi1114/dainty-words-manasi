@@ -1,21 +1,64 @@
 ---
 // Import the layout and components
 import MainLayout from "../layouts/MainLayout.astro";
-import Button from "../components/Button.astro";
-import Card from "../components/Card.astro";
-import ImageCard from "../components/ImageCard.astro";
+import PhotoCard from "../components/PhotoCard.astro";
 ---
 
 <MainLayout title="Dainty Words">
-  <h1>Dainty words</h1>
-  <p>
-    because words always stay. I am a funny little human, only do what's
-    interesting to me. Life is good when you can ask a lot of questions. This
-    site is rapt with my inner thoughts, work and curations.
-  </p>
+  <div class="content-box">
+    <div class="heading">
+      <h1>Dainty words by Manasi</h1>
+    </div>
+    <div class="introduction">
+      <p>
+        because words always stay. I am a funny little human, only do what's
+        interesting to me. Life is good when you can ask a lot of questions.
+        This site is rapt with my inner thoughts, work and curations.
+      </p>
+    </div>
 
-  <ImageCard
-    link="https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg"
-    height="300"
-  />
+    <PhotoCard
+      link="https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg"
+      height="200"
+    />
+  </div>
 </MainLayout>
+
+<style>
+  .content-box {
+    background: linear-gradient(135deg, #a8dadc 0%, #457b9d 100%);
+    background-color: #a8dadc;
+    border: 2px solid #457b9d;
+    padding: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  .heading {
+    text-align: center;
+    font-family: lapture;
+    color: #1d3557;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  .introduction {
+    font-family: "Josefin Sans", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 16px;
+    text-align: left;
+
+    margin-bottom: 30px;
+    border-bottom: 1px solid #1d364633;
+
+  p{
+    font-weight: 400;
+  color: #264653;
+  }
+</style>
+
+

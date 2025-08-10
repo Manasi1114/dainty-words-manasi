@@ -17,6 +17,11 @@
   font-stretch: normal;
 }
 
+@font-face {
+  font-family: "josefin-sans";
+  src: url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cedarville+Cursive&family=Gloock&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Passions+Conflict&family=Quintessential&family=Roboto&family=Style+Script&family=UnifrakturMaguntia&family=Zen+Old+Mincho&display=swap"rel="stylesheet");
+}
+
 body {
   margin: 10px auto;
   max-width: 800px;
@@ -24,9 +29,10 @@ body {
   color: #444;
   padding: 0 10px;
   font-family: et-book, Palatino, "Palatino Linotype", "Palatino LT STD",
-    "Book Antiqua", Georgia, serif;
+    "Book Antiqua", Georgia, serif, "Josefin Sans", sans-serif, "Josefin Slab",
+    sans-serif;
   font-size: 18px;
-  background: #f7f7f7;
+  background: #f1faee;
 }
 h1 {
   font-family: "jaf-lapture", serif;

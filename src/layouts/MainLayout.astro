@@ -17,28 +17,28 @@ import Button from "../components/Button.astro";
   <body>
     <div class="layout">
       <aside class="sidebar">
-  <ul class="menu"><Button text="Home" link="/" /></ul>
+        <ul class="menu"><Button text="Home" link="/" /></ul>
 
-  <div class="category">
-    <p>Creation</p>
-  </div>
-  <ul class="link"><Button text="Projects" link="/projects" /></ul>
-  <ul class="link"><Button text="Blog" link="/blog" /></ul>
-  <ul class="link"><Button text="Poetry" link="/poetry" /></ul>
+        <div class="category">
+          <p>Creation</p>
+        </div>
+        <ul class="link"><Button text="Projects" link="/projects" /></ul>
+        <ul class="link"><Button text="Blog" link="/blog" /></ul>
+        <ul class="link"><Button text="Poetry" link="/poetry" /></ul>
 
-  <div class="category">
-    <p>Curation</p>
-  </div>
-  <ul class="link"><Button text="Quotes" link="/quotes" /></ul>
-  <ul class="link"><Button text="Bookhouse" link="/bookhouse" /></ul>
-  <ul class="link"><Button text="Magazine" link="/magazine" /></ul>
+        <div class="category">
+          <p>Curation</p>
+        </div>
+        <ul class="link"><Button text="Quotes" link="/quotes" /></ul>
+        <ul class="link"><Button text="Bookhouse" link="/bookhouse" /></ul>
+        <ul class="link"><Button text="Magazine" link="/magazine" /></ul>
 
-  <div>
-    <ul class="logo"><Button text="About" link="/about" /></ul>
-  </div>
-  <ul class="link"><Button text="Socials" link="/socials" /></ul>
-  <ul class="link"><Button text="Sitemap" link="/sitemap" /></ul>
-</aside>
+        <div>
+          <ul class="logo"><Button text="About" link="/about" /></ul>
+        </div>
+        <ul class="link"><Button text="Socials" link="/socials" /></ul>
+        <ul class="link"><Button text="Sitemap" link="/sitemap" /></ul>
+      </aside>
 
       <main class="main-content">
         <slot />
@@ -54,8 +54,8 @@ import Button from "../components/Button.astro";
     }
 
     body {
-      margin: 10px;
-      background: #f7f7f7;
+      margin-left: 0px;
+      background: #f1faee;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -64,7 +64,6 @@ import Button from "../components/Button.astro";
     .layout {
       display: flex;
       align-items: center;
-      margin: 0px;
       min-height: 100vh;
     }
 
@@ -73,12 +72,14 @@ import Button from "../components/Button.astro";
       left: 0;
       width: 300px;
       height: 100vh;
-      background: lightblue;
-      padding: 60px;
-      padding-top: 20px;
-      overflow-y: auto;
-      border-right: 1px solid #e9ecef;
-      border-radius: 20px;
+      background-color: #f0f7f1;
+      padding: 50px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border: 4px solid transparent;
+      border-radius: 15px;
+      background-image:
+        linear-gradient(rgb(235, 175, 175), rgb(236, 62, 62)),
+      background-origin: border-box;
     }
 
     .main-content {
@@ -123,5 +124,12 @@ import Button from "../components/Button.astro";
       color: #333;
       cursor: pointer;
     }
+
+    @media (max-width: 768px) {
+  .content-box {
+    width: 90%;
+    padding: 20px;
+  }
+
   </style>
 </html>
