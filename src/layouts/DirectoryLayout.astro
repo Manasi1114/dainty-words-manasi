@@ -1,5 +1,5 @@
 ---
-const { image, title, date, excerpt } = Astro.props;
+const { image, title, date} = Astro.props;
 ---
 
 <!doctype html>
@@ -13,19 +13,7 @@ const { image, title, date, excerpt } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <!-- <article>
-      <div class="grid">
-				{image && <img src={image} alt="Blog post image" />}
-        <h1 class="blog-heading">{title}</h1>
-        {date && <p class="date">Published {date}</p>}
-        {excerpt && <p class="excerpt">{excerpt}</p>}
-      </div>
-
-      <div class="content">
-        <slot />
-      </div>
-    </article> -->
-
+    
     <main class="main-content">
       <slot />
     </main>
@@ -48,15 +36,6 @@ const { image, title, date, excerpt } = Astro.props;
     display: grid;
     grid-template-columns: 1fr;
     gap: 3rem;
-  }
-
-  .excerpt {
-    background-color: #ecc830;
-    padding: 0.3rem 0.5rem;
-    font-weight: bold;
-    font-size: 0.9rem;
-    line-height: 1.2;
-    display: inline-block;
   }
 
   .buttons {

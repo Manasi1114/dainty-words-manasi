@@ -1,42 +1,39 @@
 ---
-// MainLayout
 import DirectoryLayout from "../layouts/DirectoryLayout.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 import ImageCard from "../components/ImageCard.astro";
 
 const allPosts = Object.values(
-  import.meta.glob("./poetry/*.md", { eager: true })
+  import.meta.glob("../pages/poetry/*.md", { eager: true })
 );
 ---
 
-<MainLayout class="layout" />
-
-<DirectoryLayout title="Writings">
-  <p>This is where I will post about my journey learning Astro.</p>
-  <ul>
-    {
-      allPosts.map((post: any) => (
-        <article>
-          <ImageCard
-            image={post.frontmatter.image?.url}
-            alt={post.frontmatter.image?.alt}
-          />
-          <h2>
-            <a href={post.url}>{post.frontmatter.title}</a>
-          </h2>
-          <p>
-            <small>Published on{post.frontmatter.pubDate}</small>
-          </p>
-          <p>{post.frontmatter.description}</p>
-          <a href={post.url}>Read more →</a>
-        </article>
-      ))
-    }
-  </ul>
-</DirectoryLayout>
+<MainLayout class="layout">
+  <DirectoryLayout title="Poetry">
+    <p>“A poem begins as a lump in the throat, a sense of wrong, a homesickness, a lovesickness.”<br/>― Robert Frost</p>
+    <ul>
+      {
+        allPosts.map((post: any) => (
+          <li>
+            <article>
+              <h2>
+                <a href={post.url}>{post.frontmatter.title}</a>
+              </h2>
+              <p><small>Published on {post.frontmatter.date}</small></p>
+              <p><small>By {post.frontmatter.poet}</small></p>
+              <p>{post.frontmatter.description}</p>
+              <a href={post.url}>Read more →</a>
+            </article>
+          </li>
+        ))
+      }
+    </ul>
+  </DirectoryLayout>
+</MainLayout>
 
 <style>
   article {
     margin: 30px 0;
     padding: 20px 0;
   }
+</style>
