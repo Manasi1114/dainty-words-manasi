@@ -1,5 +1,5 @@
 ---
-title: "A midsummer night's dream"
+title: "3rd post"
 description: "A short summary of what the blog is about."
 date: "2025-08-10"
 image:
