@@ -16,22 +16,14 @@ const allPosts = Object.values(
       </p>
     </div>
 
-    <!-- Grid container here -->
-    <div class="blog-grid">
+    <div class="poetry-index">
       {
-        allPosts.map((post: any) => (
-          <article class="blog-card">
-            <h2>
-              <a href={post.url}>{post.frontmatter.title}</a>
-            </h2>
-            <p>
-              <small>By {post.frontmatter.poet}</small>
-            </p>
-
-            <p>
-              <small>Published on {post.frontmatter.date}</small>
-            </p>
-          </article>
+        allPosts.map((post: any, index: number) => (
+          <a href={post.url}>
+            <span class="poem-number">{String(index + 1).padStart(2, "0")}.</span>
+            <span class="poem-title">{post.frontmatter.title}</span>
+            <span class="poem-meta">{post.frontmatter.poet}</span>
+          </a>
         ))
       }
     </div>
@@ -39,74 +31,60 @@ const allPosts = Object.values(
 </MainLayout>
 
 <style>
-  article {
-    margin: 30px 0;
-    padding: 20px 0;
-  }
-  .blog-grid {
+  .poetry-index {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 2rem;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    font-family: "Georgia", serif;
+    max-width: 700px;
+    margin: 2rem 0;
+    margin: 150px;
+    padding: 1rem 2rem;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   }
 
-  .blog-card {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 1.5rem;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    max-width: 400px;
-    margin: 1rem auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-  .blog-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
-  }
-
-  .blog-card h2 {
-    font-family: "Merriweather", serif;
-    font-size: 1.5rem;
-    margin-bottom: 0.75rem;
-    color: #333;
-  }
-
-  .blog-card p {
-    font-family: "Open Sans", sans-serif;
-    font-size: 1rem;
-    color: #555;
-    line-height: 1.6;
-  }
-  .text-card small {
-    font-size: 10px;
-    color: #888;
-  }
-  .blog-card a {
-    margin-top: 1rem;
-    padding: 0.6rem 1.2rem;
-    font-weight: 500;
+  .poetry-index a {
+    display: grid;
+    grid-template-columns: 3rem 1fr auto;
+    align-items: baseline;
+    padding: 0.3rem 0;
     text-decoration: none;
-    transition: background 0.3s ease;
+    border-bottom: 1px dotted #aaa;
+    color: #333;
+    font-size: 1rem;
+    transition: all 0.2s ease;
   }
 
-  .blog-card a:hover {
-    background: pink;
+  .poetry-index a:hover {
+    color: #cba8a8;
+    border-bottom: 1px solid #000;
+    background: #f9f9f9;
+  }
+
+  .poem-number {
+    color: #888;
+    font-size: 0.9rem;
+  }
+
+  .poem-title {
+    font-weight: 500;
+  }
+
+  .poem-meta {
+    font-size: 0.85rem;
+    color: #666;
+    font-style: italic;
   }
 
   .poetry-quote {
     position: fixed;
     top: 150px;
-    right: 20px;
+    left: 280px;
     transform: translateY(-50%);
     font-style: italic;
-    font-family: "Book Antiqua", serif;
+    font-family: "Times New Roman", serif;
     font-size: 20px;
     padding: 2rem;
     max-width: 200px;
@@ -115,11 +93,20 @@ const allPosts = Object.values(
     justify-content: center;
   }
 
+
   @media (max-width: 800px) {
-    .blog-grid {
-      grid-template-columns: 1fr;
-      gap: 1rem;
+    .poetry-index {
       padding: 1rem;
+      margin: 1rem;
+    }
+    .poetry-index a {
+      grid-template-columns: 2rem 1fr;
+    }
+    .poetry-quote {
+      position: static;
+      max-width: 100%;
+      padding: 1rem;
+      text-align: center;
     }
   }
 </style>

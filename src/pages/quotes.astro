@@ -9,23 +9,20 @@ const allPosts = Object.values(
 
 <MainLayout class="layout">
   <DirectoryLayout title="Quotes">
-    <!-- Grid container here -->
-    <div class="blog-grid">
+    <div class="quotes-quote">
+      <p> "I have the world's largest collection of seashells. I keep it on all the beaches of the world... perhaps you've seen it."
+<br /><br />― Steven Wright
+      </p>
+    </div>
+
+    <div class="quotes-index">
       {
-        allPosts.map((post: any) => (
-          <article class="blog-card">
-            <h2>
-              <a href={post.url}>{post.frontmatter.title}</a>
-            </h2>
-            <p>
-              <small>Published on {post.frontmatter.date}</small>
-            </p>
-            <p>
-              <small>By {post.frontmatter.author}</small>
-            </p>
-            <p>{post.frontmatter.description}</p>
-            <a href={post.url}>Read more →</a>
-          </article>
+        allPosts.map((post: any, index: number) => (
+          <a href={post.url}>
+            <span class="quote-number">{String(index + 1).padStart(2, "0")}.</span>
+            <span class="quote-title">{post.frontmatter.title}</span>
+            <span class="quote-meta">{post.frontmatter.author}</span>
+          </a>
         ))
       }
     </div>
@@ -33,35 +30,81 @@ const allPosts = Object.values(
 </MainLayout>
 
 <style>
-  article {
-    margin: 30px 0;
-    padding: 20px 0;
-  }
-  .blog-grid {
+  .quotes-index {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 2rem;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    font-family: "Georgia", serif;
+    max-width: 700px;
+    margin: 2rem 0;
+    margin: 150px;
+    padding: 1rem 2rem;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   }
 
-  .blog-card {
-    background: #fdfdfd;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 1rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  .quotes-index a {
+    display: grid;
+    grid-template-columns: 3rem 1fr auto;
+    align-items: baseline;
+    padding: 0.3rem 0;
+    text-decoration: none;
+    border-bottom: 1px dotted #aaa;
+    color: #333;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+  }
+
+  .quotes-index a:hover {
+    color: #cba8a8;
+    border-bottom: 1px solid #000;
+    background: #f9f9f9;
+  }
+
+  .quote-number {
+    color: #888;
+    font-size: 0.9rem;
+  }
+
+  .quote-title {
+    font-weight: 500;
+  }
+
+  .quote-meta {
+    font-size: 0.85rem;
+    color: #666;
+    font-style: italic;
+  }
+
+  .quotes-quote {
+    position: fixed;
+    top: 350px;
+    left: 280px;
+    transform: translateY(-50%);
+    font-style: italic;
+    font-family: "Times New Roman", serif;
+    font-size: 20px;
+    padding: 2rem;
+    max-width: 200px;
+    z-index: 1000;
     display: flex;
     justify-content: center;
-    flex-direction: column;
   }
 
   @media (max-width: 800px) {
-    .blog-grid {
-      grid-template-columns: 1fr;
-      gap: 1rem;
+    .quotes-index {
       padding: 1rem;
+      margin: 1rem;
+    }
+    .quotes-index a {
+      grid-template-columns: 2rem 1fr;
+    }
+    .quotes-quote {
+      position: static;
+      max-width: 100%;
+      padding: 1rem;
+      text-align: center;
     }
   }
 </style>
