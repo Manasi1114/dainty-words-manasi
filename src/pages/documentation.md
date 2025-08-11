@@ -4,7 +4,6 @@ Components-
     -Buttons
     -Cards
     -Image card
-    -Link text below heading /*Optional*/
 
 Layouts
     -MainLayout.astro / Home.astro
@@ -15,17 +14,12 @@ Layouts
 
 Pages
     -index.astro (home)
-    -directory.astro
+    -bookhouse.astro
     -about.astro
     -poetry.astro
     -quote.astro
-    -library.astro
+    -magazine.astro
+    -socials.astro
 
 Styles
     -global.css
-    -about.css
-    -about.css
-    -blog.css
-    -poetry.css
-    -quote.css
-    -library.css

@@ -19,22 +19,18 @@ import Button from "../components/Button.astro";
         <ul class="menu"><Button text="Home" link="/" /></ul>
 
         <div class="category">
-          <p>Creation</p>
         </div>
         <ul class="link"><Button text="Projects" link="/projects" /></ul>
         <ul class="link"><Button text="Blog" link="/blog" /></ul>
         <ul class="link"><Button text="Poetry" link="/poetry" /></ul>
 
         <div class="category">
-          <p>Curation</p>
         </div>
         <ul class="link"><Button text="Quotes" link="/quotes" /></ul>
         <ul class="link"><Button text="Bookhouse" link="/bookhouse" /></ul>
         <ul class="link"><Button text="Magazine" link="/magazine" /></ul>
 
-        <div>
-          <ul class="logo"><Button text="About" link="/about" /></ul>
-        </div>
+        <ul class="logo"><Button text="About" link="/about" /></ul>
         <ul class="link"><Button text="Socials" link="/socials" /></ul>
         <ul class="link"><Button text="Sitemap" link="/sitemap" /></ul>
       </aside>
@@ -59,6 +55,7 @@ import Button from "../components/Button.astro";
     }
 
       .sidebar {
+        position: sticky;
         width: 250px;
         background-color: #eea8a5;
         color: #333;
