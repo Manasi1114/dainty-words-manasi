@@ -9,22 +9,33 @@ const allPosts = Object.values(
 
 <MainLayout class="layout">
   <DirectoryLayout title="Poetry">
-    <p>“A poem begins as a lump in the throat, a sense of wrong, a homesickness, a lovesickness.”<br/>― Robert Frost</p>
-    <ul>
+    <div class="poetry-quote">
+      <p>
+        “A poem begins as a lump in the throat, a sense of wrong, a
+        homesickness, a lovesickness.”<br /><br />― Robert Frost
+      </p>
+    </div>
+
+    <!-- Grid container here -->
+    <div class="blog-grid">
       {
         allPosts.map((post: any) => (
-            <article>
-              <h2>
-                <a href={post.url}>{post.frontmatter.title}</a>
-              </h2>
-              <p><small>Published on {post.frontmatter.date}</small></p>
-              <p><small>By {post.frontmatter.poet}</small></p>
-              <p>{post.frontmatter.description}</p>
-              <a href={post.url}>Read more →</a>
-            </article>
+          <article class="blog-card">
+            <h2>
+              <a href={post.url}>{post.frontmatter.title}</a>
+            </h2>
+            <p>
+              <small>Published on {post.frontmatter.date}</small>
+            </p>
+            <p>
+              <small>By {post.frontmatter.poet}</small>
+            </p>
+            <p>{post.frontmatter.description}</p>
+            <a href={post.url}>Read more →</a>
+          </article>
         ))
       }
-    </ul>
+    </div>
   </DirectoryLayout>
 </MainLayout>
 
@@ -32,5 +43,41 @@ const allPosts = Object.values(
   article {
     margin: 30px 0;
     padding: 20px 0;
+  }
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .blog-card {
+    background: #fdfdfd;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .poetry-quote {
+    position: fixed;
+    top: 150px;
+    right: 20px;
+    transform: translateY(-50%);
+    font-style: italic;
+    font-family: "Book Antiqua", serif;
+    font-size: 20px;
+    background: #fdfdfd;
+    border: 1px solid #ddd;
+    padding: 2rem;
+    max-width: 200px;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
   }
 </style>

@@ -17,24 +17,46 @@ import PhotoCard from "../components/PhotoCard.astro";
       </p>
     </div>
 
-    <PhotoCard
+    <!-- <PhotoCard
       link="https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg"
       height="200"
-    />
+    /> -->
+
+    <img
+      src="https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg"
+      alt="A beautiful landscape"
+      class="home-img"/>
   </div>
 </MainLayout>
 
 <style>
-  
+
+  html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
   .content-box {
-    background: linear-gradient(135deg, #F3FFDD 0%, #EAEDE6 100%);
-    background-color: #F3FFDD;
+    background: linear-gradient(135deg, #f7f7f7 0%, #EAEDE6 100%);
+    background-color: #f7f7f7;
     padding: 30px;
-    max-width: 1000px;
-    margin: 0 auto;
-    border-radius: 7px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 840px;
+    margin: 60px auto 60px;
+    text-align: center;
+
   }
+
+  .home-img{
+    width: 500px;
+    height: 350px;
+    object-fit: cover;
+    text-align: center;
+  }
+
+
+
   .heading {
     text-align: center;
     font-family: lapture;
@@ -49,6 +71,12 @@ import PhotoCard from "../components/PhotoCard.astro";
     justify-content: center;
     align-items: center;
 
+    background-color: bisque;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+
     font-size: 16px;
     text-align: left;
 
@@ -58,7 +86,13 @@ import PhotoCard from "../components/PhotoCard.astro";
   p{
     font-weight: 400;
   color: #69127c;
+  margin: 0;
   }
+
+
+
+
+
 </style>
 
 
