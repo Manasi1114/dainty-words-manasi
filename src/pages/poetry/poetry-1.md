@@ -1,8 +1,6 @@
 ---
 title: "Nuremberg"
-date: "2025-07-04"
 poet: "Kenneth Slessor"
-description: "A beautiful poem about Nuremberg."
 layout: ../../layouts/PoetryLayout.astro
 ---
 

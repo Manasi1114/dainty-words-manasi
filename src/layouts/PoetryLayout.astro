@@ -1,47 +1,99 @@
 ---
-const { title, poet, date, image } = Astro.props;
+const { title, poet, image } = Astro.props;
 ---
 
-<!doctype html>
-<html>
-  <head>
-    <title>{title}</title>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="/styles/global.css" />
-  </head>
-  <body>
-    <header class="header-image">
-      <img src={image} class="hero-img" />
-    </header>
-    <h1>{title}</h1>
-    <p class="meta">By {poet}</p>
-    <article class="poem">
+<main style="display: flex; gap: 2rem; align-items: flex-start;">
+  <section style="flex: 2;">
+    <h1 style="font-family: 'Libre Baskerville', serif; font-size: 2.5rem; color: #2c2c2c;">
+      {title}
+    </h1>
+    <p style="font-style: italic; font-size: 1.1rem; margin-bottom: 1.5rem; color: #555;">
+      By {poet}
+    </p>
+    <article style="line-height: 1.8; font-size: 1.1rem; color: #333;">
       <slot />
-      <!-- This is where the poem text goes -->
     </article>
-  </body>
-</html>
+  </section>
+
+  {image && (
+    <aside style="flex: 1;">
+      <img
+        src={image}
+        alt={`Image for ${title}`}
+        style="max-width: 100%; object-fit: cover; border-radius: 8px;"
+      />
+    </aside>
+  )}
+</main>
+
 
 <style>
-  .header-image {
-    position: relative;
-    width: 100%;
-    height: 60vh;
-    overflow: hidden;
-  }
-  .hero-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
+  body {
+  background-color: #eff2cc; /* deep brown-black base */
+  background-image: url('https://www.transparenttextures.com/patterns/old-wall.png');
+  background-repeat: repeat;
+  background-size: auto;
+  color: #22211f; /* parchment cream text */
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin: 0;
+  padding: 4rem 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+
+  aside {
+    width: 350px;
+  background-image: url('https://images.unsplash.com/photo-1527549993586-dff825b37782?fit=crop&w=900&q=80');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #c1a57b; /* warm gold */
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+/* Headings (poem titles) */
+h1, h2, h3 {
+  color: #c1a57b; /* warm gold */
+  font-family: "Garamond", serif;
+  font-weight: bold;
+  margin-top: 0;
+}
+
+p {
+  white-space: pre-line;
+  margin: 0 0 1.5rem 0;
+}
+
+/* Author line */
+em {
+  display: block;
+  font-style: italic;
+  color: #a89882;
+  text-align: right;
+  margin-top: 1rem;
+}
+
+/* Optional subtle divider */
+hr {
+  border: none;
+  border-top: 1px dashed rgba(229, 217, 197, 0.2);
+  margin: 2rem 0;
+}
 
   .poem {
     white-space: pre-wrap;
     max-width: 800px;
     margin: 3rem auto;
     padding: 0 1rem;
-    font-family: serif;
     font-size: 1.2rem;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
   }
 </style>
