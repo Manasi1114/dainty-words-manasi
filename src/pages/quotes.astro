@@ -1,36 +1,67 @@
 ---
-// MainLayout
 import DirectoryLayout from "../layouts/DirectoryLayout.astro";
 import MainLayout from "../layouts/MainLayout.astro";
-import ImageCard from "../components/ImageCard.astro";
 
 const allPosts = Object.values(
-  import.meta.glob("./quotes/*.md", { eager: true })
+  import.meta.glob("../pages/quotes/*.md", { eager: true })
 );
 ---
 
-<MainLayout class="layout" />
+<MainLayout class="layout">
+  <DirectoryLayout title="Quotes">
+    <!-- Grid container here -->
+    <div class="blog-grid">
+      {
+        allPosts.map((post: any) => (
+          <article class="blog-card">
+            <h2>
+              <a href={post.url}>{post.frontmatter.title}</a>
+            </h2>
+            <p>
+              <small>Published on {post.frontmatter.date}</small>
+            </p>
+            <p>
+              <small>By {post.frontmatter.author}</small>
+            </p>
+            <p>{post.frontmatter.description}</p>
+            <a href={post.url}>Read more →</a>
+          </article>
+        ))
+      }
+    </div>
+  </DirectoryLayout>
+</MainLayout>
 
-<DirectoryLayout title="Quotes and Notes">
-  <p>My thoughts on the literature I read.</p>
-  <ul>
-    {
-      allPosts.map((post: any) => (
-        <article>
-          <ImageCard
-            image={post.frontmatter.image?.url}
-            alt={post.frontmatter.image?.alt}
-          />
-          <h2>
-            <a href={post.url}>{post.frontmatter.title}</a>
-          </h2>
-          <p>
-            <small>Published on{post.frontmatter.pubDate}</small>
-          </p>
-          <p>{post.frontmatter.description}</p>
-          <a href={post.url}>Read more →</a>
-        </article>
-      ))
+<style>
+  article {
+    margin: 30px 0;
+    padding: 20px 0;
+  }
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  .blog-card {
+    background: #fdfdfd;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  @media (max-width: 800px) {
+    .blog-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 1rem;
     }
-  </ul>
-</DirectoryLayout>
+  }
+</style>

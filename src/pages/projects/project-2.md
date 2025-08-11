@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/BlogLayout.astro
-title: Porject 2
+title: Project 2
 author: Manasi
 description: "This post will show up on its own hell yeah!"
 image:
