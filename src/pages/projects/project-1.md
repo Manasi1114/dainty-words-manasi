@@ -5,7 +5,6 @@ author: Manasi
 description: "This post will show up on its own hell yeah!"
 image:
   url: "/images/spiral.jpeg"
-  alt: "The word astro against an illustration of planets and stars."
 pubDate: "11th Aug'25"
 tags: ["astro", "successes"]
 ---

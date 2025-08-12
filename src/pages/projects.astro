@@ -25,7 +25,7 @@ const allPosts = Object.values(
               <h2>
                 <a href={post.url}>{post.frontmatter.title}</a>
               </h2>
-              <small>Published on {post.frontmatter.pubDate}</small>
+              <small>{post.frontmatter.pubDate}</small>
               <a class="read-more" href={post.url}>
                 Read more →
               </a>
@@ -41,7 +41,16 @@ const allPosts = Object.values(
   body {
     margin: 0;
   }
-
+  h1 {
+    font-size: 100px;
+    font-family: "lapture", serif;
+    transform: rotate(270deg);
+    transform-origin: left top;
+    position: absolute;
+    left: 350px;
+    top: 450px;
+    color: #ebf6f3;
+  }
   .blog-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -52,7 +61,7 @@ const allPosts = Object.values(
   }
 
   .blog-card {
-    background: #fff;
+    background: #e2fbfb;
     border-radius: 14px;
     overflow: hidden;
     display: flex;
@@ -98,10 +107,11 @@ const allPosts = Object.values(
   }
 
   .blog-content h2 a:hover {
-    color: #424ef0; /* rich purple accent */
+    color: #424ef0;
   }
 
   .blog-content small {
+    font-family: 'Courier New', Courier, monospace;
     font-size: 0.85rem;
     color: #888;
     margin-bottom: 1rem;
@@ -109,9 +119,10 @@ const allPosts = Object.values(
   }
 
   .read-more {
+  font-family: "Josefine Sans", sans-serif;
     display: inline-block;
     padding: 0.5rem 1.1rem;
-    background: pink;
+    background: #B16262;
     color: #fff;
     border-radius: 50px;
     font-size: 0.9rem;
