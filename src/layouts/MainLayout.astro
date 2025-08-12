@@ -10,7 +10,7 @@ import Button from "../components/Button.astro";
     <meta name="description" content="My website description" />
     <meta name="viewport" content="width=device-width" />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/svg/favicon.svg" />
     <link rel="stylesheet" href="/styles/global.css" />
     <title>{title}</title>
   </head>
@@ -53,27 +53,39 @@ import Button from "../components/Button.astro";
       background: #AED1C7;
       display: flex;
     }
-
-      .sidebar {
-        position: sticky;
-        top: 0;
-        height: 100vh;
-        width: 250px;
-        background-color: #F1FAEE;
-        color: #333;
-        padding: 50px;
-        border: 4px solid transparent;
-        display: flex;
-        align-items: center;
-        flex-flow: column;
-        font-size: 18px;
-        body {
-  background-color: #f5f0e8; /* base color */
-  background-image: url('/textures/paper-texture.png'); /* your texture file */
-  background-repeat: repeat; /* repeat across the screen */
-  background-size: auto; /* or 'cover' for full screen */
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 250px;
+  color: #333;
+  padding: 50px;
+  border: 4px solid transparent;
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  font-size: 18px;
+  background-color: #F1FAEE;
 }
-      }
+
+.sidebar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('/svg/texture.svg');
+
+  background-repeat: repeat;
+  background-size: cover;
+  opacity: 0.20;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sidebar * {
+  position: relative;
+  z-index: 1; /* ensure content is above texture */
+}
+
 
     .main-content {
       margin: 0 auto;

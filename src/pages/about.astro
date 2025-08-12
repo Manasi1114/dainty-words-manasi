@@ -1,7 +1,6 @@
 ---
 // MainLayout and component
 import Button from "../components/Button.astro";
-import ImageCard from "../components/ImageCard.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 ---
 
@@ -10,7 +9,7 @@ import MainLayout from "../layouts/MainLayout.astro";
     <h1>About Me</h1>
   </div>
   <div>
-    <p>
+    <p class="content">
       I think the story is more strange than it is true. I don't believe any of
       these ancient stories or fairy tales. Lovers and madmen have so much going
       on in their heads, such active imaginations, that they see and hear things
@@ -30,6 +29,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 
     <Button text="The universe is vast..." />
   </div>
+    <img class="image" src="/svg/flower2.svg" />
 </MainLayout>
 
 
@@ -47,6 +47,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 
   h1 {
     font-size: 70px;
+    color: rgb(65, 65, 156);
     font-family: "lapture", serif;
     transform: rotate(270deg);
     transform-origin: left top;
@@ -82,4 +83,19 @@ import MainLayout from "../layouts/MainLayout.astro";
     margin: 2rem auto;
     border-radius: 8px;
   }
+
+  .content {
+    font-family: "Palatino Linotype";
+    font-size: 16px;
+  }
+   .image {
+  position: fixed;
+  bottom: -60px;
+  right: 0;
+  width: 280px;   height: auto;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 500;
+}
+
 </style>
