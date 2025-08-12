@@ -21,6 +21,7 @@ const { title, poet, date, image, frontmatter } = Astro.props;
           (
             <div class="quote-container">
               <div class="quote-item">
+                <div class="quote-title">{frontmatter.title}</div>
                 <div class="quote-text">“ {frontmatter.quote} ”</div>
                 <div class="quote-author">— {frontmatter.author}</div>
                 <div class="quote-bibliography">{frontmatter.bibliography}</div>
@@ -42,16 +43,22 @@ const { title, poet, date, image, frontmatter } = Astro.props;
   body {
     background: #f9f9f8;
     color: #111;
-    margin: 200px;
-    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px;
     max-width: 100vb;
     max-height: 100vh;
   }
 
-  .title {
-    font-size: 2.5rem;
+  .quote-title {
+    font-size: 1.5rem;
+    font-family: "lapture", serif;
     font-weight: 700;
-    margin: 0;
+    display: flex;
+    align-items: center;
+    color: #6c7a89;
+
   }
 
   blockquote {

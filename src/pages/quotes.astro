@@ -7,44 +7,45 @@ const allPosts = Object.values(
 );
 ---
 
-  <DirectoryLayout title="Quotes">
-    <div class="quotes-quote">
-      <p> "I have the world's largest collection of seashells. I keep it on all the beaches of the world... perhaps you've seen it."
-<br /><br />― Steven Wright
-      </p>
-    </div>
+<DirectoryLayout title="Quotes">
+  <div class="quotes-quote">
+    <p>
+      "I have the world's largest collection of seashells. I keep it on all the
+      beaches of the world... perhaps you've seen it."
+      <br /><br />― Steven Wright
+    </p>
+  </div>
 
-    <div class="quotes-index">
-      {
-        allPosts.map((post: any, index: number) => (
-          <a href={post.url}>
-            <span class="quote-number">{String(index + 1).padStart(2, "0")}.</span>
-            <span class="quote-title">{post.frontmatter.title}</span>
-            <span class="quote-meta">{post.frontmatter.author}</span>
-          </a>
-        ))
-      }
-    </div>
-
-      </div>
-        <ul class="link"><Button text="Back" link="/blog" /></ul>
-      </div>
-  </DirectoryLayout>
-
+  <div class="quotes-index">
+    {
+      allPosts.map((post: any, index: number) => (
+        <a href={post.url}>
+          <span class="quote-number">
+            {String(index + 1).padStart(2, "0")}.
+          </span>
+          <span class="quote-title">{post.frontmatter.title}</span>
+          <span class="quote-meta">{post.frontmatter.author}</span>
+        </a>
+      ))
+    }
+  </div>
+</DirectoryLayout>
+<ul class="link"><Button text="Back" link="/blog" /></ul>
 
 <style>
   .quotes-index {
+    position: relative;
+    top: -80px;
     width: max-content;
-  max-width: 100%;
+    max-width: 100%;
     display: grid;
     grid-template-columns: 500px;
     gap: 0.5rem;
     font-family: "Georgia", serif;
-    margin: 10rem auto;
-    margin-left: 600px;
+    margin-left: 900px;
     padding: 1rem 1rem;
     border-radius: 6px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   }
 
   .quotes-index a {
@@ -110,10 +111,10 @@ const allPosts = Object.values(
       text-align: center;
     }
   }
-   .link {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  font-size: 1.2rem;
-}
+  .link {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    font-size: 1.2rem;
+  }
 </style>
