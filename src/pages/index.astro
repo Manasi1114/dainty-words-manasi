@@ -1,60 +1,56 @@
 ---
-// Import the layout and components
 import MainLayout from "../layouts/MainLayout.astro";
-import PhotoCard from "../components/PhotoCard.astro";
 ---
 
 <MainLayout title="Dainty Words">
-  <div class="content-box">
-    <div class="heading">
-      <h1>Dainty words by Manasi</h1>
-    </div>
-    <div class="introduction">
-      <p>
-        because because words always stay. I am a funny little human, only do what's
-        interesting to me. Life is good when you can ask a lot of questions.
-        This site is rapt with my inner thoughts, work and curations.
-      </p>
-    </div>
-
-    <!-- <PhotoCard
-      link="https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg"
-      height="200"
-    /> -->
-
-    <img
-      src="https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg"
-      alt="A beautiful landscape"
-      class="home-img"/>
+  <div class="heading">
+    <h1>Welcome to the archive</h1>
   </div>
+  <div class="introduction">
+    <p>
+      Because words always stay. I am a funny little human, only do what's
+      interesting to me. Life is good when you can ask a lot of questions. This
+      site is rapt with my inner thoughts, work and curations.
+    </p>
+  </div>
+  <div class="manasi">
+    <a href="/about">Meet your archivist, Manasi</a>
+  </div>
+
+  <img src="/images/plant2.png" class="rotated-image" />
+  <img src="/images/plant1.png" class="bottom-image" />
 </MainLayout>
 
 <style>
-
-  html, body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  overflow: hidden;
-}
-
-  .content-box {
-    padding: 30px;
-    width: 840px;
-    margin: 60px auto 60px;
-    text-align: center;
-
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
   }
 
-  .home-img{
-    width: 500px;
-    height: 350px;
-    object-fit: cover;
-    text-align: center;
+  .rotated-image {
+    position: fixed;
+    margin-top: -380px;
+    margin-left: 790px;
+    padding: 0;
+    width: 390px;
+    height: auto;
+    transform: rotate(270deg);
+  }
+
+  .bottom-image {
+    position: fixed;
+    bottom: 0;
+    left: 220px;
+    width: 300px;
+    height: auto;
   }
 
   .heading {
-    text-align: center;
+    margin-left: 20px;
+    font-size: 40px;
     font-family: lapture;
     color: #1d3557;
     font-weight: 700;
@@ -62,33 +58,42 @@ import PhotoCard from "../components/PhotoCard.astro";
   }
 
   .introduction {
-    font-family: "Josefin Sans", sans-serif;
-    display: flex;
-    justify-content:flex-start;
-    align-items: center;
-
-    background-color: white;
+    font-family: "Courier Prime", monospace;
+    font-weight: 700;
+    font-style: normal;
+    background-color: #f0ebe6;
     padding: 10px;
     border-radius: 5px;
-    max-width: 400px;
-    margin: 0 auto;
-
-    font-size: 16px;
+    max-width: 350px;
+    margin: 20px auto 50px;
+    font-size: 18px;
     text-align: left;
-
-    margin-bottom: 30px;
-    border-bottom: 1px solid #1d364633;
-
-  p{
-    font-weight: 400;
-  color: #69127c;
-  margin: 0;
   }
 
+  .introduction p {
+    font-weight: 400;
+    color: #2e1a71;
+    margin: 0;
+  }
 
+  .manasi {
+    text-align: right;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 25px;
+    position: relative;
+    top: 20px;
+  }
+  .manasi a {
+    text-decoration: overline;
+    color: #86a69d;
+    font-weight: bold;
+    font-family: "Josefin Sans", sans-serif;
+    transition: all 0.3s ease;
+  }
 
-
-
+  .manasi a:hover {
+    color: #d3e85c;
+    text-shadow: 2px 2px 5px rgba(255, 111, 97, 0.3);
+    transform: scale(1.05);
+  }
 </style>
-
-

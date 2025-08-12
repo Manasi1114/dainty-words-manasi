@@ -1,5 +1,4 @@
-/* Minimal starter CSS with good defaults */
-/* Add your own styles below these basics */
+
 
 @import url("https://p.typekit.net/p.css?s=1&k=sxc6rjm&ht=tk&f=6080.6081&a=30983716&app=typekit&e=css");
 
@@ -16,6 +15,14 @@
   font-weight: 400;
   font-stretch: normal;
 }
+
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cedarville+Cursive&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Gloock&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Josefin+Slab:ital,wght@0,100..700;1,100..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Passions+Conflict&family=Quintessential&family=Roboto&family=Style+Script&family=UnifrakturMaguntia&family=Zen+Old+Mincho&display=swap');
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cedarville+Cursive&family=Gloock&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Josefin+Slab:ital,wght@0,100..700;1,100..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Passions+Conflict&family=Quintessential&family=Roboto&family=Style+Script&family=UnifrakturMaguntia&family=Zen+Old+Mincho&display=swap');
+
 
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
 
