@@ -13,6 +13,7 @@ import MainLayout from "../layouts/MainLayout.astro";
       <a class="email" href="mailto:manasishrivastava362@gmail.com">Email</a>
     </div>
   </div>
+    <img class="icon" src="/svg/favicon.svg" />
 </MainLayout>
 
 <style>
@@ -77,4 +78,14 @@ import MainLayout from "../layouts/MainLayout.astro";
     background: #bc57a13a;
     color: #333;
   }
+  .icon {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 150px;
+  height: auto;
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: 500;
+}
 </style>

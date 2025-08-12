@@ -10,14 +10,11 @@ const { title, poet, date, image, frontmatter } = Astro.props;
     <meta name="description" content="Poetry List" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>Quotes</title>
+    <title>Poetry</title>
     <link rel="stylesheet" href="/src/styles/global.css" />
   </head>
 
   <body>
-    <header>
-      <img class="hero-image" src={frontmatter.image} />
-    </header>
     <h1 class="title">{frontmatter.title}</h1>
     <p class="meta">By {frontmatter.poet}</p>
     <article class="poem">
@@ -29,6 +26,7 @@ const { title, poet, date, image, frontmatter } = Astro.props;
     </aside>
   </body>
   <ul class="link"><Button text="Back" link="/poetry" /></ul>
+  <img class="poem-image" src={frontmatter.image} />
 </html>
 
 <style>
@@ -45,21 +43,17 @@ const { title, poet, date, image, frontmatter } = Astro.props;
     margin-left: auto;
     margin-right: auto;
   }
+.poem-image {
+  position: absolute;
+  top: 300px;
+  right: 50px;
+  width: 500px;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
 
-  header {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto 2rem auto;
-  }
-
-  header .hero-image {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    object-fit: cover;
-    display: block;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-  }
 
   .title {
     font-size: 2.5rem;

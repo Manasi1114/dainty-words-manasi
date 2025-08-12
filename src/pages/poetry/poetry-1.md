@@ -1,6 +1,6 @@
 ---
 title: "Nuremberg"
-image: "/images/spiral.jpeg"
+image: "/images/fort.jpg"
 poet: "Kenneth Slessor"
 layout: ../../layouts/PoetryLayout.astro
 ---
