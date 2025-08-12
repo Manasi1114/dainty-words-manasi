@@ -1,4 +1,18 @@
 ---
+import ImageCard from "../components/ImageCard.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 ---
-<MainLayout class="layout" />
+
+<MainLayout title="About">
+  <h1>Connect with me</h1>
+
+  <p> Instagram — @</p>
+  <p> Behance — @</p>
+  <p> Youtube — @</p>
+  <p> Instagram — @</p>
+
+  <ImageCard
+    link="/images/spiral.jpeg"
+    height="500"
+  />
+</MainLayout>
