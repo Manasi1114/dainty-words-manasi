@@ -29,6 +29,7 @@ const allPosts = Object.values(
       ))
     }
   </div>
+    <img class="flower" src="/svg/flower2.svg" />
 </DirectoryLayout>
 <ul class="link"><Button text="Back" link="/blog" /></ul>
 
@@ -117,4 +118,14 @@ const allPosts = Object.values(
     left: 20px;
     font-size: 1.2rem;
   }
+  .flower {
+  position: fixed;
+  bottom: 5px;
+  right: 20px;
+  width: 460px; /* adjust size as needed */
+  height: auto;
+  opacity: 0.7; /* make it subtle */
+  pointer-events: none; /* so it doesn't block clicks */
+  z-index: 500;
+}
 </style>
