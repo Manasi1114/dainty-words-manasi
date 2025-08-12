@@ -1,4 +1,5 @@
 ---
+import Button from "../components/Button.astro";
 const { title, poet, date, image, frontmatter } = Astro.props;
 ---
 
@@ -6,7 +7,7 @@ const { title, poet, date, image, frontmatter } = Astro.props;
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Quote List" />
+    <meta name="description" content="Poetry List" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>Quotes</title>
@@ -26,31 +27,27 @@ const { title, poet, date, image, frontmatter } = Astro.props;
     <aside>
       <img src={image}>
       </aside>
+
+        </div>
+        <ul class="link"><Button text="Back" link="/poetry" /></ul>
+      </div>
+
   </body>
 </html>
 
 <style>
   body {
-  background-color: #eff2cc; /* deep brown-black base */
-  background-image: url('https://www.transparenttextures.com/patterns/old-wall.png');
+  background-color: #eff2cc;
   background-repeat: repeat;
   background-size: auto;
   color: #22211f; /* parchment cream text */
   font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
   font-size: 1.1rem;
   line-height: 1.7;
-  margin: 0;
   padding: 4rem 2rem;
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
-
-  aside {
-    width: 350px;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-}
 
 .title {
   font-size: 2.5rem;
@@ -72,7 +69,6 @@ p {
   margin: 0 0 1.5rem 0;
 }
 
-/* Author line */
 em {
   display: block;
   font-style: italic;
@@ -81,12 +77,6 @@ em {
   margin-top: 1rem;
 }
 
-/* Optional subtle divider */
-hr {
-  border: none;
-  border-top: 1px dashed rgba(229, 217, 197, 0.2);
-  margin: 2rem 0;
-}
 
   .poem {
     white-space: pre-wrap;
@@ -96,4 +86,12 @@ hr {
     font-size: 1.2rem;
   font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
   }
+
+  .link {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  font-size: 1.2rem;
+}
+
 </style>

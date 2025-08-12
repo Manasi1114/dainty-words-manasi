@@ -1,10 +1,11 @@
 ---
 layout: ../../layouts/QuoteLayout.astro
-title: "Less is more. more is fucked"
-quote: "I hate this quots page, canot believe this was the first page i desgined ughhhhh"
-author: "Moi"
-bibliography: "Book / Article name"
-thoughts: "My thoughts here... No thoughts, head empty"
-pubDate: 2025-08-10
+title: "Shadow"
+quote: "How can I be substaintial if I do not cast a shadow? I must have a dark side also if I am to be whole."
+author: "Cark Jung"
+bibliography: "Modern Man in Search of a Soul "
+thoughts: "This sentence fills me up with a sense of upliftment from being performative about my personality and how I perceive other people's perception of me."
+pubDate: 2025-08-12
 ---
+
 

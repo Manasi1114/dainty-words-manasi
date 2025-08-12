@@ -19,20 +19,18 @@ const allQuotes = Object.values(
 
   <body>
     <main>
-      <article >
+      <article>
         {
           allQuotes.map((post: any) => (
-            <div class="quote-item">
-              <div class="quote-text">“ {post.frontmatter.quote} ”</div>
-              <div class="quote-author">— {post.frontmatter.author}</div>
-              {post.frontmatter.bibliography && (
+            <div class="quote-container">
+              <div class="quote-item">
+                <div class="quote-text">“ {post.frontmatter.quote} ”</div>
+                <div class="quote-author">— {post.frontmatter.author}</div>
                 <div class="quote-bibliography">
                   {post.frontmatter.bibliography}
                 </div>
-              )}
-              {post.frontmatter.thoughts && (
-                <div class="quote-thoughts">{post.frontmatter.thoughts}</div>
-              )}
+              </div>
+              <div class="quote-thoughts">{post.frontmatter.thoughts}</div>
             </div>
           ))
         }
@@ -42,16 +40,18 @@ const allQuotes = Object.values(
     <ul class="link">
       <Button text="Back" link="/quotes" />
     </ul>
+    
   </body>
 </html>
 
 <style>
   body {
-    font-family: "Libre Baskerville", Georgia, serif;
     background: #f9f9f8;
     color: #111;
     margin: 200px;
     padding: 0;
+    max-width: 100vb;
+    max-height: 100vh;
   }
 
   .title {
@@ -70,21 +70,13 @@ const allQuotes = Object.values(
   }
 
   .quote-text {
+    font-family: "Palatino Linotype";
     font-size: 3rem;
     line-height: 1;
     font-weight: 700;
     color: #0d1b2a;
   }
 
-  .quote-item.open {
-    align-self: flex-start;
-  }
-
-  .quote-item.close {
-    align-self: flex-end;
-  }
-
-  /* Author */
   .quote-author {
     text-align: right;
     font-size: 0.9rem;
@@ -98,12 +90,18 @@ const allQuotes = Object.values(
     color: #333;
   }
 
-  /* Thoughts section */
   .quote-thoughts {
     max-width: 300px;
-    align-self: flex-end;
+    margin-left: auto;
     font-size: 0.85rem;
     line-height: 1.5;
     color: #6c7a89;
   }
+
+    .link {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  font-size: 1.2rem;
+}
 </style>

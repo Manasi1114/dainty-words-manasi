@@ -1,18 +1,80 @@
 ---
-import ImageCard from "../components/ImageCard.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 ---
 
-<MainLayout title="About">
-  <h1>Connect with me</h1>
+<MainLayout title="Connect">
+  <div class="connect-page">
+    <h1>Connect</h1>
 
-  <p> Instagram — @</p>
-  <p> Behance — @</p>
-  <p> Youtube — @</p>
-  <p> Instagram — @</p>
-
-  <ImageCard
-    link="/images/spiral.jpeg"
-    height="500"
-  />
+    <div class="connect-links">
+      <a class="instagram" href="https://www.instagram.com/maa_nuh_see/">Instagram</a>
+      <a class="behance" href="https://behance.net/yourusername">Behance</a>
+      <a class="youtube" href="https://youtube.com/yourchannel">YouTube</a>
+      <a class="email" href="mailto:manasishrivastava362@gmail.com">Email</a>
+    </div>
+  </div>
 </MainLayout>
+
+<style>
+  .connect-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  h1 {
+    font-size: 100px;
+    font-family: "lapture", serif;
+    transform: rotate(270deg);
+    transform-origin: left top;
+    position: absolute;
+    left: -3.5rem;
+    top: 450px;
+  }
+
+  .connect-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+    width: 100%;
+    max-width: 600px;
+    font-family: "Palatino Linotype", "Palatino", "Book Antiqua", serif;
+  }
+
+  .connect-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: white;
+    text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    border-radius: 8px;
+  }
+
+  .connect-links a:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  }
+
+  /* Platform-specific colors */
+  .connect-links a.instagram {
+    background: linear-gradient(45deg, #feda75, #d62976, #962fbf, #4f5bd5);
+  }
+  .connect-links a.behance {
+    background: #1769ff;
+  }
+  .connect-links a.youtube {
+    background: #ff0000;
+  }
+  .connect-links a.email {
+    background: #bc57a13a;
+    color: #333;
+  }
+</style>
