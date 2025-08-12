@@ -1,5 +1,4 @@
 ---
-import DirectoryLayout from "../layouts/DirectoryLayout.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 import ImageCard from "../components/ImageCard.astro";
 
@@ -9,7 +8,6 @@ const allPosts = Object.values(
 ---
 
 <MainLayout title="Blog" class="layout">
-  <DirectoryLayout>
     <div class="blog-grid">
       {
         allPosts.map((post: any) => (
@@ -30,14 +28,11 @@ const allPosts = Object.values(
         ))
       }
     </div>
-  </DirectoryLayout>
 </MainLayout>
 
 <style>
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: #f7f7f7;
 }
 
 .blog-grid {
