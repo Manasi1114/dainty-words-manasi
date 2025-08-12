@@ -1,9 +1,6 @@
 ---
 import Button from "../components/Button.astro";
-
-const allQuotes = Object.values(
-  import.meta.glob("../pages/quotes/*.md", { eager: true })
-);
+const { title, poet, date, image, frontmatter } = Astro.props;
 ---
 
 <!doctype html>
@@ -21,18 +18,16 @@ const allQuotes = Object.values(
     <main>
       <article>
         {
-          allQuotes.map((post: any) => (
+          (
             <div class="quote-container">
               <div class="quote-item">
-                <div class="quote-text">“ {post.frontmatter.quote} ”</div>
-                <div class="quote-author">— {post.frontmatter.author}</div>
-                <div class="quote-bibliography">
-                  {post.frontmatter.bibliography}
-                </div>
+                <div class="quote-text">“ {frontmatter.quote} ”</div>
+                <div class="quote-author">— {frontmatter.author}</div>
+                <div class="quote-bibliography">{frontmatter.bibliography}</div>
               </div>
-              <div class="quote-thoughts">{post.frontmatter.thoughts}</div>
+              <div class="quote-thoughts">{frontmatter.thoughts}</div>
             </div>
-          ))
+          )
         }
       </article>
     </main>
@@ -40,7 +35,6 @@ const allQuotes = Object.values(
     <ul class="link">
       <Button text="Back" link="/quotes" />
     </ul>
-    
   </body>
 </html>
 
@@ -98,10 +92,10 @@ const allQuotes = Object.values(
     color: #6c7a89;
   }
 
-    .link {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  font-size: 1.2rem;
-}
+  .link {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    font-size: 1.2rem;
+  }
 </style>
