@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/QuoteLayout.astro
-title: Shadow
+title: Shadows
 quote: "How can I be substaintial if I do not cast a shadow? I must have a dark side also if I am to be whole."
 author: Carl Jung
 bibliography: "Modern Man in Search of a Soul "
