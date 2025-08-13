@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/BlogLayout.astro
+layout: ../../layouts/ProjectLayout.astro
 title: Ponk Nagari of Surat
 sub-heading:
 author: Manasi
