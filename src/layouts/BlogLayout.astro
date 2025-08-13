@@ -1,8 +1,6 @@
 ---
 import Button from "../components/Button.astro";
-const allPosts = Object.values(
-  import.meta.glob("../pages/blog/*.md", { eager: true })
-);
+const { title, poet, date, image, frontmatter } = Astro.props;
 ---
 
 <!doctype html>
@@ -19,21 +17,19 @@ const allPosts = Object.values(
   <body>
     <main class="blog-container">
       <article class="blog-list">
-        {allPosts.map((post: any) => (
           <div class="blog-item">
-            <a href={post.url} class="blog-link">
-              <h2 class="blog-heading">{post.frontmatter.title}</h2>
+            <a class="blog-link">
+              <h2 class="blog-heading">{frontmatter.title}</h2>
               <hr class="title-divider" />
-              {post.frontmatter.date && (
-                <p class="blog-date">{post.frontmatter.date}</p>
+              {frontmatter.date && (
+                <p class="blog-date">{frontmatter.date}</p>
               )}
             </a>
           </div>
-        ))}
       </article>
 
         </div>
-        <ul class="link"><Button text="Back" link="/projects" /></ul>
+        <ul class="link"><Button text="Back" link="/blog" /></ul>
       </div>
       <section class="blog-content">
         <slot />

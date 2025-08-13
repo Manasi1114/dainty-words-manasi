@@ -1,38 +1,26 @@
 ---
-title: "Nuremberg"
-date: "2025-07-04"
-poet: "Kenneth Slessor"
+title: "Study of People"
+image: "/images/people.jpg"
+date: "2025-08-13"
+poet: "Manasi Shrivastva"
 description: "A beautiful poem about Nuremberg."
 layout: ../../layouts/PoetryLayout.astro
 ---
 
+People who live earnestly
+Are they happier? Are they quieter?
+Are they paragons of goodwill?
+Or
+Are they dementors? Painhandlers?
+    Narrowly escaped from hell.
 
-So quiet it was in that high, sun-steeped room,
-So warm and still, that sometimes with the light
-Through the great windows, bright with bottle-panes,
-There’d float a chime from clock-jacks out of sight,
-    Clapping iron mallets on green copper gongs.
+They know when to shut up and listen
+They discern the scent of flowers unseen
+Autumn leaves fight to hit their feet
+Birds chirping the morning breeze
+    Secretly nod as they leave their seat.
 
-But only in blown music from the town’s
-Quaint horologe could Time intrude . . . you’d say
-Clocks had been bolted out, the flux of years
-Defied, and that high chamber sealed away
-    From earthly change by some old alchemist.
-
-And, oh, those thousand towers of Nuremberg
-Flowering like leaden trees outside the panes:
-Those gabled roofs with smoking cowls, and those
-Encrusted spires of stone, those golden vanes
-    On shining housetops paved with scarlet tiles!
-
-And all day nine wrought-pewter manticores
-Blinked from their spouting faucets, not five steps
-Across the cobbled street, or, peering through
-The rounds of glass, espied that sun-flushed room
-    With Dürer graving at intaglios.
-
-O happy nine, spouting your dew all day
-In green-scaled rows of metal, whilst the town
-Moves peacefully below in quiet joy . . .
-O happy gargoyles to be gazing down
-    On Albrecht Dürer and his plates of iron!
+Those who hold this particular gift
+Are indeed as they intent
+Upon this abundant green earth
+    Swaying on the see-saw as they see fit.

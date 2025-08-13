@@ -1,9 +1,10 @@
 ---
-layout: ../../layouts/BlogLayout.astro
-title: My Second Blog Post
+title: "Why can't I read more?"
+description: "A short summary of what the blog is about."
+date: "13th Aug'25"
 image:
-  url: "images/top.jpg"
-date: "2022-08-08"
+  url: "/images/woman.jpg"
+layout: ../../layouts/BlogLayout.astro
 ---
 
-This post should show up with my other blog posts, because `import.meta.glob()` is returning a list of all my posts in order to create my list.
+I go in spirals thinking about all the books I could be reading and all the films I could be watching.

@@ -1,13 +1,12 @@
 ---
 title: "The Highwayman"
+image: "/images/highway2.jpg"
 date: "2025-08-10"
 poet: "Alfred Noyes"
 description: "Romantic ballad"
 layout: ../../layouts/PoetryLayout.astro
 ---
-
  PART ONE
-
 The wind was a torrent of darkness among the gusty trees,
 The moon was a ghostly galleon tossed upon cloudy seas,
 The road was a ribbon of moonlight over the purple moor,
@@ -51,7 +50,6 @@ And he kissed its waves in the moonlight,
 Then he tugged at his rein in the moonlight, and galloped away to the West.
 
 PART TWO
-
 He did not come in the dawning; he did not come at noon;
 And out o' the tawny sunset, before the rise o' the moon,
 When the road was a gipsy's ribbon, looping the purple moor,
