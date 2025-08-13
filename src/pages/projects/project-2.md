@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/QuoteLayout.astro
+layout: ../../layouts/ProjectLayout.astro
 title: Janatotsav
 sub-heading:
 author: Manasi
