@@ -64,16 +64,31 @@ import Button from "../components/Button.astro";
     }
 
     .archive-box {
-      padding: 10px 18px;
-      border: 1.5px solid #05162e;
-      border-radius: 10px;
-      text-decoration: none;
-      font-size: 14px;
-      color: #05162e;
-      background: transparent;
-      transition: all 0.25s ease;
-      white-space: nowrap;
-    }
+  padding: 10px 18px;
+  border: 1.5px solid #05162e;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 14px;
+  color: #05162e;
+  background: transparent;
+  white-space: nowrap;
+
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.archive-box:hover {
+  background-color: #89023e; /* maroon */
+  border-color: #89023e;
+  color: #f1faee;
+  transform: translateY(-4px); /* hop upward */
+  box-shadow: 0 6px 14px rgba(137, 2, 62, 0.25);
+}
+
 
     .archive-box:hover {
       background: rgba(5, 22, 46, 0.08);
