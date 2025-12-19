@@ -34,100 +34,159 @@ const allPosts = Object.values(
 
 <style>
   .poetry-index {
-    width: max-content;
+  width: max-content;
   max-width: 100%;
-    display: grid;
-    grid-template-columns: 500px;
-    gap: 0.5rem;
-    font-family: "Georgia", serif;
-    margin: 8rem auto;
-    margin-left: 500px;
-    padding: 2rem 1rem;
-    background: #fff;
-    border-radius: 6px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  }
+  display: grid;
+  grid-template-columns: 500px;
+  gap: 0.5rem;
+  font-family: "Georgia", serif;
+  margin: 8rem auto;
+  margin-left: 500px;
+  padding: 2rem 1rem;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
 
-  .poetry-index a {
-    display: grid;
-    grid-template-columns: 3rem 1fr auto;
-    align-items: baseline;
-    padding: 0.3rem 0;
-    text-decoration: none;
-    border-bottom: 1px dotted #aaa;
-    color: #333;
-    font-size: 1rem;
-    transition: all 0.2s ease;
-  }
+.poetry-index a {
+  display: grid;
+  grid-template-columns: 3rem 1fr auto;
+  align-items: baseline;
+  padding: 0.3rem 0;
+  text-decoration: none;
+  border-bottom: 1px dotted #aaa;
+  color: #333;
+  font-size: 1rem;
+}
 
-  .poetry-index a:hover {
-    color: #cba8a8;
-    border-bottom: 1px solid #000;
-    background: #f9f9f9;
-  }
+.poetry-index a:hover {
+  color: #cba8a8;
+  border-bottom: 1px solid #000;
+  background: #f9f9f9;
+}
 
-  .poem-number {
-    color: #888;
-    font-size: 0.9rem;
-  }
+.poem-number {
+  color: #888;
+  font-size: 0.9rem;
+}
 
-  .poem-title {
-    font-weight: 500;
-  }
+.poem-title {
+  font-weight: 500;
+}
 
-  .poem-meta {
-    font-size: 0.85rem;
-    color: #666;
-    font-style: italic;
-  }
+.poem-meta {
+  font-size: 0.85rem;
+  color: #666;
+  font-style: italic;
+}
 
-  .poetry-quote {
-    position: fixed;
-    top: 300px;
-    left: 150px;
-    transform: translateY(-50%);
-    font-style: italic;
-    font-family: "Times New Roman", serif;
-    font-size: 20px;
-    padding: 2rem;
-    max-width: 280px;
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-  }
+.poetry-quote {
+  position: fixed;
+  top: 300px;
+  left: 150px;
+  transform: translateY(-50%);
+  font-style: italic;
+  font-family: "Times New Roman", serif;
+  font-size: 20px;
+  padding: 2rem;
+  max-width: 280px;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+}
 
-
-  @media (max-width: 800px) {
-    .poetry-index {
-      padding: 1rem;
-      margin: 1rem;
-    }
-    .poetry-index a {
-      grid-template-columns: 3rem 1fr;
-    }
-    .poetry-quote {
-      position: static;
-      max-width: 100%;
-      padding: 1rem;
-      text-align: center;
-    }
-  }
-
-  .link {
+/* Back button */
+.link {
   position: fixed;
   bottom: 20px;
   left: 20px;
   font-size: 1.2rem;
 }
 
+/* Decorative flower */
 .flower {
   position: fixed;
   bottom: 5px;
   right: 20px;
-  width: 460px; 
+  width: 460px;
   height: auto;
   opacity: 0.7;
   pointer-events: none;
   z-index: 500;
 }
+
+/* =========================
+   Responsive adjustments
+   ========================= */
+
+/* -------- Tablets (iPad) -------- */
+@media (max-width: 1024px) {
+  .poetry-index {
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: 420px;
+  }
+
+  .poetry-quote {
+    left: 40px;
+    font-size: 18px;
+    max-width: 240px;
+  }
+
+  .flower {
+    width: 340px;
+    opacity: 0.6;
+  }
+}
+
+/* -------- Phones -------- */
+@media (max-width: 768px) {
+  .poetry-index {
+    grid-template-columns: 1fr;
+    width: 100%;
+    margin: 2rem auto;
+    padding: 1.2rem 1rem;
+  }
+
+  .poetry-index a {
+    grid-template-columns: 2.5rem 1fr;
+    gap: 0.5rem;
+  }
+
+  .poem-meta {
+    display: none; /* reduce visual noise on mobile */
+  }
+
+  .poetry-quote {
+    position: static;
+    transform: none;
+    max-width: 100%;
+    margin: 1.5rem auto 0;
+    padding: 1rem;
+    text-align: center;
+    font-size: 16px;
+  }
+
+  .link {
+    position: static;
+    margin: 2rem auto;
+    text-align: center;
+  }
+
+  .flower {
+    display: none; /* purely decorative, remove on mobile */
+  }
+}
+
+/* -------- Small phones -------- */
+@media (max-width: 480px) {
+  .poetry-index a {
+    font-size: 0.95rem;
+  }
+
+  .poetry-quote {
+    font-size: 15px;
+  }
+}
+
 </style>
