@@ -16,23 +16,18 @@ import Button from "../components/Button.astro";
   </head>
 
   <body>
-    <aside class="sidebar">
-      <ul class="menu"><Button text="Home" link="/" /></ul>
-
-      <div class="category"></div>
-      <ul class="link"><Button text="Projects" link="/projects" /></ul>
-      <ul class="link"><Button text="Blog" link="/blog" /></ul>
-      <ul class="link"><Button text="Poetry" link="/poetry" /></ul>
-
-      <div class="category"></div>
-      <ul class="link"><Button text="Quotes" link="/quotes" /></ul>
-      <ul class="link"><Button text="Bookhouse" link="/bookhouse" /></ul>
-      <ul class="link"><Button text="Magazine" link="/magazine" /></ul>
-
-      <ul class="logo"><Button text="About" link="/about" /></ul>
-      <ul class="link"><Button text="Connect" link="/socials" /></ul>
-      <ul class="link"><Button text="Sitemap" link="/sitemap" /></ul>
-    </aside>
+    <!-- Top Right Archive Navigation -->
+    <header class="archive-nav">
+      <a href="/projects" class="archive-box">Projects</a>
+      <a href="/blog" class="archive-box">Blog</a>
+      <a href="/poetry" class="archive-box">Poetry</a>
+      <a href="/quotes" class="archive-box">Quotes</a>
+      <a href="/bookhouse" class="archive-box">Bookhouse</a>
+      <a href="/magazine" class="archive-box">Magazine</a>
+      <a href="/about" class="archive-box">About</a>
+      <a href="/socials" class="archive-box">Connect</a>
+      <a href="/sitemap" class="archive-box">Sitemap</a>
+    </header>
 
     <main class="main-content">
       <slot />
@@ -44,162 +39,84 @@ import Button from "../components/Button.astro";
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      overflow: visible;
     }
 
     body {
-      margin-left: 0px;
       background: #aed1c7;
-      display: flex;
       min-height: 100vh;
-    }
-
-    .sidebar {
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      width: 250px;
-      color: #333;
-      padding: 50px;
-      border: 4px solid transparent;
-      display: flex;
-      align-items: center;
-      flex-flow: column;
-      font-size: 18px;
-      font-weight: bold;
-      background-color: #f1faee;
-    }
-
-    .sidebar::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: url("/svg/texture-1.svg");
-      background-repeat: repeat;
-      background-size: cover;
-      opacity: 0.3;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .sidebar * {
       position: relative;
-      z-index: 1;
-    }
-
-    .main-content {
-      margin: 0 auto;
-      max-width: 900px;
-      flex: 1;
-      padding: 0px;
-    }
-
-    .logo {
-      font-size: 18px;
-      padding: 20px;
-      margin-bottom: 30px;
-      color: #89023e;
-    }
-
-    .menu {
-      font-size: 20px;
-      margin-bottom: 0px;
-      color: #89023e;
-    }
-
-    .category {
-      font-size: 20px;
-      font-weight: bold;
-      margin-top: 30px;
-      color: #05162e;
-    }
-
-    .link {
-      font-size: 18px;
-      margin-top: 10px;
-      color: #64769c;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .socials {
-      bottom: 20px;
-      font-size: 18px;
-      font-weight: bold;
-      color: #333;
-      cursor: pointer;
+      font-family: sans-serif;
     }
 
     /* =========================
-       Responsive adjustments
+       Archive Navigation
        ========================= */
 
-    /* -------- Tablets (iPad) -------- */
+    .archive-nav {
+      position: absolute;
+      top: 40px;
+      right: 40px;
+      display: grid;
+      grid-template-columns: repeat(4, auto);
+      gap: 14px;
+      z-index: 10;
+    }
+
+    .archive-box {
+      padding: 10px 18px;
+      border: 1.5px solid #05162e;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 14px;
+      color: #05162e;
+      background: transparent;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .archive-box:hover {
+      background: rgba(5, 22, 46, 0.08);
+      transform: translateY(-1px);
+    }
+
+    /* =========================
+       Main Content
+       ========================= */
+
+    .main-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 120px 20px 60px;
+    }
+
+    /* =========================
+       Responsive Adjustments
+       ========================= */
+
+    /* Tablets */
     @media (max-width: 1024px) {
-      .sidebar {
-        width: 200px;
-        padding: 32px;
-        font-size: 16px;
+      .archive-nav {
+        grid-template-columns: repeat(3, auto);
+        right: 24px;
+        top: 24px;
       }
 
       .main-content {
-        max-width: 100%;
-        padding: 20px;
+        padding-top: 140px;
       }
     }
 
-    /* -------- Phones -------- */
+    /* Phones */
     @media (max-width: 768px) {
-      body {
-        flex-direction: column;
-      }
-
-      .sidebar {
-        position: relative;
-        width: 100%;
-        height: auto;
-        flex-direction: row;
-        flex-wrap: wrap;
+      .archive-nav {
+        position: static;
+        margin: 20px auto;
         justify-content: center;
-        padding: 20px 16px;
-        gap: 12px;
-      }
-
-      .sidebar::before {
-        opacity: 0.2;
-      }
-
-      .sidebar ul {
-        padding: 0;
-      }
-
-      .menu,
-      .logo,
-      .link {
-        font-size: 16px;
-        margin: 4px 8px;
-      }
-
-      .category {
-        display: none; /* purely structural on desktop */
+        grid-template-columns: repeat(2, auto);
       }
 
       .main-content {
-        width: 100%;
-        padding: 20px 16px 40px;
-      }
-    }
-
-    /* -------- Small phones -------- */
-    @media (max-width: 480px) {
-      .menu,
-      .logo,
-      .link {
-        font-size: 14px;
-      }
-
-      .sidebar {
-        padding: 16px 12px;
+        padding-top: 40px;
       }
     }
   </style>
