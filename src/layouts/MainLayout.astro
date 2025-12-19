@@ -63,29 +63,52 @@ import Button from "../components/Button.astro";
       z-index: 10;
     }
 
-    .archive-box {
+ .archive-box {
+  position: relative;
   padding: 10px 18px;
-  border: 1.5px solid #020a15;
+  border: 1.5px solid #05162e;
   border-radius: 10px;
   text-decoration: none;
   font-size: 14px;
   color: #05162e;
   background-color: transparent;
   white-space: nowrap;
+  overflow: hidden;
 
   transition:
-    transform 0.2s ease-out,
-    background-color 0.2s ease-out,
-    border-color 0.2s ease-out,
-    color 0.2s ease-out;
+    transform 0.25s ease-out,
+    color 0.25s ease-out,
+    border-color 0.25s ease-out;
 }
 
-.archive-box:hover {
-  background-color: white; /* solid maroon */
-  border-color: #120109;
-  color: maroon;
-  transform: translateY(-6px); /* clear hop upward */
+/* Fill layer */
+.archive-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: #89023e; /* maroon */
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.25s ease-out;
+  z-index: 0;
 }
+
+/* Hover state */
+.archive-box:hover {
+  color: #f1faee;
+  border-color: #89023e;
+  transform: translateY(-6px); /* hop */
+}
+
+.archive-box:hover::before {
+  transform: scaleY(1); /* fill up */
+}
+
+/* Keep text above fill */
+.archive-box {
+  z-index: 1;
+}
+
 
 
 
