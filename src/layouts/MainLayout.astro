@@ -14,86 +14,84 @@ import Button from "../components/Button.astro";
     <link rel="stylesheet" href="/styles/global.css" />
     <title>{title}</title>
   </head>
+
   <body>
-      <aside class="sidebar">
-        <ul class="menu"><Button text="Home" link="/" /></ul>
+    <aside class="sidebar">
+      <ul class="menu"><Button text="Home" link="/" /></ul>
 
-        <div class="category">
-        </div>
-        <ul class="link"><Button text="Projects" link="/projects" /></ul>
-        <ul class="link"><Button text="Blog" link="/blog" /></ul>
-        <ul class="link"><Button text="Poetry" link="/poetry" /></ul>
+      <div class="category"></div>
+      <ul class="link"><Button text="Projects" link="/projects" /></ul>
+      <ul class="link"><Button text="Blog" link="/blog" /></ul>
+      <ul class="link"><Button text="Poetry" link="/poetry" /></ul>
 
-        <div class="category">
-        </div>
-        <ul class="link"><Button text="Quotes" link="/quotes" /></ul>
-        <ul class="link"><Button text="Bookhouse" link="/bookhouse" /></ul>
-        <ul class="link"><Button text="Magazine" link="/magazine" /></ul>
+      <div class="category"></div>
+      <ul class="link"><Button text="Quotes" link="/quotes" /></ul>
+      <ul class="link"><Button text="Bookhouse" link="/bookhouse" /></ul>
+      <ul class="link"><Button text="Magazine" link="/magazine" /></ul>
 
-        <ul class="logo"><Button text="About" link="/about" /></ul>
-        <ul class="link"><Button text="Connect" link="/socials" /></ul>
-        <ul class="link"><Button text="Sitemap" link="/sitemap" /></ul>
-      </aside>
+      <ul class="logo"><Button text="About" link="/about" /></ul>
+      <ul class="link"><Button text="Connect" link="/socials" /></ul>
+      <ul class="link"><Button text="Sitemap" link="/sitemap" /></ul>
+    </aside>
 
-      <main class="main-content">
-        <slot />
-      </main>
+    <main class="main-content">
+      <slot />
+    </main>
   </body>
-  <style>
-      * {
-				margin: 0;
-				padding: 0;
-				box-sizing: border-box;
-        overflow:visible;
-			}
 
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      overflow: visible;
+    }
 
     body {
       margin-left: 0px;
-      background: #AED1C7;
+      background: #aed1c7;
       display: flex;
+      min-height: 100vh;
     }
-.sidebar {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  width: 250px;
-  color: #333;
-  padding: 50px;
-  border: 4px solid transparent;
-  display: flex;
-  align-items: center;
-  flex-flow: column;
-  font-size: 18px;
-  font-weight: bold;
-  background-color: #F1FAEE;
-}
 
-.sidebar::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url('/svg/texture-1.svg');
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      width: 250px;
+      color: #333;
+      padding: 50px;
+      border: 4px solid transparent;
+      display: flex;
+      align-items: center;
+      flex-flow: column;
+      font-size: 18px;
+      font-weight: bold;
+      background-color: #f1faee;
+    }
 
-  background-repeat: repeat;
-  background-size: cover;
-  opacity: 0.30;
-  pointer-events: none;
-  z-index: 0;
-}
+    .sidebar::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("/svg/texture-1.svg");
+      background-repeat: repeat;
+      background-size: cover;
+      opacity: 0.3;
+      pointer-events: none;
+      z-index: 0;
+    }
 
-.sidebar * {
-  position: relative;
-  z-index: 1; /* ensure content is above texture */
-}
-
+    .sidebar * {
+      position: relative;
+      z-index: 1;
+    }
 
     .main-content {
       margin: 0 auto;
       max-width: 900px;
       flex: 1;
       padding: 0px;
-
     }
 
     .logo {
@@ -132,19 +130,77 @@ import Button from "../components/Button.astro";
       cursor: pointer;
     }
 
+    /* =========================
+       Responsive adjustments
+       ========================= */
+
+    /* -------- Tablets (iPad) -------- */
+    @media (max-width: 1024px) {
+      .sidebar {
+        width: 200px;
+        padding: 32px;
+        font-size: 16px;
+      }
+
+      .main-content {
+        max-width: 100%;
+        padding: 20px;
+      }
+    }
+
+    /* -------- Phones -------- */
     @media (max-width: 768px) {
-  .content-box {
-    width: 90%;
-    padding: 20px;
-  }
+      body {
+        flex-direction: column;
+      }
 
-  .sidebar-button {
-    background: none;
-  }
+      .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 20px 16px;
+        gap: 12px;
+      }
 
-  Button{
-    background: none;
-  }
+      .sidebar::before {
+        opacity: 0.2;
+      }
 
+      .sidebar ul {
+        padding: 0;
+      }
+
+      .menu,
+      .logo,
+      .link {
+        font-size: 16px;
+        margin: 4px 8px;
+      }
+
+      .category {
+        display: none; /* purely structural on desktop */
+      }
+
+      .main-content {
+        width: 100%;
+        padding: 20px 16px 40px;
+      }
+    }
+
+    /* -------- Small phones -------- */
+    @media (max-width: 480px) {
+      .menu,
+      .logo,
+      .link {
+        font-size: 14px;
+      }
+
+      .sidebar {
+        padding: 16px 12px;
+      }
+    }
   </style>
 </html>
