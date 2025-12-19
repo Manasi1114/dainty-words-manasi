@@ -94,17 +94,94 @@ import MainLayout from "../layouts/MainLayout.astro";
     color: #d3e85c;
     text-shadow: 2px 2px 5px rgba(255, 111, 97, 0.3);
     transform: scale(1.05);
-
-    /* Tablets (iPad & small laptops) */
-    @media (max-width: 1024px) {
-    }
-
-    /* Phones */
-    @media (max-width: 768px) {
-    }
-
-    /* Small phones */
-    @media (max-width: 480px) {
-    }
   }
+
+  /* ============================
+   Responsive additions only
+   Desktop visuals unchanged
+   ============================ */
+
+/* -------- Tablets (iPad) -------- */
+@media (max-width: 1024px) {
+  .heading {
+    font-size: 32px;
+    margin-left: 16px;
+  }
+
+  .rotated-image {
+    margin-left: 520px;
+    width: 320px;
+  }
+
+  .bottom-image {
+    left: 80px;
+    width: 260px;
+  }
+
+  .manasi {
+    font-size: 22px;
+  }
+}
+
+/* -------- Phones -------- */
+@media (max-width: 768px) {
+  .heading {
+    font-size: 28px;
+    margin-left: 14px;
+    line-height: 1.2;
+  }
+
+  .introduction {
+    max-width: 90%;
+    font-size: 16px;
+    margin: 16px auto 32px;
+  }
+
+  .manasi {
+    text-align: center;
+    top: 0;
+    margin-bottom: 40px;
+    font-size: 20px;
+  }
+
+  .rotated-image {
+    position: absolute;
+    top: 20px;
+    right: -120px;
+    margin: 0;
+    width: 260px;
+    transform: rotate(270deg);
+    opacity: 0.6;
+  }
+
+  .bottom-image {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px;
+    opacity: 0.8;
+  }
+}
+
+/* -------- Small phones -------- */
+@media (max-width: 480px) {
+  .heading {
+    font-size: 24px;
+  }
+
+  .manasi {
+    font-size: 18px;
+  }
+
+  .rotated-image {
+    width: 220px;
+    right: -140px;
+  }
+
+  .bottom-image {
+    width: 180px;
+  }
+}
+
 </style>
