@@ -30,4 +30,12 @@ const { link, height, orientation} = Astro.props;
   .container.landscape {
     grid-column: span 2;
   }
+
+  @media (max-width: 768px) {
+    .container.landscape,
+    .container.portrait {
+      grid-column: auto;
+      grid-row: auto;
+    }
+  }
 </style>

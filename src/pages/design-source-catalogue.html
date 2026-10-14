@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design Source Catalogue</title>
+<meta name="description" content="A curated catalogue of websites, archives, publishers, image libraries and tools for studying and sourcing design, filterable by project, need, usage rights and design style.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a library card catalogue. Filter rail on top, call-numbered index cards below. */
+:root{
+  --paper:#ECEFEA; --card:#F8FAF6; --ink:#1C2228; --muted:#5C6670; --rule:#C9D0C8;
+  --accent:#2E4C9C; --accent-soft:#DCE3F4;
+  --use:#2F6B47; --use-soft:#DDEDE2; --lic:#8A5A12; --lic-soft:#F3E6CF; --ref:#5C6670; --ref-soft:#E2E6E1;
+  --display:"Young Serif",Georgia,"Times New Roman",serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#14181C; --card:#1C2126; --ink:#E4E8E2; --muted:#98A2AA; --rule:#2F363D;
+  --accent:#9DB3F2; --accent-soft:#25304A;
+  --use:#8FD3A8; --use-soft:#1E3327; --lic:#E5BA74; --lic-soft:#3A2D16; --ref:#A3ACB3; --ref-soft:#262C31; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#14181C; --card:#1C2126; --ink:#E4E8E2; --muted:#98A2AA; --rule:#2F363D;
+  --accent:#9DB3F2; --accent-soft:#25304A;
+  --use:#8FD3A8; --use-soft:#1E3327; --lic:#E5BA74; --lic-soft:#3A2D16; --ref:#A3ACB3; --ref-soft:#262C31; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5;padding-inline:20px;padding-block:28px 48px}
+.wrap{max-width:1120px;margin-inline:auto;display:flex;flex-direction:column;gap:22px}
+header{display:flex;flex-direction:column;gap:6px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(28px,4.4vw,40px);line-height:1.1;margin:0;text-wrap:balance}
+.lede{margin:0;max-width:62ch;color:var(--muted)}
+.filters{display:flex;flex-direction:column;gap:14px;padding-block:16px;border-block:1px solid var(--rule)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.row-label{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);width:100%}
+button.chip{font:inherit;font-size:13.5px;border:1px solid var(--rule);background:var(--card);color:var(--ink);padding:6px 12px;border-radius:999px;cursor:pointer}
+button.chip:hover{border-color:var(--accent)}
+button.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+button.chip.proj{font-size:14.5px;font-weight:500;border-radius:4px;padding:8px 14px}
+button:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.search{flex:1 1 220px;min-width:0;font:inherit;padding:8px 12px;border:1px solid var(--rule);border-radius:4px;background:var(--card);color:var(--ink)}
+.status{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+.status button{font:inherit;background:none;border:0;color:var(--accent);cursor:pointer;padding:0;text-decoration:underline}
+.brief{background:var(--accent-soft);border-radius:6px;padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.brief b{font-family:var(--display);font-weight:400;font-size:18px}
+.brief p{margin:0;max-width:75ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:4px;padding:16px 16px 14px;display:flex;flex-direction:column;gap:10px;min-width:0;position:relative}
+.card::before{content:"";position:absolute;left:50%;top:-1px;width:18px;height:6px;margin-left:-9px;border-radius:0 0 9px 9px;background:var(--paper);border:1px solid var(--rule);border-top:0}
+.call{display:flex;justify-content:space-between;gap:8px;font-family:var(--mono);font-size:11.5px;color:var(--muted);letter-spacing:.04em}
+.card h2{font-family:var(--display);font-weight:400;font-size:21px;line-height:1.2;margin:0}
+.card h2 a{color:inherit;text-decoration:none}
+.card h2 a:hover{text-decoration:underline;text-decoration-color:var(--accent)}
+.card p{margin:0;font-size:14px}
+.start{font-size:13.5px}
+.start a{color:var(--accent)}
+.tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto}
+.tag{font-family:var(--mono);font-size:11px;padding:2px 7px;border-radius:3px;background:var(--ref-soft);color:var(--muted)}
+.tag.on{background:var(--accent-soft);color:var(--accent)}
+.rights{font-family:var(--mono);font-size:11px;padding:2px 7px;border-radius:3px;white-space:nowrap}
+.r-use{background:var(--use-soft);color:var(--use)}
+.r-lic{background:var(--lic-soft);color:var(--lic)}
+.r-ref,.r-tool{background:var(--ref-soft);color:var(--ref)}
+.empty{padding:28px;text-align:center;color:var(--muted);border:1px dashed var(--rule);border-radius:4px}
+footer{font-size:13px;color:var(--muted);max-width:75ch}
+footer code{font-family:var(--mono);font-size:12px}
+.row.stylebox{display:flex;flex-direction:column;align-items:stretch;gap:10px}
+[hidden]{display:none!important}
+.fams{display:flex;flex-wrap:wrap;gap:6px}
+button.fam{font:inherit;font-size:13px;font-weight:500;border:0;border-bottom:2px solid transparent;background:none;color:var(--muted);padding:4px 2px;cursor:pointer;margin-right:10px}
+button.fam:hover{color:var(--ink)}
+button.fam[aria-expanded="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+.fam .n{font-family:var(--mono);font-size:11px;color:var(--muted);margin-left:4px}
+.stylechips{display:flex;flex-wrap:wrap;gap:6px}
+button.chip.sty{font-size:13px;padding:5px 11px}
+.stylepanel{border:1px solid var(--accent);border-radius:6px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;background:var(--card)}
+.stylepanel .top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:baseline}
+.stylepanel b{font-family:var(--display);font-weight:400;font-size:20px}
+.stylepanel .fam-name{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.stylepanel p{margin:0;max-width:75ch;font-size:14px}
+.stylepanel button{font:inherit;font-size:13px;background:none;border:0;color:var(--accent);cursor:pointer;padding:0;text-decoration:underline}
+.forstyle{font-size:13.5px;background:var(--accent-soft);border-radius:4px;padding:8px 10px;display:flex;flex-direction:column;gap:4px}
+.forstyle .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.forstyle a{color:var(--accent)}
+.forstyle ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:3px}
+@media (max-width:520px){.grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.back{font-family:var(--mono);font-size:12.5px;color:var(--accent);text-decoration:none;margin-bottom:10px;align-self:flex-start}
+.back:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <a class="back" href="/">← Dainty Archive</a>
+    <span class="eyebrow">Building taste and knowledge · 23 sources</span>
+    <h1>Source Catalogue</h1>
+    <p class="lede">Pick the project, then what you need from it. Each card says where to start on that site and whether you can use its material or only learn from it.</p>
+  </header>
+
+  <section class="filters" aria-label="Filters">
+    <div class="row" id="projects">
+      <span class="row-label">1 · Project</span>
+    </div>
+    <div class="row" id="needs">
+      <span class="row-label">2 · What you need (pick any)</span>
+    </div>
+    <div class="row" id="rightsRow">
+      <span class="row-label">3 · Rights</span>
+    </div>
+    <div class="row stylebox" id="styleRow">
+      <span class="row-label">4 · Design style (optional)</span>
+      <div class="fams" id="fams"></div>
+      <div class="stylechips" id="stylechips" hidden></div>
+    </div>
+    <div class="row">
+      <input id="q" class="search" type="search" placeholder="Search names, notes, e.g. botanical, Swiss, Devanagari" aria-label="Search sources">
+    </div>
+  </section>
+
+  <div class="stylepanel" id="stylepanel" hidden></div>
+
+  <div class="brief" id="brief"></div>
+
+  <div class="status"><span id="count"></span><button id="reset" type="button">Clear filters</button></div>
+
+  <div class="grid" id="grid"></div>
+
+  <footer>
+    Rights labels are a starting point, not legal advice. Always check the licence or rights statement on the individual item before using it in your work. All descriptions are my own summaries; every site belongs to its owners. Last updated October 2026.
+  </footer>
+</div>
+
+<script>
+const PROJECTS=[
+ {id:"all",label:"All projects"},
+ {id:"portfolio",label:"Portfolio website",brief:"Start with Siteinspire (Portfolio + Typographic), then Design Reviewed's Swiss Style for a restrained, type-led direction. The A24 concept site and Meng To show how one strong interaction idea can carry a personal site."},
+ {id:"apps",label:"Apps & product UI",brief:"Use Letterform Archive's ID manuals and Sternberg's series for system thinking, CARI to name a visual direction precisely, and Are.na and Cosmos as calm interfaces worth studying in their own right."},
+ {id:"book",label:"Publication design",brief:"For books, magazines and other printed matter. Sternberg, Inventory Press and Kinfolk show how books, series and magazines are typeset and structured. Design Reviewed and Letterform Archive cover print history and type specimens, and Typotheque handles multilingual text. For imagery you can print, use PDR, Public Work, Artvee, Wikimedia Commons and Century Library."}
+];
+const NEEDS=[
+ ["type","Typography"],["layout","Layout & grids"],["nav","Navigation & interaction"],["identity","Identity & systems"],
+ ["colour","Colour"],["illus","Illustration"],["imagery","Images to use"],["details","Details & components"],
+ ["history","Design history"],["boards","Collecting & moodboards"]
+];
+const RIGHTS=[["any","Any"],["use","Usable in my work"],["lic","Paid licence"],["ref","Reference only"],["tool","Collecting tool"]];
+const RLABEL={use:"Usable",lic:"Licensed",ref:"Reference",tool:"Tool"};
+const S=[
+ {n:"Siteinspire",u:"https://www.siteinspire.com",g:"Web & UI",p:["portfolio","apps"],k:["layout","type","nav"],r:"ref",d:"Curated websites since 2008, tagged by style, type and subject. Leans quiet and typographic.",s:["Portfolio category","https://www.siteinspire.com/websites/category/portfolio"]},
+ {n:"A24 concept site",u:"https://a24.raviklaassens.com",g:"Web & UI",p:["portfolio","apps"],k:["nav","type","layout"],r:"ref",d:"Ravi Klaassens' self-initiated A24 redesign: films as sliding discs, a hand-drawn selection ring, serif type like a film journal.",s:["Films view","https://a24.raviklaassens.com/"]},
+ {n:"Meng To",u:"https://mengto.com",g:"Web & UI",p:["portfolio"],k:["nav"],r:"ref",d:"A personal site as an ink sketchbook with page turns and a loupe. One memorable interaction instead of a project grid.",s:["Design+Code courses","https://designcode.io"]},
+ {n:"Visuelle",u:"https://visuelle.co.uk",g:"Web & UI",p:["portfolio","apps"],k:["identity","type","colour"],r:"ref",d:"Contemporary branding and identity systems from studios worldwide, shown large with short captions.",s:["Studio Dumbar design system","https://visuelle.co.uk/apple-services-football-design-system/"]},
+ {n:"Design Reviewed",u:"https://designreviewed.com",g:"History & type",p:["portfolio","book"],k:["history","type","layout"],r:"ref",d:"11,000+ printed artefacts across 150 years. Strong on Swiss Style, type-only work and design periodicals.",s:["Swiss Style","https://designreviewed.com/design-movement/international-typographic-style/"]},
+ {n:"Letterform Archive",u:"https://oa.letterformarchive.org",g:"History & type",p:["portfolio","apps","book"],k:["type","history","identity"],r:"ref",d:"Type specimens, lettering, Emigre, Piet Zwart, and corporate identity manuals that prefigure design systems.",s:["Online Archive (search *)","https://oa.letterformarchive.org"]},
+ {n:"Typotheque",u:"https://www.typotheque.com",g:"History & type",p:["apps","book","portfolio"],k:["type"],r:"lic",d:"Multilingual type foundry with families for Devanagari, Gujarati and other Indian scripts. Fonts need a licence.",s:["Fonts","https://www.typotheque.com/fonts"]},
+ {n:"CARI",u:"https://cari.institute",g:"History & type",p:["apps"],k:["history","colour","identity"],r:"ref",d:"Named consumer and tech aesthetics from the 1970s on, each with dates, traits and examples. Not a source of free assets.",s:["Aesthetic categories","https://cari.institute/aesthetics"]},
+ {n:"Ephemera Society",u:"https://www.ephemerasociety.org",g:"History & type",p:["apps","book"],k:["history","details"],r:"ref",d:"Tickets, labels, trade cards and other everyday print. Good raw material for UI cards, tags and badges with character.",s:["Online exhibits","https://www.ephemerasociety.org/exhibits/"]},
+ {n:"Illustration.lol",u:"https://www.illustration.lol",g:"History & type",p:["apps","portfolio"],k:["illus","colour"],r:"ref",d:"Editorial illustration credited to illustrator and art director, filterable by subject, tone and colour.",s:["The New Yorker","https://www.illustration.lol/publisher/the-new-yorker"]},
+ {n:"Sternberg Press",u:"https://www.sternberg-press.com",g:"Publishers",p:["book","apps"],k:["type","layout","identity"],r:"ref",d:"Affordable, carefully made theory books organised into series, each with its own visual system.",s:["Series index","https://www.sternberg-press.com/all-series/"]},
+ {n:"Inventory Press",u:"https://www.inventorypress.com",g:"Publishers",p:["book","apps","portfolio"],k:["type","layout","history"],r:"ref",d:"Designer-run press. Cyberfeminism Index shows how a big cross-referenced dataset becomes a readable book.",s:["Design books","https://www.inventorypress.com/design"]},
+ {n:"Pilot Magazine",u:"https://pilotmagazine.uk",g:"Publishers",p:["apps","portfolio"],k:["nav","layout"],r:"ref",d:"Analog-first magazine that changes form each issue: a board game, a tri-fold that splits text from image.",s:["Current issue","https://pilotmagazine.uk/category/issue-06-you-are-here"]},
+ {n:"Kinfolk",u:"https://www.kinfolk.com",g:"Publishers",p:["portfolio","apps","book"],k:["layout","type"],r:"ref",d:"Calm, whitespace-heavy editorial design on a twelve-column grid, with repeatable section formats.",s:["Design stories","https://www.kinfolk.com/stories-categories/design/"]},
+ {n:"Bloomsbury Visual Arts",u:"https://www.bloomsbury.com",g:"Publishers",p:["portfolio","apps","book"],k:["type","layout","colour"],r:"ref",d:"Textbooks on grids, typography, colour and UX for backing up design decisions in case studies.",s:["Design & illustration list","https://www.bloomsburyvisualarts.com/design-and-illustration"]},
+ {n:"Public Domain Review",u:"https://publicdomainreview.org",g:"Usable imagery",p:["book","apps"],k:["imagery","illus","history"],r:"use",d:"Curated out-of-copyright images: botanical, maps, diagrams, flap books. Check each item's rights label.",s:["Design & Typography theme","https://publicdomainreview.org/collections/all/theme/design-and-typography/"]},
+ {n:"Public Work",u:"https://public.work",g:"Usable imagery",p:["book","portfolio"],k:["imagery"],r:"use",d:"Visual search across 100,000+ public-domain images from The Met, NYPL and others. Saves into Cosmos.",s:["Search","https://public.work"]},
+ {n:"Artvee",u:"https://artvee.com",g:"Usable imagery",p:["book"],k:["imagery","illus","colour"],r:"use",d:"High-resolution public-domain paintings, posters and botanical plates. Confirm status on 20th-century work.",s:["Books (illustrated book scans)","https://artvee.com"]},
+ {n:"Wikimedia Commons",u:"https://commons.wikimedia.org",g:"Usable imagery",p:["book","portfolio","apps"],k:["imagery"],r:"use",d:"Tens of millions of freely licensed files. Many need a credit line; read the licence box on each file.",s:["Featured pictures","https://commons.wikimedia.org/wiki/Commons:Featured_pictures"]},
+ {n:"Century Library",u:"https://centurylibrary.com",g:"Usable imagery",p:["book","apps"],k:["imagery","type","details"],r:"lic",d:"Hand-restored vintage illustrations, antique fonts, ornaments and textures. Mostly paid; commercial work needs the Commercial plan.",s:["Archive","https://centurylibrary.com/archive/"]},
+ {n:"Cosmos",u:"https://www.cosmos.so",g:"Collecting",p:["portfolio","apps","book"],k:["boards","colour"],r:"tool",d:"Image moodboards (clusters) with hex-colour and visual-similarity search, plus source captions on every image.",s:["Explore","https://cosmos.so/explore"]},
+ {n:"Are.na",u:"https://www.are.na",g:"Collecting",p:["portfolio","apps","book"],k:["boards"],r:"tool",d:"Ad-free research channels for images, links, PDFs and text. Others' public channels are a good way to find new sources.",s:["Explore","https://www.are.na/explore"]},
+ {n:"Designspiration",u:"https://www.designspiration.com",g:"Collecting",p:["portfolio","apps","book"],k:["boards","colour"],r:"tool",d:"Image search by up to several colours at once. Pick it or Cosmos as your main board so references don't split.",s:["Explore","https://www.designspiration.com/explore/"]}
+];
+
+/* ---------- Design styles ----------
+   Source key: SI Siteinspire, A24 A24 concept site, MT Meng To, VI Visuelle, DR Design Reviewed,
+   LA Letterform Archive, TY Typotheque, CA CARI, ES Ephemera Society, IL Illustration.lol,
+   SP Sternberg Press, IP Inventory Press, PM Pilot Magazine, KF Kinfolk, BL Bloomsbury Visual Arts,
+   PDR Public Domain Review, PW Public Work, AV Artvee, WC Wikimedia Commons, CL Century Library.
+   Link shorthands: drm: movement, drd: decade, drt: theme, wc: search, clc: category, pdrt: theme,
+   pdrc: collection, sic: category, cari: aesthetic, kf: category. Empty link = site home. */
+const SRC={SI:"Siteinspire",A24:"A24 concept site",MT:"Meng To",VI:"Visuelle",DR:"Design Reviewed",LA:"Letterform Archive",TY:"Typotheque",CA:"CARI",ES:"Ephemera Society",IL:"Illustration.lol",SP:"Sternberg Press",IP:"Inventory Press",PM:"Pilot Magazine",KF:"Kinfolk",BL:"Bloomsbury Visual Arts",PDR:"Public Domain Review",PW:"Public Work",AV:"Artvee",WC:"Wikimedia Commons",CL:"Century Library"};
+const FAMS=[["classic","Classical & ornamental"],["modern","Modernist & typographic"],["digital","Digital & interface"],["pop","Pop, collage & hand-made"],["misc","Miscellaneous"]];
+const STYLES=[
+ ["neoclassical","Neoclassical","classic","Greek and Roman balance: serifs, columns, laurels, marble, gold accents, symmetry, muted colour.",[
+  ["AV","Movements → Neoclassicism has thousands of public-domain paintings and engravings.",""],
+  ["CL","Architecture plates: columns, monuments and statues, already cleaned.","clc:architecture"],
+  ["WC","Neoclassical architecture engravings, many in the public domain.","wc:neoclassical architecture engraving"],
+  ["PW","Search The Met's classical sculpture and prints.",""]]],
+ ["baroque","Baroque","classic","Lavish 17th-century drama: flourishes, deep shadow, gold leaf, mythology, strong contrast.",[
+  ["AV","Movements → Baroque (7,500+ works) and Rococo.",""],
+  ["PDR","17th–18th-century Venetian bridge-brawl paintings and prints.","pdrc:venice-bridge-fights"],
+  ["CL","Borders, frames and cartouches for baroque flourishes.","clc:objects"],
+  ["WC","Baroque ornament engravings.","wc:baroque ornament engraving"]]],
+ ["filigree","Filigree","classic","Fine metallic linework, lace-like textures, monograms.",[
+  ["CL","Ornaments, lace card frames and monogram PNGs, the closest ready-made filigree in the catalogue.",""],
+  ["ES","Victorian lace-paper cards and engraved trade cards.","https://www.ephemerasociety.org/exhibits/"],
+  ["WC","Filigree ornament scans and photographs.","wc:filigree ornament"]]],
+ ["acanthus","Acanthus","classic","Classical leaf ornament: flowing symmetrical foliage, stone textures, green and gold.",[
+  ["CL","Architecture and ornament plates with acanthus scrolls.","clc:architecture"],
+  ["DR","Arts and Crafts: foliage-led ornament in the William Morris tradition.","drm:arts-and-crafts"],
+  ["WC","Acanthus ornament engravings.","wc:acanthus ornament"]]],
+ ["victorian","Victorian","classic","Ornate 19th-century serifs, damask, deep reds and greens, gilded frames.",[
+  ["DR","Victorian and Edwardian graphic design.","drm:victorian-edwardian"],
+  ["CL","Most of its archive is 19th-century: type, ornaments, ephemera, textures.",""],
+  ["ES","Trade cards, valentines, labels and tickets.","https://www.ephemerasociety.org/exhibits/"],
+  ["LA","19th-century type specimens (Jan Tholenaar collection).","https://letterformarchive.org/collections/#tholenaar"],
+  ["WC","Victorian advertisements and posters.","wc:victorian advertisement poster"]]],
+ ["artnouveau","Art Nouveau","classic","Whiplash curves, botanical motifs, hand lettering, earthy palettes.",[
+  ["DR","Movement page: Art Nouveau and Jugendstil.","drm:art-nouveau"],
+  ["AV","Movements → Art Nouveau, including Mucha-era posters.",""],
+  ["LA","Botanical Patterns: Art Nouveau motifs from the collection.","https://letterformarchive.org/shop/botanical-patterns-creative-papers/"],
+  ["CL","Art Nouveau lace panels and stencilled ornaments.",""],
+  ["WC","Art Nouveau posters.","wc:art nouveau poster"]]],
+ ["artdeco","Art Deco","classic","1920s geometric glamour: sunbursts, symmetry, gold, jewel tones, stylised sans-serifs.",[
+  ["DR","Movement page: Art Deco posters, packaging and type.","drm:art-deco"],
+  ["AV","Movements → Art Deco.",""],
+  ["WC","Art Deco posters and lettering.","wc:art deco poster"],
+  ["LA","Online Archive: search Art Deco for lettering and specimens.","https://oa.letterformarchive.org"]]],
+ ["gothic","Gothic","classic","Blackletter, stained glass, stone, deep purples and blacks.",[
+  ["CL","Revived 1880s German blackletter typefaces.","clc:fonts"],
+  ["LA","Blackletter specimens and calligraphy in the Online Archive.","https://oa.letterformarchive.org"],
+  ["PDR","Medieval manuscripts, e.g. John of Arderne's anatomical scroll.","pdrc:arderne-scroll"],
+  ["WC","Gothic stained glass.","wc:gothic stained glass"]]],
+ ["tenebrism","Tenebrism","classic","Chiaroscuro: black grounds, spotlit subjects, oil textures.",[
+  ["AV","Movements → Baroque: Caravaggio-era painting.",""],
+  ["A24","Full-bleed dark film stills used as cinematic, high-contrast UI.",""],
+  ["WC","Chiaroscuro paintings.","wc:chiaroscuro painting"]]],
+ ["luxurytype","Luxury Typography","classic","Type carries the brand: refined serifs, wide tracking, monochrome, ligatures.",[
+  ["SI","Fashion + Typographic websites.","https://www.siteinspire.com/websites?categories=fashion,typographic"],
+  ["VI","Fashion and hospitality identities led by type.",""],
+  ["KF","Display serif and monochrome editorial pages.","kf:design"],
+  ["DR","Type-only artefacts.","drt:type-only"],
+  ["TY","Refined serif families for headlines.","https://www.typotheque.com/fonts"]]],
+
+ ["bauhaus","Bauhaus","modern","Form follows function: grids, sans-serifs, primary colours, basic shapes.",[
+  ["LA","Bauhaus Typography at 100 (online exhibition).","https://exhibitions.letterformarchive.org/bauhaus"],
+  ["DR","Bauhaus, plus related De Stijl and Constructivism.","drm:bauhaus"],
+  ["BL","Grids for Graphic Designers and other layout textbooks.","https://www.bloomsburyvisualarts.com/design-and-illustration"],
+  ["WC","Bauhaus posters.","wc:bauhaus poster"]]],
+ ["midcentury","Mid-Century","modern","1940s–60s optimism: clean lines, boomerangs, warm retro colour, sans-serifs.",[
+  ["DR","Movement page: Mid-Century Modernism.","drm:mid-century-modernism"],
+  ["LA","Dorothy and Otis Shepard's midcentury work.","https://letterformarchive.org/news/from-the-collection-dorothy-and-otis-shepard/"],
+  ["LA","Olivetti advertising Creative Papers.","https://letterformarchive.org/shop/olivetti-creative-papers/"],
+  ["AV","Posters category includes 1950s–70s corporate posters.",""]]],
+ ["utilitarian","Utilitarian","modern","Function first: grids, monospaced or industrial type, muted tones, no ornament.",[
+  ["SI","Grid Layout websites.","sic:grid-layout"],
+  ["DR","International Typographic Style (Swiss).","drm:international-typographic-style"],
+  ["LA","Corporate identity manuals: the ancestors of design systems.","https://letterformarchive.org/collections/#ichiyama"],
+  ["SP","Text-led pocket books with plain, rule-based layouts.","https://www.sternberg-press.com/series/lukas-sternberg-series/"],
+  ["BL","Grids and layout textbooks.","https://www.bloomsburyvisualarts.com/design-and-illustration"]]],
+ ["modulartype","Modular Typography","modern","Type built on grids and blocks: geometric letters, even rhythm, variable layouts.",[
+  ["DR","New Typography and type-only work.","drm:new-typography"],
+  ["LA","Piet Zwart and Emigre collections.","https://letterformarchive.org/collections/#zwart"],
+  ["SI","Typographic websites.","sic:typographic"],
+  ["IP","A Co- Program for Graphic Design (David Reinfurt).","https://www.inventorypress.com/product/a-co-program-for-graphic-design"]]],
+ ["brutalism","Brutalism","modern","Raw honesty: monospace, greyscale, hard edges, default-looking buttons.",[
+  ["SI","Unusual Layout websites, many with raw, default-styled pages.","sic:unusual-layout"],
+  ["SP","Bulletins of The Serving Library (Dexter Sinister).","https://www.sternberg-press.com/series/bulletins-of-the-serving-library/"]]],
+ ["neobrutalism","Neo-Brutalism","modern","Structured brutalism: bold colour, big type, stark blocks, deliberate asymmetry.",[
+  ["SI","Unusual Layout websites.","sic:unusual-layout"],
+  ["VI","Bold, type-heavy identity systems.",""],
+  ["PM","Stark, collaged editorial pages.",""]]],
+ ["japandi","Japandi","modern","Japanese calm meets Scandinavian use: light wood, beige and grey, clean sans-serifs.",[
+  ["KF","Interiors and home tours.","kf:interiors"],
+  ["SI","Minimal websites.","sic:minimal"],
+  ["DR","Japanese Modernism for the Japanese half of the blend.","drm:japanese-modernism"]]],
+ ["wabisabi","Wabi Sabi","modern","Beauty in imperfection: earthy tones, rough textures, natural light, asymmetry.",[
+  ["KF","Interiors, studios and craft stories.","kf:interiors"],
+  ["PW","Search The Met for Japanese ceramics and tea wares.",""],
+  ["WC","Raku and other hand-made ceramics.","wc:raku ware"]]],
+ ["lightacademia","Light Academia","modern","Summer in a European library: creamy neutrals, serifs, books, linen.",[
+  ["KF","Soft, bookish editorial photography.","kf:design"],
+  ["SP","Serious, carefully typeset books.","https://www.sternberg-press.com/all-series/"],
+  ["IP","Designer-made art and design books.","https://www.inventorypress.com/all"],
+  ["AV","Books section: illustrated book scans.",""],
+  ["CL","Aged papers and handwritten letters.",""]]],
+ ["rebus","Rebus","modern","Pictures stand in for words: pictograms, visual puns, image-text hybrids.",[
+  ["IL","Conceptual editorial illustration, e.g. Christoph Niemann.","https://www.illustration.lol/profile/christoph-niemann"],
+  ["DR","Sachplakat: the single-object poster.","drm:sachplakat"],
+  ["WC","Historical rebus puzzles.","wc:rebus"]]],
+
+ ["bento","Bento Box","digital","Modular rounded compartments, soft shadows, labelled icons, neutral palettes.",[
+  ["SI","Grid Layout websites.","sic:grid-layout"],
+  ["VI","Studio Dumbar's Apple Services football design system.","https://visuelle.co.uk/apple-services-football-design-system/"]]],
+ ["glassmorphism","Glassmorphism","digital","Frosted translucent panels, blur, depth, soft shadows, neon tints.",[
+  ["CA","Frutiger Aero: the glossy, translucent 2000s precursor.","cari:frutiger-aero"]]],
+ ["frutigeraero","Neo Frutiger Aero","digital","Glossy Y2K revival: aqua blues, bubbles, gloss, rounded friendly UI.",[
+  ["CA","Frutiger Aero: the original 2000s aesthetic, with examples.","cari:frutiger-aero"],
+  ["CA","Four Colors: lime, sky blue, hot pink and tangerine 2000s products.","cari:four-colors"]]],
+ ["y2k","Y2K","digital","Late-90s cyber-futurism: chrome, pixel fonts, iridescence, matrix grids.",[
+  ["CA","Millennium Disco and Early Cyber.","cari:millennium-disco"],
+  ["CA","Corporate Cyberspace (1990s tech branding).","cari:corporate-cyberspace"],
+  ["DR","2000s graphic design.","drd:2000s"]]],
+ ["aurora","Aurora","digital","Northern-lights abstraction: iridescent gradients, glow, translucent waves.",[
+  ["IL","Filter imagery by colour and tone.","https://www.illustration.lol/"],
+  ["WC","Aurora photographs (usable with credit).","wc:aurora borealis"]]],
+ ["ethereal","Ethereal","digital","Airy pastels, gauzy overlays, minimal serifs, low contrast.",[
+  ["KF","Soft palettes and quiet photography.","kf:design"],
+  ["AV","Movements → Symbolism and Pre-Raphaelite.",""]]],
+ ["pixelart","Pixel Art","digital","Visible pixel grids, low-res icons, limited 8- and 16-bit palettes.",[
+  ["CA","Early Cyber: bitmap imagery of early desktop publishing.","cari:early-cyber"],
+  ["LA","Aaron Marcus: early computer graphics and interfaces.","https://letterformarchive.org/collections/#marcus"],
+  ["DR","April Greiman's hybrid early-digital imagery.","https://designreviewed.com/april-greiman-and-her-hybrid-imagery/"]]],
+
+ ["memphis","Memphis","pop","Loud 1980s rule-breaking: squiggles, clashing primaries, blocks, cartoon motifs.",[
+  ["DR","Postmodernism, which includes Memphis-era graphics.","drm:postmodernism"],
+  ["DR","Neville Brody and The Face.","https://designreviewed.com/neville-brody-and-the-face-magazine/"],
+  ["WC","Memphis Group objects and graphics.","wc:Memphis Group design"]]],
+ ["popart","Pop Art","pop","Comics and advertising: Ben-Day dots, heavy outlines, primaries, speech bubbles.",[
+  ["DR","1960s graphic design and Psychedelia.","drd:1960s"],
+  ["IL","Bold, graphic editorial illustration.","https://www.illustration.lol/"],
+  ["ES","Printed ads and comic ephemera.","https://www.ephemerasociety.org/exhibits/"]]],
+ ["mixedmedia","Mixed Media","pop","Photo, illustration and texture layered as tactile collage.",[
+  ["IP","María Berrío: Songlines, 'painting with paper'.","https://www.inventorypress.com/product/mar%C3%ADa-berr%C3%ADo-songlines"],
+  ["PM","Collaged, interactive print issues.",""],
+  ["IL","Collage illustrators, e.g. Nico Krijno.","https://www.illustration.lol/profile/nico-krijno"],
+  ["CL","Overlays, documents and paper textures to layer.",""]]],
+ ["scrapbook","Scrapbook","pop","Memory collage: paper, washi tape, Polaroids, stickers, hand lettering.",[
+  ["CL","Stamps, labels, postmarks, washi and paper textures.",""],
+  ["ES","Real scrapbook-era ephemera.","https://www.ephemerasociety.org/exhibits/"],
+  ["PM","Sticker, perforation and hand-made print details.",""]]],
+ ["surrealism","Surrealism","pop","Dream logic: odd juxtapositions, melting forms, unexpected scale.",[
+  ["IL","Conceptual editorial illustration.","https://www.illustration.lol/publisher/the-new-yorker"],
+  ["PDR","Alchemical and dreamlike images, e.g. the Mutus Liber.","pdrc:mutus-liber"],
+  ["PM","Issue 4, Terra Incognita.","https://www.stackmagazines.com/art-design/a-magazine-for-getting-lost/"]]],
+ ["pointillism","Pointillism","pop","Images built from dots: optical colour mixing, grain, soft palettes.",[
+  ["AV","Movements → Post-Impressionism (Seurat, Signac).",""],
+  ["PW","Search The Met for Seurat and Signac.",""],
+  ["WC","Pointillist paintings.","wc:pointillism painting"]]],
+ ["sketch","Conceptual Sketch","pop","Loose pencil and ink, crosshatching, annotations, sketch-paper texture.",[
+  ["MT","A whole personal site built as an ink sketchbook.","https://mengto.com"],
+  ["LA","Martin Venezky: Process Work.","https://letterformarchive.org/news/martin-venezky-process-work/"],
+  ["AV","Drawings category.",""]]],
+ ["anthropomorphic","Anthropomorphic","pop","Objects and animals given faces and limbs: friendly characters, rounded shapes.",[
+  ["DR","Dick Bruna, Miffy and stamp design.","https://designreviewed.com/stamps-dick-bruna-and-the-making-of-miffy/"],
+  ["AV","Illustration: fables and children's books (Rackham, Aesop).",""],
+  ["IL","Character-led editorial illustration.","https://www.illustration.lol/"]]],
+
+ ["kitsch","Kitsch","misc","Ironic 'bad taste': clashing prints, dated fonts, shiny plastic, excess.",[
+  ["DR","Japanese lottery tickets, 1956–85.","https://designreviewed.com/50-japanese-lottery-tickets/"],
+  ["CL","Fifties advertising figures and Victorian scraps.",""],
+  ["ES","Sentimental cards and souvenirs.","https://www.ephemerasociety.org/exhibits/"]]],
+ ["coquette","Coquette","misc","Baby pinks, pearls, ribbons, delicate serifs, hearts.",[
+  ["CL","Lace card frames, ribbons and Victorian scraps.",""],
+  ["ES","Valentines and lace-paper cards.","https://www.ephemerasociety.org/exhibits/"]]],
+ ["kawaii","Kawaii","misc","Cute pastels, rounded icons, baby-faced characters, blush marks.",[
+  ["DR","Dick Bruna and Japanese lottery ticket illustration.","https://designreviewed.com/stamps-dick-bruna-and-the-making-of-miffy/"],
+  ["CA","Four Colors (linked to Superflat pop).","cari:four-colors"]]],
+ ["vaporwave","Vaporwave","misc","Satirical 80s–90s nostalgia: pastel pinks, VHS glitch, classical busts, old software.",[
+  ["CA","Corporate Cyberspace: the 90s tech look vaporwave parodies.","cari:corporate-cyberspace"],
+  ["PW","Public-domain classical busts to remix.",""]]],
+ ["synthwave","Synthwave","misc","80s sci-fi: grid horizons, VHS texture, neon gradients, chrome type.",[
+  ["DR","1980s graphic design, the source era for synthwave.","drd:1980s"]]],
+ ["cybercore","Cybercore","misc","Hacker sci-fi: neon, glitch, code, green-on-black.",[
+  ["CA","Early Cyber and Corporate Cyberspace.","cari:early-cyber"],
+  ["LA","Aaron Marcus: early computer graphics.","https://letterformarchive.org/collections/#marcus"]]],
+ ["graffiti","Graffiti","misc","Street energy: spray texture, drips, concrete, neon, freestyle lettering.",[
+  ["DR","Punk graphics.","drm:punk"],
+  ["WC","Graffiti photographs (check each licence).","wc:graffiti lettering"]]],
+ ["steampunk","Steampunk","misc","Victorian industry meets fantasy: copper, cogs, leather, steam.",[
+  ["CL","Industrial, sciences and transport engravings.","clc:industrial"],
+  ["WC","Victorian machinery engravings.","wc:victorian machinery engraving"]]],
+ ["mysticalwestern","Mystical Western","misc","Desert cowboy meets occult: tarot, cacti, sun and moon, leather.",[
+  ["PDR","Ghosts & Occult theme.","pdrt:ghosts-and-occult"],
+  ["CL","Celestial charts, the All-Seeing Eye, palm-reading diagrams.","clc:sciences"]]],
+ ["darkacademia","Dark Magic Academia","misc","Candles, spellbooks, antique etchings, black and gold, calligraphic serifs.",[
+  ["PDR","Ghosts & Occult theme and alchemical books.","pdrt:ghosts-and-occult"],
+  ["CL","Anatomy plates and star charts.","clc:anatomy"],
+  ["AV","Movements → Symbolism.",""]]],
+ ["bohemian","Bohemian","misc","Eclectic and global: layered textiles, mandalas, jewel tones, prints.",[
+  ["PDR","Central Asian Ikat textiles.","pdrc:central-asian-ikat"],
+  ["AV","Asian Art category.",""]]],
+ ["shabbychic","Shabby Chic","misc","Whitewashed vintage: faded florals, lace, cursive, soft pinks and blues.",[
+  ["CL","Faded florals, lace frames and patterned papers.",""]]],
+ ["cottagecore","Farmhouse / Cottagecore","misc","Romantic rural life: florals, gingham, wood grain, hand-drawn type.",[
+  ["CL","Botanical illustrations and patterns.",""],
+  ["LA","Botanical Patterns Creative Papers.","https://letterformarchive.org/shop/botanical-patterns-creative-papers/"],
+  ["KF","Food and slow-living stories.","kf:food"]]],
+ ["wildwest","South West / Wild West","misc","Desert and cowboy culture: terracotta, cacti, denim, western serifs.",[
+  ["DR","Travel theme.","drt:travel"],
+  ["WC","Wild West show posters.","wc:wild west show poster"]]],
+ ["nautical","Nautical","misc","Navy and white, anchors, rope, stripes, brass, stencil type.",[
+  ["PDR","Maps theme.","pdrt:maps"],
+  ["CL","Maps and transport plates.","clc:transport"],
+  ["WC","Nautical charts.","wc:nautical chart"]]]
+];
+function resolve(link,code){
+  if(!link)return S.find(s=>s.n===SRC[code]).u;
+  if(link.startsWith("http"))return link;
+  const [k,...r]=link.split(":"),v=r.join(":");
+  return {drm:`https://designreviewed.com/design-movement/${v}/`,drd:`https://designreviewed.com/decade/${v}/`,drt:`https://designreviewed.com/design_theme/${v}/`,
+   wc:`https://commons.wikimedia.org/w/index.php?search=${encodeURIComponent(v)}`,clc:`https://centurylibrary.com/product-category/${v}/`,
+   pdrt:`https://publicdomainreview.org/collections/all/theme/${v}/`,pdrc:`https://publicdomainreview.org/collection/${v}/`,
+   sic:`https://www.siteinspire.com/websites/category/${v}`,cari:`https://cari.institute/aesthetics/${v}`,kf:`https://www.kinfolk.com/stories-categories/${v}/`}[k];
+}
+/* Every style also gets search links on the three collecting tools. */
+function styleMaterial(id){
+  const sty=STYLES.find(x=>x[0]===id);if(!sty)return null;
+  const map={};
+  sty[4].forEach(([code,note,link])=>{const n=SRC[code];(map[n]=map[n]||[]).push({note,url:resolve(link,code)})});
+  const q=encodeURIComponent(sty[1].replace(" / "," "));
+  map["Designspiration"]=[{note:`Search saves for “${sty[1]}”.`,url:`https://www.designspiration.com/search/saves/?q=${q}`}];
+  map["Are.na"]=[{note:`Search channels for “${sty[1]}”.`,url:`https://www.are.na/search/${q}`}];
+  map["Cosmos"]=[{note:`Search “${sty[1]}” in Explore to start a cluster.`,url:"https://www.cosmos.so/explore"}];
+  return {sty,map};
+}
+
+const st={project:"all",needs:new Set(),rights:"any",q:"",fam:null,style:null};
+try{const saved=JSON.parse(localStorage.getItem("srcCat")||"null");if(saved){st.project=saved.project||"all";st.needs=new Set(saved.needs||[]);st.rights=saved.rights||"any";st.style=saved.style||null;st.fam=saved.fam||null;}}catch(e){}
+const save=()=>{try{localStorage.setItem("srcCat",JSON.stringify({project:st.project,needs:[...st.needs],rights:st.rights,style:st.style,fam:st.fam}))}catch(e){}};
+
+function chip(label,cls,pressed,on){const b=document.createElement("button");b.type="button";b.className="chip "+cls;b.textContent=label;b.setAttribute("aria-pressed",pressed);b.addEventListener("click",on);return b}
+function drawFilters(){
+  const P=document.getElementById("projects"),N=document.getElementById("needs"),R=document.getElementById("rightsRow");
+  [P,N,R].forEach(el=>el.querySelectorAll("button").forEach(b=>b.remove()));
+  PROJECTS.forEach(p=>P.appendChild(chip(p.label,"proj",st.project===p.id,()=>{st.project=p.id;update()})));
+  NEEDS.forEach(([id,l])=>N.appendChild(chip(l,"need",st.needs.has(id),()=>{st.needs.has(id)?st.needs.delete(id):st.needs.add(id);update()})));
+  RIGHTS.forEach(([id,l])=>R.appendChild(chip(l,"right",st.rights===id,()=>{st.rights=id;update()})));
+  const F=document.getElementById("fams"),C=document.getElementById("stylechips");
+  F.innerHTML="";C.innerHTML="";
+  FAMS.forEach(([fid,fl])=>{
+    const b=document.createElement("button");b.type="button";b.className="fam";
+    b.innerHTML=`${esc(fl)}<span class="n">${STYLES.filter(s=>s[2]===fid).length}</span>`;
+    b.setAttribute("aria-expanded",st.fam===fid);
+    b.addEventListener("click",()=>{st.fam=st.fam===fid?null:fid;update()});
+    F.appendChild(b);
+  });
+  C.hidden=!st.fam;
+  if(st.fam)STYLES.filter(s=>s[2]===st.fam).forEach(s=>C.appendChild(chip(s[1],"sty",st.style===s[0],()=>{st.style=st.style===s[0]?null:s[0];update()})));
+}
+function esc(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+function draw(){
+  const q=st.q.trim().toLowerCase();
+  const sm=st.style?styleMaterial(st.style):null;
+  const list=S.map((s,i)=>({...s,i})).filter(s=>{
+    if(st.project!=="all"&&!s.p.includes(st.project))return false;
+    if(st.rights!=="any"&&s.r!==st.rights)return false;
+    if(st.needs.size&&![...st.needs].some(n=>s.k.includes(n)))return false;
+    if(sm&&!sm.map[s.n])return false;
+    if(q&&!(s.n+" "+s.d+" "+s.g).toLowerCase().includes(q))return false;
+    return true;
+  }).map(s=>({...s,score:[...st.needs].filter(n=>s.k.includes(n)).length,tool:s.r==="tool"?1:0})).sort((a,b)=>a.tool-b.tool||b.score-a.score||a.i-b.i);
+  const grid=document.getElementById("grid");
+  grid.innerHTML=list.length?list.map(s=>{
+    const call=String(s.i+1).padStart(2,"0");
+    const tags=s.k.map(k=>{const l=NEEDS.find(x=>x[0]===k)[1];return `<span class="tag${st.needs.has(k)?" on":""}">${l}</span>`}).join("");
+    let extra="";
+    if(sm){const items=sm.map[s.n];extra=`<div class="forstyle"><span class="lbl">For ${esc(sm.sty[1])}</span>${items.length>1?`<ul>${items.map(it=>`<li><a href="${it.url}" target="_blank" rel="noopener">${esc(it.note)}</a></li>`).join("")}</ul>`:`<a href="${items[0].url}" target="_blank" rel="noopener">${esc(items[0].note)}</a>`}</div>`;}
+    const start=!sm&&s.s?`<div class="start">Start here: <a href="${s.s[1]}" target="_blank" rel="noopener">${esc(s.s[0])}</a></div>`:"";
+    return `<article class="card"><div class="call"><span>${call} · ${esc(s.g)}</span><span class="rights r-${s.r}">${s.unverified?"Unverified":RLABEL[s.r]}</span></div><h2><a href="${s.u}" target="_blank" rel="noopener">${esc(s.n)}</a></h2><p>${esc(s.d)}</p>${extra}${start}<div class="tags">${tags}</div></article>`;
+  }).join(""):`<div class="empty">No source matches all of these filters. Try removing a need, setting Rights to Any, or clearing the style.</div>`;
+  document.getElementById("count").textContent=`${list.length} of ${S.length} sources`;
+  const p=PROJECTS.find(x=>x.id===st.project),b=document.getElementById("brief");
+  if(p&&p.brief){b.hidden=false;b.innerHTML=`<b>${esc(p.label)}</b><p>${esc(p.brief)}</p>`}else{b.hidden=true}
+  const sp=document.getElementById("stylepanel");
+  if(sm){const fam=FAMS.find(f=>f[0]===sm.sty[2])[1];const n=Object.keys(sm.map).length-3;
+    sp.hidden=false;sp.innerHTML=`<div class="top"><b>${esc(sm.sty[1])}</b><span class="fam-name">${esc(fam)}</span></div><p>${esc(sm.sty[3])}</p><p>Material on ${n} catalogued site${n===1?"":"s"}, plus searches on the three collecting tools. Each card below links straight to it.</p><div><button type="button" id="clearStyle">Clear style</button></div>`;
+    document.getElementById("clearStyle").addEventListener("click",()=>{st.style=null;update()});
+  }else{sp.hidden=true}
+}
+function update(){drawFilters();draw();save()}
+document.getElementById("q").addEventListener("input",e=>{st.q=e.target.value;draw()});
+document.getElementById("reset").addEventListener("click",()=>{st.project="all";st.needs.clear();st.rights="any";st.q="";st.style=null;st.fam=null;document.getElementById("q").value="";update()});
+update();
+</script>
+</body>
+</html>

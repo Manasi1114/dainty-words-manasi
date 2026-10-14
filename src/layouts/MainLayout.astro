@@ -8,7 +8,7 @@ import Button from "../components/Button.astro";
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="My website description" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="icon" type="image/svg+xml" href="/svg/favicon.svg" />
     <link rel="stylesheet" href="/styles/global.css" />
@@ -17,18 +17,38 @@ import Button from "../components/Button.astro";
 
   <body>
     <!-- Top Right Archive Navigation -->
-    <header class="archive-nav">
-      <a href="/" class="archive-box">Home</a>
-      <a href="/projects" class="archive-box">Projects</a>
-      <a href="/blog" class="archive-box">Blog</a>
-      <a href="/poetry" class="archive-box">Poetry</a>
-      <a href="/quotes" class="archive-box">Quotes</a>
-      <a href="/bookhouse" class="archive-box">Bookhouse</a>
-      <a href="/magazine" class="archive-box">Magazine</a>
-      <a href="/about" class="archive-box">About</a>
-      <a href="/socials" class="archive-box">Connect</a>
-      <a href="/sitemap" class="archive-box">Sitemap</a>
+    <header class="archive-nav" id="archive-nav">
+      <!-- Menu button: only shows on phones (see "Phones" styles below) -->
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+        Menu
+      </button>
+      <nav class="nav-links" id="nav-links" aria-label="Main">
+        <a href="/" class="archive-box">Home</a>
+        <a href="/projects" class="archive-box">Projects</a>
+        <a href="/blog" class="archive-box">Blog</a>
+        <a href="/poetry" class="archive-box">Poetry</a>
+        <a href="/quotes" class="archive-box">Quotes</a>
+        <a href="/bookhouse" class="archive-box">Bookhouse</a>
+        <a href="/magazine" class="archive-box">Magazine</a>
+        <a href="/design-source-catalogue" class="archive-box">Design Catalogue</a>
+        <a href="/about" class="archive-box">About</a>
+        <a href="/socials" class="archive-box">Connect</a>
+        <a href="/sitemap" class="archive-box">Sitemap</a>
+      </nav>
     </header>
+    <script is:inline>
+      // Opens and closes the phone menu. Without JavaScript the links simply stay visible.
+      (function () {
+        var nav = document.getElementById("archive-nav");
+        var btn = nav.querySelector(".nav-toggle");
+        nav.classList.add("js-ready");
+        btn.addEventListener("click", function () {
+          var open = nav.classList.toggle("open");
+          btn.setAttribute("aria-expanded", open ? "true" : "false");
+          btn.textContent = open ? "Close" : "Menu";
+        });
+      })();
+    </script>
 
     <main class="main-content">
       <slot />
@@ -57,10 +77,17 @@ import Button from "../components/Button.astro";
       position: absolute;
       top: 40px;
       right: 40px;
+      z-index: 10;
+    }
+
+    .nav-links {
       display: grid;
       grid-template-columns: repeat(4, auto);
       gap: 14px;
-      z-index: 10;
+    }
+
+    .nav-toggle {
+      display: none;
     }
 
 .archive-box {
@@ -95,37 +122,73 @@ import Button from "../components/Button.astro";
     .main-content {
       max-width: 900px;
       margin: 0 auto;
-      padding: 120px 20px 60px;
+      padding: 200px 20px 60px; /* leaves room for the 3 rows of buttons */
     }
 
     /* =========================
        Responsive Adjustments
        ========================= */
 
-    /* Tablets */
+    /* Tablets: buttons become one centred, wrapping row above the content */
     @media (max-width: 1024px) {
       .archive-nav {
-        grid-template-columns: repeat(3, auto);
-        right: 24px;
-        top: 24px;
+        position: relative;
+        top: auto;
+        right: auto;
+        padding: 20px 16px 0;
+      }
+
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
       }
 
       .main-content {
-        padding-top: 140px;
+        padding-top: 32px;
       }
     }
 
-    /* Phones */
+    /* Phones: buttons fold away behind a Menu button */
     @media (max-width: 768px) {
       .archive-nav {
-        position: static;
-        margin: 20px auto;
-        justify-content: center;
-        grid-template-columns: repeat(2, auto);
+        padding: 16px 16px 0;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px; /* comfortable tap size */
+        padding: 10px 18px;
+        border: 1.5px solid #05162e;
+        border-radius: 10px;
+        background: transparent;
+        color: #05162e;
+        font-size: 15px;
+        cursor: pointer;
+      }
+
+      .archive-nav.js-ready .nav-links {
+        display: none;
+      }
+
+      .archive-nav.js-ready.open .nav-links,
+      .nav-links {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-top: 12px;
+      }
+
+      .archive-box {
+        text-align: center;
+        padding: 12px 10px;
+        font-size: 15px;
       }
 
       .main-content {
-        padding-top: 40px;
+        padding: 24px 16px 48px;
       }
     }
   </style>

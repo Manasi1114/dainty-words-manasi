@@ -43,13 +43,13 @@ const allPosts = Object.values(
     transform: rotate(270deg);
     transform-origin: left top;
     position: absolute;
-    left: 350px;
+    left: calc(50% - 560px); /* sits in the margin left of the cards */
     top: 450px;
     color: rgb(79, 124, 137);
   }
   .blog-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
     gap: 2rem;
     max-width: 900px;
     margin: 0 auto;
@@ -132,6 +132,18 @@ const allPosts = Object.values(
 
   .read-more:hover {
     transform: translateY(-2px);
+  }
+
+  /* Smaller screens: the sideways heading turns upright and sits above the cards */
+  @media (max-width: 1279px) {
+    h1 {
+      position: static;
+      transform: none;
+      font-size: clamp(48px, 11vw, 80px);
+      line-height: 1;
+      margin: 0 0 1.5rem;
+      padding: 0 1rem;
+    }
   }
 
   @media (max-width: 768px) {

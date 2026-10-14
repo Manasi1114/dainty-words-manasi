@@ -8,7 +8,7 @@ const { title, poet, date, image, frontmatter } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Poetry List" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/svg/favicon.svg" />
     <title>Poetry</title>
     <link rel="stylesheet" href="/src/styles/global.css" />
@@ -94,10 +94,42 @@ const { title, poet, date, image, frontmatter } = Astro.props;
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
   }
 
+  /* Back button: a small floating pill so it never sits unreadably on top of text */
   .link {
     position: fixed;
-    bottom: 20px;
-    left: 20px;
-    font-size: 1.2rem;
+    bottom: 16px;
+    left: 16px;
+    margin: 0;
+    padding: 6px 10px;
+    list-style: none;
+    font-size: 1.1rem;
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 999px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+    z-index: 1000;
+  }
+
+  /* The poem's picture sits beside the poem only on wide screens */
+  @media (max-width: 1300px) {
+    .poem-image {
+      position: static;
+      display: block;
+      width: 100%;
+      max-width: 500px;
+      margin: 2rem auto;
+    }
+  }
+
+  @media (max-width: 768px) {
+    body {
+      padding: 2rem 1rem 5rem;
+    }
+    .title {
+      font-size: clamp(1.8rem, 8vw, 2.5rem);
+    }
+    .poem {
+      padding: 0;
+      font-size: 1.1rem;
+    }
   }
 </style>

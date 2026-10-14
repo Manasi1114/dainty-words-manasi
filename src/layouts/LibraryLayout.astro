@@ -59,7 +59,7 @@ const { title, type } = Astro.props;
     color: rgb(55, 53, 53);
   }
   .grid.magazine {
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 350px), 1fr));
     grid-template-rows: auto;
     grid-auto-flow: dense;
   }
@@ -75,9 +75,30 @@ const { title, type } = Astro.props;
     border-radius: 8px;
   }
 
+  /* Tablets and phones: heading upright above the grid, side margins shrink */
+  @media (max-width: 1024px) {
+    .container {
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    .title {
+      margin-left: 0;
+      h1 {
+        position: static;
+        transform: none;
+        font-size: clamp(48px, 13vw, 100px);
+        line-height: 1;
+        margin: 0;
+      }
+    }
+  }
+
   @media (max-width: 768px) {
     .grid {
       grid-template-columns: 1fr;
+    }
+    .grid.bookhouse {
+      grid-template-columns: repeat(2, 1fr); /* two covers side by side */
     }
   }
 </style>

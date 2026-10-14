@@ -87,6 +87,33 @@ import MainLayout from "../layouts/MainLayout.astro";
     font-family: "Palatino Linotype";
     font-size: 18px;
   }
+  /* Tablets and phones: heading upright, text uses the full width,
+     flower moves below the text instead of covering it */
+  @media (max-width: 900px) {
+    * {
+      margin: 1rem auto;
+      padding: 0.75rem;
+    }
+    h1 {
+      position: static;
+      transform: none;
+      font-size: clamp(44px, 12vw, 70px);
+      line-height: 1;
+      margin: 0;
+    }
+    .about {
+      padding-left: 1rem;
+    }
+    .content {
+      font-size: 19px;
+    }
+    .image {
+      position: static !important;
+      width: 200px !important;
+      margin: 0 auto;
+    }
+  }
+
   .image {
     position: fixed;
     bottom: -60px;

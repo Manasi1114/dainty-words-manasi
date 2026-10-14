@@ -155,11 +155,10 @@ import MainLayout from "../layouts/MainLayout.astro";
     }
 
     .bottom-image {
-      position: absolute;
-      bottom: -20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 220px;
+      position: static; /* sits below the text instead of covering it */
+      display: block;
+      margin: 0 auto;
+      width: 200px;
       opacity: 0.8;
     }
   }

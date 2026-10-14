@@ -35,4 +35,8 @@ const { image, title, date} = Astro.props;
     font-weight: bold;
   }
 
+  :global(*, *::before, *::after) {
+    box-sizing: border-box;
+  }
+
 </style>

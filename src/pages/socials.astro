@@ -78,6 +78,30 @@ import MainLayout from "../layouts/MainLayout.astro";
     background: #bc57a13a;
     color: #333;
   }
+  /* Tablets and phones: heading upright above the buttons */
+  @media (max-width: 1024px) {
+    .connect-page {
+      min-height: auto;
+      padding: 1rem 0 3rem;
+    }
+    h1 {
+      position: static;
+      transform: none;
+      font-size: clamp(48px, 13vw, 100px);
+      line-height: 1;
+      margin: 0;
+    }
+    .connect-links {
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .icon {
+      width: 90px !important;
+      opacity: 0.5 !important;
+    }
+  }
+
   .icon {
   position: fixed;
   bottom: 0;
