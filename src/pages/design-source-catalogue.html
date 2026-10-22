@@ -96,7 +96,7 @@ button.chip.sty{font-size:13px;padding:5px 11px}
 <div class="wrap">
   <header>
     <a class="back" href="/">← Dainty Archive</a>
-    <span class="eyebrow">Building taste and knowledge · 23 sources</span>
+    <span class="eyebrow">Building taste and knowledge · 27 sources</span>
     <h1>Source Catalogue</h1>
     <p class="lede">Pick the project, then what you need from it. Each card says where to start on that site and whether you can use its material or only learn from it.</p>
   </header>
@@ -137,14 +137,14 @@ button.chip.sty{font-size:13px;padding:5px 11px}
 <script>
 const PROJECTS=[
  {id:"all",label:"All projects"},
- {id:"portfolio",label:"Portfolio website",brief:"Start with Siteinspire (Portfolio + Typographic), then Design Reviewed's Swiss Style for a restrained, type-led direction. The A24 concept site and Meng To show how one strong interaction idea can carry a personal site."},
+ {id:"portfolio",label:"Portfolio website",brief:"Start with Siteinspire (Portfolio + Typographic), then Design Reviewed's Swiss Style for a restrained, type-led direction. The A24 concept site and Meng To show how one strong interaction idea can carry a personal site. To present finished work in case studies, pick Mockups: Creatoom and Mockups Supply for device and print scenes, Lummi for stand-in photography."},
  {id:"apps",label:"Apps & product UI",brief:"Use Letterform Archive's ID manuals and Sternberg's series for system thinking, CARI to name a visual direction precisely, and Are.na and Cosmos as calm interfaces worth studying in their own right."},
  {id:"book",label:"Publication design",brief:"For books, magazines and other printed matter. Sternberg, Inventory Press and Kinfolk show how books, series and magazines are typeset and structured. Design Reviewed and Letterform Archive cover print history and type specimens, and Typotheque handles multilingual text. For imagery you can print, use PDR, Public Work, Artvee, Wikimedia Commons and Century Library."}
 ];
 const NEEDS=[
  ["type","Typography"],["layout","Layout & grids"],["nav","Navigation & interaction"],["identity","Identity & systems"],
  ["colour","Colour"],["illus","Illustration"],["imagery","Images to use"],["details","Details & components"],
- ["history","Design history"],["boards","Collecting & moodboards"]
+ ["history","Design history"],["boards","Collecting & moodboards"],["mockups","Mockups"]
 ];
 const RIGHTS=[["any","Any"],["use","Usable in my work"],["lic","Paid licence"],["ref","Reference only"],["tool","Collecting tool"]];
 const RLABEL={use:"Usable",lic:"Licensed",ref:"Reference",tool:"Tool"};
@@ -169,6 +169,10 @@ const S=[
  {n:"Artvee",u:"https://artvee.com",g:"Usable imagery",p:["book"],k:["imagery","illus","colour"],r:"use",d:"High-resolution public-domain paintings, posters and botanical plates. Confirm status on 20th-century work.",s:["Books (illustrated book scans)","https://artvee.com"]},
  {n:"Wikimedia Commons",u:"https://commons.wikimedia.org",g:"Usable imagery",p:["book","portfolio","apps"],k:["imagery"],r:"use",d:"Tens of millions of freely licensed files. Many need a credit line; read the licence box on each file.",s:["Featured pictures","https://commons.wikimedia.org/wiki/Commons:Featured_pictures"]},
  {n:"Century Library",u:"https://centurylibrary.com",g:"Usable imagery",p:["book","apps"],k:["imagery","type","details"],r:"lic",d:"Hand-restored vintage illustrations, antique fonts, ornaments and textures. Mostly paid; commercial work needs the Commercial plan.",s:["Archive","https://centurylibrary.com/archive/"]},
+ {n:"Lummi",u:"https://www.lummi.ai",g:"Mockups",p:["portfolio","apps"],k:["mockups","imagery"],r:"use",d:"Curated AI-made photos, illustrations and 3D renders, free for personal and commercial use with no credit required. Stand-in imagery for UI screens; Pro unlocks higher resolution.",s:["Browse images","https://www.lummi.ai"]},
+ {n:"Made by Attic",u:"https://www.madebyattic.com",g:"Mockups",p:["portfolio","book"],k:["mockups"],r:"lic",d:"A small, art-directed catalogue of editorial branding mockups: packaging, posters, billboards, stationery. About $12–14 each with a commercial licence, plus a few free files.",s:["Shop and free mockups","https://www.madebyattic.com"]},
+ {n:"Creatoom",u:"https://creatoom.com",g:"Mockups",p:["portfolio","apps","book"],k:["mockups"],r:"lic",d:"A large PSD library: 1,000+ scene and 6,600+ item mockups (devices, books, magazines, packaging, stationery), with hundreds free. Premium is $20/month or $120/year.",s:["Free scene mockups","https://creatoom.com/product-category/scene-mockups/free-mockups-s/"]},
+ {n:"Mockups Supply",u:"https://www.mockups.supply",g:"Mockups",p:["portfolio","book"],k:["mockups"],r:"lic",d:"Minimal, photoreal Photoshop mockups (posters, screens, billboards, packaging) on one subscription: $9/month or $59/year, commercial licence included. Some freebies.",s:["Freebies","https://www.mockups.supply/mockups/freebies"]},
  {n:"Cosmos",u:"https://www.cosmos.so",g:"Collecting",p:["portfolio","apps","book"],k:["boards","colour"],r:"tool",d:"Image moodboards (clusters) with hex-colour and visual-similarity search, plus source captions on every image.",s:["Explore","https://cosmos.so/explore"]},
  {n:"Are.na",u:"https://www.are.na",g:"Collecting",p:["portfolio","apps","book"],k:["boards"],r:"tool",d:"Ad-free research channels for images, links, PDFs and text. Others' public channels are a good way to find new sources.",s:["Explore","https://www.are.na/explore"]},
  {n:"Designspiration",u:"https://www.designspiration.com",g:"Collecting",p:["portfolio","apps","book"],k:["boards","colour"],r:"tool",d:"Image search by up to several colours at once. Pick it or Cosmos as your main board so references don't split.",s:["Explore","https://www.designspiration.com/explore/"]}
