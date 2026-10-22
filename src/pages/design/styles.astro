@@ -3,6 +3,9 @@
 // Style names and traits: UX Planet (credited on the page). Specimens are drawn in code for this page.
 import MainLayout from "../../layouts/MainLayout.astro";
 import { STYLES, GROUPS, SOURCE } from "../../data/design-styles.js";
+import { IMAGES, tileSrc } from "../../data/design-style-images.js";
+
+const nameOf = Object.fromEntries(STYLES.map((s) => [s.id, s.name]));
 
 const groupName = Object.fromEntries(GROUPS.map((g) => [g.id, g.name]));
 const byGroup = GROUPS.map((g) => ({ ...g, items: STYLES.filter((s) => s.group === g.id).sort((a, b) => a.n - b.n) }));
@@ -86,18 +89,47 @@ const fonts =
               data-group={s.group}
               data-text={`${s.name} ${s.traits} ${s.use}`.toLowerCase()}
             >
-              <div class={`fg-spec sp-${s.id}`} aria-hidden="true">
-                <Fragment set:html={s.spec} />
+              <div class="fg-media">
+                <div class={`fg-spec sp-${s.id}`} aria-hidden="true">
+                  <Fragment set:html={s.spec} />
+                </div>
+                {IMAGES[s.id]?.src && (
+                  <img class="fg-photo" src={tileSrc(IMAGES[s.id].src)} alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.hidden=true" />
+                )}
               </div>
               <p class="fg-tile-label">{s.name}</p>
               <button type="button" class="fg-tile-hit" data-open={s.id} aria-haspopup="dialog">
-                <span class="sr-only">Open {s.name}: specimen, traits, prompt and references</span>
+                <span class="sr-only">Open {s.name}: example, traits, prompt and references</span>
               </button>
               <template class="fg-tpl">
+                {IMAGES[s.id]?.src && (
+                  <figure class="fg-ex">
+                    <a class="fg-ex-img" href={IMAGES[s.id].page} target="_blank" rel="noopener noreferrer">
+                      <img src={IMAGES[s.id].src} width={IMAGES[s.id].w} height={IMAGES[s.id].h} alt={`${IMAGES[s.id].title}${IMAGES[s.id].by ? ", " + IMAGES[s.id].by : ""}: an example of ${s.name}`} decoding="async" referrerpolicy="no-referrer" />
+                    </a>
+                    <figcaption>
+                      <b>{IMAGES[s.id].title}</b>{IMAGES[s.id].date && <>, {IMAGES[s.id].date}</>}.
+                      <span class="fg-credit">
+                        {IMAGES[s.id].by}.{" "}
+                        {IMAGES[s.id].licUrl ? <a href={IMAGES[s.id].licUrl} target="_blank" rel="noopener noreferrer">{IMAGES[s.id].lic}</a> : IMAGES[s.id].lic},
+                        via <a href={IMAGES[s.id].page} target="_blank" rel="noopener noreferrer">Wikimedia Commons ↗</a>
+                      </span>
+                    </figcaption>
+                  </figure>
+                )}
                 <p class="fg-plate">{groupName[s.group]}</p>
                 <h3 class="fg-d-name">{s.name}</h3>
+                <p class="fg-see"><span>{IMAGES[s.id]?.src ? "What to look at" : "About this plate"}</span>{IMAGES[s.id]?.see}</p>
+                {IMAGES[s.id]?.vs && (
+                  <div class="fg-vs">
+                    <span>Don't confuse it with</span>
+                    <button type="button" class="fg-vs-link" data-goto={IMAGES[s.id].vs[0]}>{nameOf[IMAGES[s.id].vs[0]]} →</button>
+                    <p>{IMAGES[s.id].vs[1]}</p>
+                  </div>
+                )}
                 <p class="fg-traits"><span>In the article</span>{s.traits}</p>
                 <p class="fg-use"><span>Use it for</span>{s.use}</p>
+                <div class="fg-mini"><span>As a layout</span><div class="fg-mini-slot"></div></div>
                 <div class="fg-prompt">
                   <div class="fg-prompt-head"><span>Prompt</span><button type="button" class="fg-copy">Copy prompt</button></div>
                   <p class="fg-prompt-text">{s.prompt}</p>
@@ -123,7 +155,8 @@ const fonts =
       <p>
         Source: <a href={SOURCE.url} target="_blank" rel="noopener noreferrer">{SOURCE.author}, “{SOURCE.title}”, {SOURCE.publication}, {SOURCE.date}</a>.
         Reference links come from my <a href="/design-source-catalogue">Design Source Catalogue</a>, where each style can also be filtered by source.
-        Specimens are drawn in code for this page; the “Use it for” notes and the prompts are mine.
+        Example images come from Wikimedia Commons under public-domain or Creative Commons licences, credited on each plate.
+        The small layouts are drawn in code for this page; the comparisons, “Use it for” notes and prompts are mine.
       </p>
       <a class="fg-top" href="#top">Back to top ↑</a>
     </footer>
@@ -192,15 +225,32 @@ const fonts =
       current = tile;
       const spec = tile.querySelector(".fg-spec").cloneNode(true);
       spec.setAttribute("role", "img");
-      spec.setAttribute("aria-label", `Specimen of ${tile.dataset.name}, drawn for this guide`);
+      spec.setAttribute("aria-label", `Specimen of ${tile.dataset.name} as a layout, drawn for this guide`);
       spec.removeAttribute("aria-hidden");
-      vSpec.replaceChildren(spec);
-      vInfo.replaceChildren(tile.querySelector(".fg-tpl").content.cloneNode(true));
-      vInfo.querySelector(".fg-d-name").id = "fg-view-title";
+      const frag = tile.querySelector(".fg-tpl").content.cloneNode(true);
+      const ex = frag.querySelector(".fg-ex");
+      const mini = frag.querySelector(".fg-mini");
+      if (ex) {
+        // Real example on the left; the drawn specimen becomes a small "as a layout" sketch.
+        mini.querySelector(".fg-mini-slot").append(spec);
+        vSpec.replaceChildren(ex, mini);
+        const img = ex.querySelector("img");
+        img.addEventListener("error", () => { vSpec.replaceChildren(spec.cloneNode(true)); mini.hidden = true; }, { once: true });
+      } else {
+        vSpec.replaceChildren(spec);
+        mini.remove();
+      }
+      vInfo.replaceChildren(frag);
+      const title = vInfo.querySelector(".fg-d-name");
+      title.id = "fg-view-title"; title.tabIndex = -1;
+      vInfo.querySelectorAll(".fg-vs-link").forEach((b) => b.addEventListener("click", () => {
+        const t = document.getElementById(`style-${b.dataset.goto}`);
+        if (t) { clearFilters(); show(t); vInfo.querySelector(".fg-d-name").focus({ preventScroll: true }); }
+      }));
       const list = visible(), i = list.indexOf(tile);
       vPos.textContent = `${i + 1} of ${list.length}`;
       view.querySelectorAll(".fg-view-nav").forEach((b) => (b.disabled = list.length < 2));
-      vInfo.scrollTop = 0;
+      vInfo.scrollTop = 0; vSpec.scrollTop = 0; view.querySelector(".fg-view-body").scrollTop = 0;
       try { history.replaceState(null, "", `#style-${tile.dataset.id}`); } catch {}
     }
     function open(tile, from) {
@@ -336,7 +386,10 @@ const fonts =
   .fg-tile-label { margin: 0; padding: 8px 10px 9px; font: 400 1.02rem/1.15 var(--display); border-top: 1px solid var(--rule); min-height: 2.7em; display: flex; gap: 8px; align-items: baseline; }
   .fg-tile-hit { position: absolute; inset: 0; width: 100%; background: none; border: 0; padding: 0; cursor: zoom-in; z-index: 3; }
   .fg-tile-hit:focus-visible { outline: none; }
-  .fg-tile .fg-spec { aspect-ratio: 1; }
+  .fg-media { position: relative; aspect-ratio: 1; overflow: hidden; background: var(--plate); }
+  .fg-media .fg-spec { position: absolute; inset: 0; }
+  .fg-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .35s ease; }
+  .fg-tile:hover .fg-photo { transform: scale(1.04); }
 
   /* plate view (dialog) */
   .fg-view { border: 0; padding: 0; width: min(1080px, 94vw); max-height: 92vh; background: var(--page); color: var(--ink); box-shadow: 0 30px 80px rgba(5,22,46,.4); overflow: hidden; }
@@ -349,8 +402,24 @@ const fonts =
   .fg-view-pos { font: 13px var(--mono); color: var(--warm); min-width: 7ch; text-align: center; }
   .fg-view-close { margin-left: auto; }
   .fg-view-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); min-height: 0; }
-  .fg-view-spec { container-type: inline-size; border-right: 1px solid var(--rule); background: var(--plate); display: grid; align-content: start; }
+  .fg-view-spec { container-type: inline-size; border-right: 1px solid var(--rule); background: var(--plate); display: grid; align-content: start; overflow-y: auto; }
   .fg-view-spec .fg-spec { aspect-ratio: 1; width: 100%; }
+  .fg-ex { margin: 0; display: grid; }
+  .fg-ex-img { display: grid; place-items: center; background: #2a2420; min-height: 260px; }
+  .fg-ex-img img { display: block; max-width: 100%; height: auto; max-height: min(64vh, 640px); width: auto; object-fit: contain; }
+  .fg-ex figcaption { padding: 10px 14px 14px; font-size: 13.5px; line-height: 1.45; color: var(--muted); }
+  .fg-ex figcaption b { color: var(--ink); font-weight: 600; }
+  .fg-credit { display: block; margin-top: 3px; font: 12px/1.5 var(--mono); }
+  .fg-credit a, .fg-ex figcaption a { color: var(--ink); }
+  .fg-see, .fg-vs p { margin: 0; font-size: 15.5px; max-width: 52ch; }
+  .fg-see span, .fg-vs > span, .fg-mini > span { display: block; font: 11px var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+  .fg-vs { border-left: 3px solid var(--maroon); padding: 4px 0 4px 12px; display: grid; gap: 4px; justify-items: start; }
+  .fg-vs-link { font: 400 1.25rem/1.1 var(--display); color: var(--maroon); background: none; border: 0; padding: 0; cursor: pointer; text-align: left; }
+  .fg-vs-link:hover { text-decoration: underline; }
+  .fg-mini { display: grid; gap: 4px; padding: 0 14px 16px; }
+  .fg-d-name:focus { outline: none; }
+  .fg-mini-slot { width: 132px; border: 1px solid var(--rule); container-type: inline-size; }
+  .fg-mini-slot .fg-spec { aspect-ratio: 1; width: 100%; }
   .fg-view-info { overflow-y: auto; padding: 22px 24px 26px; display: grid; gap: 14px; align-content: start; }
   .fg-plate { margin: 0; font: 12px var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--maroon); }
   .fg-d-name { font-size: clamp(1.9rem, 3.4vw, 2.8rem); line-height: 1; }
@@ -680,6 +749,9 @@ const fonts =
     .fg-view-spec { border-right: 0; border-bottom: 1px solid var(--rule); justify-items: center; }
     .fg-view-spec .fg-spec { width: min(100%, 46dvh); }
     .fg-view-info { overflow: visible; padding: 18px 16px 28px; }
+    .fg-view-spec { overflow: visible; justify-items: stretch; }
+    .fg-ex-img { min-height: 200px; }
+    .fg-ex-img img { max-height: 46dvh; }
     .fg-view-nav span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
   }
   @media (max-width: 600px) {
