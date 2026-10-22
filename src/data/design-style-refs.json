@@ -1,0 +1,1042 @@
+{
+ "neoclassical": {
+  "name": "Neoclassical",
+  "fam": "classic",
+  "refs": [
+   {
+    "site": "Artvee",
+    "note": "Movements → Neoclassicism has thousands of public-domain paintings and engravings.",
+    "url": "https://artvee.com"
+   },
+   {
+    "site": "Century Library",
+    "note": "Architecture plates: columns, monuments and statues, already cleaned.",
+    "url": "https://centurylibrary.com/product-category/architecture/"
+   },
+   {
+    "site": "Wikimedia Commons",
+    "note": "Neoclassical architecture engravings, many in the public domain.",
+    "url": "https://commons.wikimedia.org/w/index.php?search=neoclassical%20architecture%20engraving"
+   },
+   {
+    "site": "Public Work",
+    "note": "Search The Met's classical sculpture and prints.",
+    "url": "https://public.work"
+   }
+  ]
+ },
+ "baroque": {
+  "name": "Baroque",
+  "fam": "classic",
+  "refs": [
+   {
+    "site": "Artvee",
+    "note": "Movements → Baroque (7,500+ works) and Rococo.",
+    "url": "https://artvee.com"
+   },
+   {
+    "site": "Public Domain Review",
+    "note": "17th–18th-century Venetian bridge-brawl paintings and prints.",
+    "url": "https://publicdomainreview.org/collection/venice-bridge-fights/"
+   },
+   {
+    "site": "Century Library",
+    "note": "Borders, frames and cartouches for baroque flourishes.",
+    "url": "https://centurylibrary.com/product-category/objects/"
+   },
+   {
+    "site": "Wikimedia Commons",
+    "note": "Baroque ornament engravings.",
+    "url": "https://commons.wikimedia.org/w/index.php?search=baroque%20ornament%20engraving"
+   }
+  ]
+ },
+ "filigree": {
+  "name": "Filigree",
+  "fam": "classic",
+  "refs": [
+   {
+    "site": "Century Library",
+    "note": "Ornaments, lace card frames and monogram PNGs, the closest ready-made filigree in the catalogue.",
+    "url": "https://centurylibrary.com"
+   },
+   {
+    "site": "Ephemera Society",
+    "note": "Victorian lace-paper cards and engraved trade cards.",
+    "url": "https://www.ephemerasociety.org/exhibits/"
+   },
+   {
+    "site": "Wikimedia Commons",
+    "note": "Filigree ornament scans and photographs.",
+    "url": "https://commons.wikimedia.org/w/index.php?search=filigree%20ornament"
+   }
+  ]
+ },
+ "acanthus": {
+  "name": "Acanthus",
+  "fam": "classic",
+  "refs": [
+   {
+    "site": "Century Library",
+    "note": "Architecture and ornament plates with acanthus scrolls.",
+    "url": "https://centurylibrary.com/product-category/architecture/"
+   },
+   {
+    "site": "Design Reviewed",
+    "note": "Arts and Crafts: foliage-led ornament in the William Morris tradition.",
+    "url": "https://designreviewed.com/design-movement/arts-and-crafts/"
+   },
+   {
+    "site": "Wikimedia Commons",
+    "note": "Acanthus ornament engravings.",
+    "url": "https://commons.wikimedia.org/w/index.php?search=acanthus%20ornament"
+   }
+  ]
+ },
+ "victorian": {
+  "name": "Victorian",
+  "fam": "classic",
+  "refs": [
+   {
+    "site": "Design Reviewed",
+    "note": "Victorian and Edwardian graphic design.",
+    "url": "https://designreviewed.com/design-movement/victorian-edwardian/"
+   },
+   {
+    "site": "Century Library",
+    "note": "Most of its archive is 19th-century: type, ornaments, ephemera, textures.",
+    "url": "https://centurylibrary.com"
+   },
+   {
+    "site": "Ephemera Society",
+    "note": "Trade cards, valentines, labels and tickets.",
+    "url": "https://www.ephemerasociety.org/exhibits/"
+   },
+   {
+    "site": "Letterform Archive",
+    "note": "19th-century type specimens (Jan Tholenaar collection).",
+    "url": "https://letterformarchive.org/collections/#tholenaar"
+   },
+   {
+    "site": "Wikimedia Commons",
+    "note": "Victorian advertisements and posters.",
+    "url": "https://commons.wikimedia.org/w/index.php?search=victorian%20advertisement%20poster"
+   }
+  ]
+ },
+ "artnouveau": {
+  "name": "Art Nouveau",
+  "fam": "classic",
+  "refs": [
+   {
+    "site": "Design Reviewed",
+    "note": "Movement page: Art Nouveau and Jugendstil.",
+    "url": "https://designreviewed.com/design-movement/art-nouveau/"
+   },
+   {
+    "site": "Artvee",
+    "note": "Movements → Art Nouveau, including Mucha-era posters.",
+    "url": "https://artvee.com"
+   },
+   {
+    "site": "Letterform Archive",
+    "note": "Botanical Patterns: Art Nouveau motifs from the collection.",
+    "url": "https://letterformarchive.org/shop/botanical-patterns-creative-papers/"
+   },
+   {
+    "site": "Century Library",
+    "note": "Art Nouveau lace panels and stencilled ornaments.",
+    "url": "https://centurylibrary.com"
+   },
+   {
+    "site": "Wikimedia Commons",
+    "note": "Art Nouveau posters.",
+    "url": "https://commons.wikimedia.org/w/index.php?search=art%20nouveau%20poster"
+   }
+  ]
+ },
+ "artdeco": {
+  "name": "Art Deco",
+  "fam": "classic",
+  "refs": [
+   {
+    "site": "Design Reviewed",
+    "note": "Movement page: Art Deco posters, packaging and type.",
+    "url": "https://designreviewed.com/design-movement/art-deco/"
+   },
+   {
+    "site": "Artvee",
+    "note": "Movements → Art Deco.",
+    "url": "https://artvee.com"
+   },
+   {
+    "site": "Wikimedia Commons",
+    "note": "Art Deco posters and lettering.",
+    "url": "https://commons.wikimedia.org/w/index.php?search=art%20deco%20poster"
+   },
+   {
+    "site": "Letterform Archive",
+    "note": "Online Archive: search Art Deco for lettering and specimens.",
+    "url": "https://oa.letterformarchive.org"
+   }
+  ]
+ },
+ "gothic": {
+  "name": "Gothic",
+  "fam": "classic",
+  "refs": [
+   {
+    "site": "Century Library",
+    "note": "Revived 1880s German blackletter typefaces.",
+    "url": "https://centurylibrary.com/product-category/fonts/"
+   },
+   {
+    "site": "Letterform Archive",
+    "note": "Blackletter specimens and calligraphy in the Online Archive.",
+    "url": "https://oa.letterformarchive.org"
+   },
+   {
+    "site": "Public Domain Review",
+    "note": "Medieval manuscripts, e.g. John of Arderne's anatomical scroll.",
+    "url": "https://publicdomainreview.org/collection/arderne-scroll/"
+   },
+   {
+    "site": "Wikimedia Commons",
+    "note": "Gothic stained glass.",
+    "url": "https://commons.wikimedia.org/w/index.php?search=gothic%20stained%20glass"
+   }
+  ]
+ },
+ "tenebrism": {
+  "name": "Tenebrism",
+  "fam": "classic",
+  "refs": [
+   {
+    "site": "Artvee",
+    "note": "Movements → Baroque: Caravaggio-era painting.",
+    "url": "https://artvee.com"
+   },
+   {
+    "site": "A24 concept site",
+    "note": "Full-bleed dark film stills used as cinematic, high-contrast UI.",
+    "url": "https://a24.raviklaassens.com"
+   },
+   {
+    "site": "Wikimedia Commons",
+    "note": "Chiaroscuro paintings.",
+    "url": "https://commons.wikimedia.org/w/index.php?search=chiaroscuro%20painting"
+   }
+  ]
+ },
+ "luxurytype": {
+  "name": "Luxury Typography",
+  "fam": "classic",
+  "refs": [
+   {
+    "site": "Siteinspire",
+    "note": "Fashion + Typographic websites.",
+    "url": "https://www.siteinspire.com/websites?categories=fashion,typographic"
+   },
+   {
+    "site": "Visuelle",
+    "note": "Fashion and hospitality identities led by type.",
+    "url": "https://visuelle.co.uk"
+   },
+   {
+    "site": "Kinfolk",
+    "note": "Display serif and monochrome editorial pages.",
+    "url": "https://www.kinfolk.com/stories-categories/design/"
+   },
+   {
+    "site": "Design Reviewed",
+    "note": "Type-only artefacts.",
+    "url": "https://designreviewed.com/design_theme/type-only/"
+   },
+   {
+    "site": "Typotheque",
+    "note": "Refined serif families for headlines.",
+    "url": "https://www.typotheque.com/fonts"
+   }
+  ]
+ },
+ "bauhaus": {
+  "name": "Bauhaus",
+  "fam": "modern",
+  "refs": [
+   {
+    "site": "Letterform Archive",
+    "note": "Bauhaus Typography at 100 (online exhibition).",
+    "url": "https://exhibitions.letterformarchive.org/bauhaus"
+   },
+   {
+    "site": "Design Reviewed",
+    "note": "Bauhaus, plus related De Stijl and Constructivism.",
+    "url": "https://designreviewed.com/design-movement/bauhaus/"
+   },
+   {
+    "site": "Bloomsbury Visual Arts",
+    "note": "Grids for Graphic Designers and other layout textbooks.",
+    "url": "https://www.bloomsburyvisualarts.com/design-and-illustration"
+   },
+   {
+    "site": "Wikimedia Commons",
+    "note": "Bauhaus posters.",
+    "url": "https://commons.wikimedia.org/w/index.php?search=bauhaus%20poster"
+   }
+  ]
+ },
+ "midcentury": {
+  "name": "Mid-Century",
+  "fam": "modern",
+  "refs": [
+   {
+    "site": "Design Reviewed",
+    "note": "Movement page: Mid-Century Modernism.",
+    "url": "https://designreviewed.com/design-movement/mid-century-modernism/"
+   },
+   {
+    "site": "Letterform Archive",
+    "note": "Dorothy and Otis Shepard's midcentury work.",
+    "url": "https://letterformarchive.org/news/from-the-collection-dorothy-and-otis-shepard/"
+   },
+   {
+    "site": "Letterform Archive",
+    "note": "Olivetti advertising Creative Papers.",
+    "url": "https://letterformarchive.org/shop/olivetti-creative-papers/"
+   },
+   {
+    "site": "Artvee",
+    "note": "Posters category includes 1950s–70s corporate posters.",
+    "url": "https://artvee.com"
+   }
+  ]
+ },
+ "utilitarian": {
+  "name": "Utilitarian",
+  "fam": "modern",
+  "refs": [
+   {
+    "site": "Siteinspire",
+    "note": "Grid Layout websites.",
+    "url": "https://www.siteinspire.com/websites/category/grid-layout"
+   },
+   {
+    "site": "Design Reviewed",
+    "note": "International Typographic Style (Swiss).",
+    "url": "https://designreviewed.com/design-movement/international-typographic-style/"
+   },
+   {
+    "site": "Letterform Archive",
+    "note": "Corporate identity manuals: the ancestors of design systems.",
+    "url": "https://letterformarchive.org/collections/#ichiyama"
+   },
+   {
+    "site": "Sternberg Press",
+    "note": "Text-led pocket books with plain, rule-based layouts.",
+    "url": "https://www.sternberg-press.com/series/lukas-sternberg-series/"
+   },
+   {
+    "site": "Bloomsbury Visual Arts",
+    "note": "Grids and layout textbooks.",
+    "url": "https://www.bloomsburyvisualarts.com/design-and-illustration"
+   }
+  ]
+ },
+ "modulartype": {
+  "name": "Modular Typography",
+  "fam": "modern",
+  "refs": [
+   {
+    "site": "Design Reviewed",
+    "note": "New Typography and type-only work.",
+    "url": "https://designreviewed.com/design-movement/new-typography/"
+   },
+   {
+    "site": "Letterform Archive",
+    "note": "Piet Zwart and Emigre collections.",
+    "url": "https://letterformarchive.org/collections/#zwart"
+   },
+   {
+    "site": "Siteinspire",
+    "note": "Typographic websites.",
+    "url": "https://www.siteinspire.com/websites/category/typographic"
+   },
+   {
+    "site": "Inventory Press",
+    "note": "A Co- Program for Graphic Design (David Reinfurt).",
+    "url": "https://www.inventorypress.com/product/a-co-program-for-graphic-design"
+   }
+  ]
+ },
+ "brutalism": {
+  "name": "Brutalism",
+  "fam": "modern",
+  "refs": [
+   {
+    "site": "Siteinspire",
+    "note": "Unusual Layout websites, many with raw, default-styled pages.",
+    "url": "https://www.siteinspire.com/websites/category/unusual-layout"
+   },
+   {
+    "site": "Sternberg Press",
+    "note": "Bulletins of The Serving Library (Dexter Sinister).",
+    "url": "https://www.sternberg-press.com/series/bulletins-of-the-serving-library/"
+   }
+  ]
+ },
+ "neobrutalism": {
+  "name": "Neo-Brutalism",
+  "fam": "modern",
+  "refs": [
+   {
+    "site": "Siteinspire",
+    "note": "Unusual Layout websites.",
+    "url": "https://www.siteinspire.com/websites/category/unusual-layout"
+   },
+   {
+    "site": "Visuelle",
+    "note": "Bold, type-heavy identity systems.",
+    "url": "https://visuelle.co.uk"
+   },
+   {
+    "site": "Pilot Magazine",
+    "note": "Stark, collaged editorial pages.",
+    "url": "https://pilotmagazine.uk"
+   }
+  ]
+ },
+ "japandi": {
+  "name": "Japandi",
+  "fam": "modern",
+  "refs": [
+   {
+    "site": "Kinfolk",
+    "note": "Interiors and home tours.",
+    "url": "https://www.kinfolk.com/stories-categories/interiors/"
+   },
+   {
+    "site": "Siteinspire",
+    "note": "Minimal websites.",
+    "url": "https://www.siteinspire.com/websites/category/minimal"
+   },
+   {
+    "site": "Design Reviewed",
+    "note": "Japanese Modernism for the Japanese half of the blend.",
+    "url": "https://designreviewed.com/design-movement/japanese-modernism/"
+   }
+  ]
+ },
+ "wabisabi": {
+  "name": "Wabi Sabi",
+  "fam": "modern",
+  "refs": [
+   {
+    "site": "Kinfolk",
+    "note": "Interiors, studios and craft stories.",
+    "url": "https://www.kinfolk.com/stories-categories/interiors/"
+   },
+   {
+    "site": "Public Work",
+    "note": "Search The Met for Japanese ceramics and tea wares.",
+    "url": "https://public.work"
+   },
+   {
+    "site": "Wikimedia Commons",
+    "note": "Raku and other hand-made ceramics.",
+    "url": "https://commons.wikimedia.org/w/index.php?search=raku%20ware"
+   }
+  ]
+ },
+ "lightacademia": {
+  "name": "Light Academia",
+  "fam": "modern",
+  "refs": [
+   {
+    "site": "Kinfolk",
+    "note": "Soft, bookish editorial photography.",
+    "url": "https://www.kinfolk.com/stories-categories/design/"
+   },
+   {
+    "site": "Sternberg Press",
+    "note": "Serious, carefully typeset books.",
+    "url": "https://www.sternberg-press.com/all-series/"
+   },
+   {
+    "site": "Inventory Press",
+    "note": "Designer-made art and design books.",
+    "url": "https://www.inventorypress.com/all"
+   },
+   {
+    "site": "Artvee",
+    "note": "Books section: illustrated book scans.",
+    "url": "https://artvee.com"
+   },
+   {
+    "site": "Century Library",
+    "note": "Aged papers and handwritten letters.",
+    "url": "https://centurylibrary.com"
+   }
+  ]
+ },
+ "rebus": {
+  "name": "Rebus",
+  "fam": "modern",
+  "refs": [
+   {
+    "site": "Illustration.lol",
+    "note": "Conceptual editorial illustration, e.g. Christoph Niemann.",
+    "url": "https://www.illustration.lol/profile/christoph-niemann"
+   },
+   {
+    "site": "Design Reviewed",
+    "note": "Sachplakat: the single-object poster.",
+    "url": "https://designreviewed.com/design-movement/sachplakat/"
+   },
+   {
+    "site": "Wikimedia Commons",
+    "note": "Historical rebus puzzles.",
+    "url": "https://commons.wikimedia.org/w/index.php?search=rebus"
+   }
+  ]
+ },
+ "bento": {
+  "name": "Bento Box",
+  "fam": "digital",
+  "refs": [
+   {
+    "site": "Siteinspire",
+    "note": "Grid Layout websites.",
+    "url": "https://www.siteinspire.com/websites/category/grid-layout"
+   },
+   {
+    "site": "Visuelle",
+    "note": "Studio Dumbar's Apple Services football design system.",
+    "url": "https://visuelle.co.uk/apple-services-football-design-system/"
+   }
+  ]
+ },
+ "glassmorphism": {
+  "name": "Glassmorphism",
+  "fam": "digital",
+  "refs": [
+   {
+    "site": "CARI",
+    "note": "Frutiger Aero: the glossy, translucent 2000s precursor.",
+    "url": "https://cari.institute/aesthetics/frutiger-aero"
+   }
+  ]
+ },
+ "frutigeraero": {
+  "name": "Neo Frutiger Aero",
+  "fam": "digital",
+  "refs": [
+   {
+    "site": "CARI",
+    "note": "Frutiger Aero: the original 2000s aesthetic, with examples.",
+    "url": "https://cari.institute/aesthetics/frutiger-aero"
+   },
+   {
+    "site": "CARI",
+    "note": "Four Colors: lime, sky blue, hot pink and tangerine 2000s products.",
+    "url": "https://cari.institute/aesthetics/four-colors"
+   }
+  ]
+ },
+ "y2k": {
+  "name": "Y2K",
+  "fam": "digital",
+  "refs": [
+   {
+    "site": "CARI",
+    "note": "Millennium Disco and Early Cyber.",
+    "url": "https://cari.institute/aesthetics/millennium-disco"
+   },
+   {
+    "site": "CARI",
+    "note": "Corporate Cyberspace (1990s tech branding).",
+    "url": "https://cari.institute/aesthetics/corporate-cyberspace"
+   },
+   {
+    "site": "Design Reviewed",
+    "note": "2000s graphic design.",
+    "url": "https://designreviewed.com/decade/2000s/"
+   }
+  ]
+ },
+ "aurora": {
+  "name": "Aurora",
+  "fam": "digital",
+  "refs": [
+   {
+    "site": "Illustration.lol",
+    "note": "Filter imagery by colour and tone.",
+    "url": "https://www.illustration.lol/"
+   },
+   {
+    "site": "Wikimedia Commons",
+    "note": "Aurora photographs (usable with credit).",
+    "url": "https://commons.wikimedia.org/w/index.php?search=aurora%20borealis"
+   }
+  ]
+ },
+ "ethereal": {
+  "name": "Ethereal",
+  "fam": "digital",
+  "refs": [
+   {
+    "site": "Kinfolk",
+    "note": "Soft palettes and quiet photography.",
+    "url": "https://www.kinfolk.com/stories-categories/design/"
+   },
+   {
+    "site": "Artvee",
+    "note": "Movements → Symbolism and Pre-Raphaelite.",
+    "url": "https://artvee.com"
+   }
+  ]
+ },
+ "pixelart": {
+  "name": "Pixel Art",
+  "fam": "digital",
+  "refs": [
+   {
+    "site": "CARI",
+    "note": "Early Cyber: bitmap imagery of early desktop publishing.",
+    "url": "https://cari.institute/aesthetics/early-cyber"
+   },
+   {
+    "site": "Letterform Archive",
+    "note": "Aaron Marcus: early computer graphics and interfaces.",
+    "url": "https://letterformarchive.org/collections/#marcus"
+   },
+   {
+    "site": "Design Reviewed",
+    "note": "April Greiman's hybrid early-digital imagery.",
+    "url": "https://designreviewed.com/april-greiman-and-her-hybrid-imagery/"
+   }
+  ]
+ },
+ "memphis": {
+  "name": "Memphis",
+  "fam": "pop",
+  "refs": [
+   {
+    "site": "Design Reviewed",
+    "note": "Postmodernism, which includes Memphis-era graphics.",
+    "url": "https://designreviewed.com/design-movement/postmodernism/"
+   },
+   {
+    "site": "Design Reviewed",
+    "note": "Neville Brody and The Face.",
+    "url": "https://designreviewed.com/neville-brody-and-the-face-magazine/"
+   },
+   {
+    "site": "Wikimedia Commons",
+    "note": "Memphis Group objects and graphics.",
+    "url": "https://commons.wikimedia.org/w/index.php?search=Memphis%20Group%20design"
+   }
+  ]
+ },
+ "popart": {
+  "name": "Pop Art",
+  "fam": "pop",
+  "refs": [
+   {
+    "site": "Design Reviewed",
+    "note": "1960s graphic design and Psychedelia.",
+    "url": "https://designreviewed.com/decade/1960s/"
+   },
+   {
+    "site": "Illustration.lol",
+    "note": "Bold, graphic editorial illustration.",
+    "url": "https://www.illustration.lol/"
+   },
+   {
+    "site": "Ephemera Society",
+    "note": "Printed ads and comic ephemera.",
+    "url": "https://www.ephemerasociety.org/exhibits/"
+   }
+  ]
+ },
+ "mixedmedia": {
+  "name": "Mixed Media",
+  "fam": "pop",
+  "refs": [
+   {
+    "site": "Inventory Press",
+    "note": "María Berrío: Songlines, 'painting with paper'.",
+    "url": "https://www.inventorypress.com/product/mar%C3%ADa-berr%C3%ADo-songlines"
+   },
+   {
+    "site": "Pilot Magazine",
+    "note": "Collaged, interactive print issues.",
+    "url": "https://pilotmagazine.uk"
+   },
+   {
+    "site": "Illustration.lol",
+    "note": "Collage illustrators, e.g. Nico Krijno.",
+    "url": "https://www.illustration.lol/profile/nico-krijno"
+   },
+   {
+    "site": "Century Library",
+    "note": "Overlays, documents and paper textures to layer.",
+    "url": "https://centurylibrary.com"
+   }
+  ]
+ },
+ "scrapbook": {
+  "name": "Scrapbook",
+  "fam": "pop",
+  "refs": [
+   {
+    "site": "Century Library",
+    "note": "Stamps, labels, postmarks, washi and paper textures.",
+    "url": "https://centurylibrary.com"
+   },
+   {
+    "site": "Ephemera Society",
+    "note": "Real scrapbook-era ephemera.",
+    "url": "https://www.ephemerasociety.org/exhibits/"
+   },
+   {
+    "site": "Pilot Magazine",
+    "note": "Sticker, perforation and hand-made print details.",
+    "url": "https://pilotmagazine.uk"
+   }
+  ]
+ },
+ "surrealism": {
+  "name": "Surrealism",
+  "fam": "pop",
+  "refs": [
+   {
+    "site": "Illustration.lol",
+    "note": "Conceptual editorial illustration.",
+    "url": "https://www.illustration.lol/publisher/the-new-yorker"
+   },
+   {
+    "site": "Public Domain Review",
+    "note": "Alchemical and dreamlike images, e.g. the Mutus Liber.",
+    "url": "https://publicdomainreview.org/collection/mutus-liber/"
+   },
+   {
+    "site": "Pilot Magazine",
+    "note": "Issue 4, Terra Incognita.",
+    "url": "https://www.stackmagazines.com/art-design/a-magazine-for-getting-lost/"
+   }
+  ]
+ },
+ "pointillism": {
+  "name": "Pointillism",
+  "fam": "pop",
+  "refs": [
+   {
+    "site": "Artvee",
+    "note": "Movements → Post-Impressionism (Seurat, Signac).",
+    "url": "https://artvee.com"
+   },
+   {
+    "site": "Public Work",
+    "note": "Search The Met for Seurat and Signac.",
+    "url": "https://public.work"
+   },
+   {
+    "site": "Wikimedia Commons",
+    "note": "Pointillist paintings.",
+    "url": "https://commons.wikimedia.org/w/index.php?search=pointillism%20painting"
+   }
+  ]
+ },
+ "sketch": {
+  "name": "Conceptual Sketch",
+  "fam": "pop",
+  "refs": [
+   {
+    "site": "Meng To",
+    "note": "A whole personal site built as an ink sketchbook.",
+    "url": "https://mengto.com"
+   },
+   {
+    "site": "Letterform Archive",
+    "note": "Martin Venezky: Process Work.",
+    "url": "https://letterformarchive.org/news/martin-venezky-process-work/"
+   },
+   {
+    "site": "Artvee",
+    "note": "Drawings category.",
+    "url": "https://artvee.com"
+   }
+  ]
+ },
+ "anthropomorphic": {
+  "name": "Anthropomorphic",
+  "fam": "pop",
+  "refs": [
+   {
+    "site": "Design Reviewed",
+    "note": "Dick Bruna, Miffy and stamp design.",
+    "url": "https://designreviewed.com/stamps-dick-bruna-and-the-making-of-miffy/"
+   },
+   {
+    "site": "Artvee",
+    "note": "Illustration: fables and children's books (Rackham, Aesop).",
+    "url": "https://artvee.com"
+   },
+   {
+    "site": "Illustration.lol",
+    "note": "Character-led editorial illustration.",
+    "url": "https://www.illustration.lol/"
+   }
+  ]
+ },
+ "kitsch": {
+  "name": "Kitsch",
+  "fam": "misc",
+  "refs": [
+   {
+    "site": "Design Reviewed",
+    "note": "Japanese lottery tickets, 1956–85.",
+    "url": "https://designreviewed.com/50-japanese-lottery-tickets/"
+   },
+   {
+    "site": "Century Library",
+    "note": "Fifties advertising figures and Victorian scraps.",
+    "url": "https://centurylibrary.com"
+   },
+   {
+    "site": "Ephemera Society",
+    "note": "Sentimental cards and souvenirs.",
+    "url": "https://www.ephemerasociety.org/exhibits/"
+   }
+  ]
+ },
+ "coquette": {
+  "name": "Coquette",
+  "fam": "misc",
+  "refs": [
+   {
+    "site": "Century Library",
+    "note": "Lace card frames, ribbons and Victorian scraps.",
+    "url": "https://centurylibrary.com"
+   },
+   {
+    "site": "Ephemera Society",
+    "note": "Valentines and lace-paper cards.",
+    "url": "https://www.ephemerasociety.org/exhibits/"
+   }
+  ]
+ },
+ "kawaii": {
+  "name": "Kawaii",
+  "fam": "misc",
+  "refs": [
+   {
+    "site": "Design Reviewed",
+    "note": "Dick Bruna and Japanese lottery ticket illustration.",
+    "url": "https://designreviewed.com/stamps-dick-bruna-and-the-making-of-miffy/"
+   },
+   {
+    "site": "CARI",
+    "note": "Four Colors (linked to Superflat pop).",
+    "url": "https://cari.institute/aesthetics/four-colors"
+   }
+  ]
+ },
+ "vaporwave": {
+  "name": "Vaporwave",
+  "fam": "misc",
+  "refs": [
+   {
+    "site": "CARI",
+    "note": "Corporate Cyberspace: the 90s tech look vaporwave parodies.",
+    "url": "https://cari.institute/aesthetics/corporate-cyberspace"
+   },
+   {
+    "site": "Public Work",
+    "note": "Public-domain classical busts to remix.",
+    "url": "https://public.work"
+   }
+  ]
+ },
+ "synthwave": {
+  "name": "Synthwave",
+  "fam": "misc",
+  "refs": [
+   {
+    "site": "Design Reviewed",
+    "note": "1980s graphic design, the source era for synthwave.",
+    "url": "https://designreviewed.com/decade/1980s/"
+   }
+  ]
+ },
+ "cybercore": {
+  "name": "Cybercore",
+  "fam": "misc",
+  "refs": [
+   {
+    "site": "CARI",
+    "note": "Early Cyber and Corporate Cyberspace.",
+    "url": "https://cari.institute/aesthetics/early-cyber"
+   },
+   {
+    "site": "Letterform Archive",
+    "note": "Aaron Marcus: early computer graphics.",
+    "url": "https://letterformarchive.org/collections/#marcus"
+   }
+  ]
+ },
+ "graffiti": {
+  "name": "Graffiti",
+  "fam": "misc",
+  "refs": [
+   {
+    "site": "Design Reviewed",
+    "note": "Punk graphics.",
+    "url": "https://designreviewed.com/design-movement/punk/"
+   },
+   {
+    "site": "Wikimedia Commons",
+    "note": "Graffiti photographs (check each licence).",
+    "url": "https://commons.wikimedia.org/w/index.php?search=graffiti%20lettering"
+   }
+  ]
+ },
+ "steampunk": {
+  "name": "Steampunk",
+  "fam": "misc",
+  "refs": [
+   {
+    "site": "Century Library",
+    "note": "Industrial, sciences and transport engravings.",
+    "url": "https://centurylibrary.com/product-category/industrial/"
+   },
+   {
+    "site": "Wikimedia Commons",
+    "note": "Victorian machinery engravings.",
+    "url": "https://commons.wikimedia.org/w/index.php?search=victorian%20machinery%20engraving"
+   }
+  ]
+ },
+ "mysticalwestern": {
+  "name": "Mystical Western",
+  "fam": "misc",
+  "refs": [
+   {
+    "site": "Public Domain Review",
+    "note": "Ghosts & Occult theme.",
+    "url": "https://publicdomainreview.org/collections/all/theme/ghosts-and-occult/"
+   },
+   {
+    "site": "Century Library",
+    "note": "Celestial charts, the All-Seeing Eye, palm-reading diagrams.",
+    "url": "https://centurylibrary.com/product-category/sciences/"
+   }
+  ]
+ },
+ "darkacademia": {
+  "name": "Dark Magic Academia",
+  "fam": "misc",
+  "refs": [
+   {
+    "site": "Public Domain Review",
+    "note": "Ghosts & Occult theme and alchemical books.",
+    "url": "https://publicdomainreview.org/collections/all/theme/ghosts-and-occult/"
+   },
+   {
+    "site": "Century Library",
+    "note": "Anatomy plates and star charts.",
+    "url": "https://centurylibrary.com/product-category/anatomy/"
+   },
+   {
+    "site": "Artvee",
+    "note": "Movements → Symbolism.",
+    "url": "https://artvee.com"
+   }
+  ]
+ },
+ "bohemian": {
+  "name": "Bohemian",
+  "fam": "misc",
+  "refs": [
+   {
+    "site": "Public Domain Review",
+    "note": "Central Asian Ikat textiles.",
+    "url": "https://publicdomainreview.org/collection/central-asian-ikat/"
+   },
+   {
+    "site": "Artvee",
+    "note": "Asian Art category.",
+    "url": "https://artvee.com"
+   }
+  ]
+ },
+ "shabbychic": {
+  "name": "Shabby Chic",
+  "fam": "misc",
+  "refs": [
+   {
+    "site": "Century Library",
+    "note": "Faded florals, lace frames and patterned papers.",
+    "url": "https://centurylibrary.com"
+   }
+  ]
+ },
+ "cottagecore": {
+  "name": "Farmhouse / Cottagecore",
+  "fam": "misc",
+  "refs": [
+   {
+    "site": "Century Library",
+    "note": "Botanical illustrations and patterns.",
+    "url": "https://centurylibrary.com"
+   },
+   {
+    "site": "Letterform Archive",
+    "note": "Botanical Patterns Creative Papers.",
+    "url": "https://letterformarchive.org/shop/botanical-patterns-creative-papers/"
+   },
+   {
+    "site": "Kinfolk",
+    "note": "Food and slow-living stories.",
+    "url": "https://www.kinfolk.com/stories-categories/food/"
+   }
+  ]
+ },
+ "wildwest": {
+  "name": "South West / Wild West",
+  "fam": "misc",
+  "refs": [
+   {
+    "site": "Design Reviewed",
+    "note": "Travel theme.",
+    "url": "https://designreviewed.com/design_theme/travel/"
+   },
+   {
+    "site": "Wikimedia Commons",
+    "note": "Wild West show posters.",
+    "url": "https://commons.wikimedia.org/w/index.php?search=wild%20west%20show%20poster"
+   }
+  ]
+ },
+ "nautical": {
+  "name": "Nautical",
+  "fam": "misc",
+  "refs": [
+   {
+    "site": "Public Domain Review",
+    "note": "Maps theme.",
+    "url": "https://publicdomainreview.org/collections/all/theme/maps/"
+   },
+   {
+    "site": "Century Library",
+    "note": "Maps and transport plates.",
+    "url": "https://centurylibrary.com/product-category/transport/"
+   },
+   {
+    "site": "Wikimedia Commons",
+    "note": "Nautical charts.",
+    "url": "https://commons.wikimedia.org/w/index.php?search=nautical%20chart"
+   }
+  ]
+ }
+}

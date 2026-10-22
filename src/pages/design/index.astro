@@ -1,0 +1,34 @@
+---
+// Design notes: a small index for the design pages, so the main navigation only needs one entry.
+import MainLayout from "../../layouts/MainLayout.astro";
+const pages = [
+  { href: "/design/styles", name: "A Field Guide to Design Styles", note: "Fifty design styles with specimens, real references and prompts I can reuse." },
+  { href: "/design-source-catalogue", name: "Design Source Catalogue", note: "Where I look for references and usable images, filterable by project, need and rights." },
+];
+---
+
+<MainLayout title="Design Notes · Dainty Archive" description="Manasi's design notes: a field guide to design styles and a catalogue of design sources.">
+  <div class="dn">
+    <h1>Design notes</h1>
+    <p class="dn-intro">Things I keep while learning to look more closely.</p>
+    <ul>
+      {pages.map((p) => (
+        <li>
+          <a href={p.href}>{p.name}</a>
+          <p>{p.note}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</MainLayout>
+
+<style>
+  .dn { display: grid; gap: 20px; color: #05162e; }
+  .dn h1 { font-family: "Gloock", Georgia, serif; font-weight: 400; font-size: clamp(2.4rem, 6vw, 4rem); margin: 0; border: 0; padding: 0; }
+  .dn-intro { margin: 0; font-family: "Courier Prime", "Courier New", monospace; }
+  .dn ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+  .dn li { border: 1.5px solid #05162e; border-radius: 10px; padding: 16px 18px; background: rgba(255,255,255,.35); }
+  .dn a { font-family: "Gloock", Georgia, serif; font-size: 1.5rem; color: #05162e; text-decoration: none; }
+  .dn a:hover { color: #89023e; }
+  .dn li p { margin: 6px 0 0; font-family: "Courier Prime", "Courier New", monospace; font-size: 15px; max-width: 60ch; }
+</style>
