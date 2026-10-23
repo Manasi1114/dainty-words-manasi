@@ -6,7 +6,7 @@
 <title>Design Source Catalogue</title>
 <meta name="description" content="A curated catalogue of websites, archives, publishers, image libraries and tools for studying and sourcing design, filterable by project, need, usage rights and design style.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Archivo:wdth,wght@62..125,400..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Instrument+Serif&family=Archivo:wdth,wght@62..125,400..900&display=swap">
 <style>
 :root{--edge:max(16px,3vw);--guide:rgba(226,38,46,.45);--red:#e2262e;
   --paper:#edede9;--ink:#0d1a33;--grey:#5a6070;--steel:#4c6c9c;--magenta:#d6366f;--ice:#c9dbec;--line:#d3d3cc;
@@ -179,6 +179,15 @@ footer{margin-top:36px}
 .card:hover .fp-2,.card:focus-within .fp-2{transform:rotate(16deg) translateX(18px)}
 @media (max-width:1180px){#grid .grp{grid-template-columns:1fr}}
 @media (max-width:560px){.card{grid-template-columns:136px minmax(0,1fr);gap:8px 14px}.fan{width:232px;height:172px;transform:scale(.58);transform-origin:0 0;margin:0 -97px -72px 0}.card:nth-child(even) .fan{justify-self:start}.card h3{font-size:24px}.card p{font-size:14.5px}}
+
+/* round 4: header column lines up with the filter column; tall thin serif title, centred */
+.cover{grid-template-columns:260px minmax(0,1fr)}
+.cover>.main{display:flex;flex-direction:column;align-items:center;text-align:center;padding:26px 22px 30px}
+.cover h1{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-variation-settings:normal;font-stretch:normal;text-transform:uppercase;
+  font-size:clamp(64px,10vw,150px);line-height:.86;letter-spacing:.005em;color:var(--steel);display:inline-block;padding-top:0}
+.cover h1::before{width:1.02em;height:1.02em;left:50%;top:50%;transform:translate(-18%,-62%)}
+.cover .lede{margin:22px auto 0;max-width:46ch;font-size:18px}
+@media (max-width:860px){.cover{grid-template-columns:1fr}.cover>.main{padding:16px 12px 24px}}
 </style>
 </head>
 <body>
@@ -186,12 +195,11 @@ footer{margin-top:36px}
 <header class="cover">
   <div class="side">
     <a class="back" href="/">Dainty Archive</a>
-    <span class="hmeta"><b>27 sources</b>for websites, apps and publications</span>
     <span class="hmeta"><b>Updated</b>October 2026</span>
   </div>
   <div class="main">
     <h1><span>Source</span><span>Catalogue</span></h1>
-    <p class="lede">Pick the project, then what you need from it. Each entry says where to start on that site and whether you can use its material or only learn from it.</p>
+    <p class="lede">A resource sandbox categorized to help you make better design choices.</p>
   </div>
 </header>
 
