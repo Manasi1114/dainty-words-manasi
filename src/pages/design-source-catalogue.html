@@ -30,7 +30,7 @@ button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(-
 .cover h1::before{content:"";position:absolute;z-index:-1;width:.98em;height:.98em;border-radius:50%;background:var(--magenta);left:2.05em;top:.34em}
 .cover .lede{margin:22px 0 0;max-width:52ch;font-size:18px;line-height:1.4}
 @media (max-width:860px){.cover{grid-template-columns:1fr}.cover>.side{flex-direction:row;flex-wrap:wrap;justify-content:space-between;gap:8px 16px;border-right:0;padding:14px 12px 0}.hmeta b{display:inline;margin-right:6px}.cover>.main{padding:10px 12px 22px}}
-.wrap{padding:0 var(--edge) 64px;max-width:1440px;margin:0 auto}
+.wrap{padding:0 var(--edge) 64px}
 /* project brief and style note */
 .brief{display:flex;flex-direction:column;gap:4px}
 .brief b{font-family:"Gloock",serif;font-weight:400;font-size:24px}
@@ -149,6 +149,36 @@ button.fam{padding:4px 0;font-size:14.5px}
 .tags{font-size:12.5px}
 footer{margin-top:36px}
 @media (max-width:760px){.card{grid-template-columns:1fr}.rail-toggle::after{font-family:"Archivo",sans-serif;font-size:22px}.fan{height:168px;max-width:none}.fp{height:130px}.fp-0{height:154px}.card:nth-child(even) .fan{justify-self:stretch}}
+
+/* round 3 */
+.cover{margin-top:16px;border-top:1px solid var(--guide)}
+.jump ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.jump a{display:flex;justify-content:space-between;gap:10px;padding:3px 0;font-size:14.5px;color:var(--ink);text-decoration:none}
+.jump a span{color:var(--grey);font-size:13px}
+.jump a:hover{color:var(--magenta)}
+.grp{scroll-margin-top:16px}
+.grp-h{font-size:clamp(40px,4.6vw,68px)}
+/* sources sit two to a row on wide screens */
+#grid .grp{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:40px}
+#grid .grp-h{grid-column:1/-1}
+.card{grid-template-columns:232px minmax(0,1fr);gap:12px 20px;align-items:start;padding:14px 0}
+.card:nth-child(even) .fan{order:0;justify-self:start}
+.card h3{font-size:clamp(24px,1.9vw,30px)}
+.card p{font-size:15px}
+.tag{display:none}.tag.on{display:inline}
+.tags:not(:has(.on)){display:none}
+/* the fan: three prints held from one point, overlapping, each corner visible */
+.fan{position:relative;height:172px;width:232px;max-width:none}
+.fp{position:absolute;top:auto;right:auto;left:50%;bottom:8px;width:106px;height:140px;margin-left:-53px;outline:0;border:4px solid #fff;
+  transform-origin:50% 112%;box-shadow:0 8px 18px -10px rgba(13,26,51,.55);transition:transform .45s cubic-bezier(.22,.8,.26,1)}
+.fp-0{z-index:3;top:auto;left:50%;height:140px;transform:translateY(-6px)}
+.fp-1{z-index:1;transform:rotate(-11deg) translateX(-12px)}
+.fp-2{z-index:2;transform:rotate(11deg) translateX(12px)}
+.card:hover .fp-0,.card:focus-within .fp-0{transform:translateY(-10px)}
+.card:hover .fp-1,.card:focus-within .fp-1{transform:rotate(-16deg) translateX(-18px)}
+.card:hover .fp-2,.card:focus-within .fp-2{transform:rotate(16deg) translateX(18px)}
+@media (max-width:1180px){#grid .grp{grid-template-columns:1fr}}
+@media (max-width:560px){.card{grid-template-columns:136px minmax(0,1fr);gap:8px 14px}.fan{width:232px;height:172px;transform:scale(.58);transform-origin:0 0;margin:0 -97px -72px 0}.card:nth-child(even) .fan{justify-self:start}.card h3{font-size:24px}.card p{font-size:14.5px}}
 </style>
 </head>
 <body>
@@ -169,6 +199,7 @@ footer{margin-top:36px}
   <aside class="rail" aria-label="Filters">
     <button class="rail-toggle" type="button" aria-expanded="false" aria-controls="railBody">Filters</button>
     <div class="rail-body" id="railBody">
+      <nav class="blk jump" aria-label="Sections"><span class="blk-h">Jump to</span><ol id="jump"></ol></nav>
       <label class="blk"><span class="blk-h">Search</span><input id="q" class="search" type="search" placeholder="botanical, Swiss, Devanagari"></label>
       <div class="blk"><span class="blk-h">Project</span><div class="stack" id="projects"></div></div>
       <div class="blk"><span class="blk-h">What you need</span><div class="checks" id="needs"></div></div>
@@ -192,12 +223,13 @@ const IMG={"Siteinspire":[{"src":"https://upload.wikimedia.org/wikipedia/commons
 const RL={use:"Usable",lic:"Licensed",ref:"Reference",tool:"Tool"};
 function pics(s,cls){const im=IMG[s.n]||[];return im.map((x,j)=>`<a class="${cls} ${cls}-${j}" href="${x.page}" target="_blank" rel="noopener" title="${esc(x.title)}, ${esc(x.by)} (${x.lic})"><img src="${j===0?x.big:x.src}" alt="${esc(x.title)}" loading="lazy" decoding="async"></a>`).join("")}
 function credit(s){const im=IMG[s.n]||[];return `<p class="credit">Pictured: ${im.map(x=>`<a href="${x.page}" target="_blank" rel="noopener" title="${esc(x.title)} (${x.lic})">${esc(x.by)}</a>`).join(", ")}</p>`}
-function GROUP(name,html,n){return `<section class="grp"><h2 class="grp-h">${esc(name)}<span>${n} source${n===1?"":"s"}</span></h2>${html}</section>`}
+function GROUP(name,html,n){return `<section class="grp" id="g-${name.toLowerCase().replace(/[^a-z]+/g,"-")}" data-name="${esc(name)}" data-n="${n}"><h2 class="grp-h">${esc(name)}<span>${n} source${n===1?"":"s"}</span></h2>${html}</section>`}
 function LAYOUT(list,fn){const order=[];const g={};list.forEach(s=>{if(!g[s.g]){g[s.g]=[];order.push(s.g)}g[s.g].push(s)});return order.map(k=>GROUP(k,g[k].map(fn).join(""),g[k].length)).join("")}
 function CARD(s,p){return `<article class="card"><div class="fan">${pics(s,"fp")}</div><div class="txt"><div class="meta"><span class="rights r-${s.r}">${s.unverified?"Unverified":RL[s.r]}</span></div><h3><a href="${s.u}" target="_blank" rel="noopener">${esc(s.n)}</a></h3><p>${esc(s.d)}</p>${p.extra}${p.start}<div class="tags">${p.tags}</div>${credit(s)}</div></article>`}
 
 
 function AFTER(){
+  const J=document.getElementById("jump");J.innerHTML=[...document.querySelectorAll(".grp")].map(g=>`<li><a href="#${g.id}">${g.dataset.name}<span>${g.dataset.n}</span></a></li>`).join("");
   document.querySelectorAll("#needs button").forEach(b=>{if(b.querySelector(".n"))return;const id=(NEEDS.find(n=>n[1]===b.textContent)||[])[0];if(!id)return;const s=document.createElement("span");s.className="n";s.textContent=S.filter(x=>x.k.includes(id)).length;b.appendChild(s)});
   const t=document.querySelector(".rail-toggle");const n=(st.project!=="all")+st.needs.size+(st.rights!=="any")+(st.style?1:0)+(st.q?1:0);
   t.firstChild.textContent=n?`Filters (${n} on)`:"Filters";
