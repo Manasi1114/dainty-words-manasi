@@ -50,14 +50,14 @@ const fonts =
           <span class="fg-azbox-h">Jump to a style</span>
           <div class="fg-fams">
             {byGroup.map((g) => (
-              <div class="fg-fam">
-                <button type="button" class="fg-fam-btn" data-fam={g.id} aria-expanded="false">{g.name}<span class="n">{g.items.length}</span></button>
-                <div class="fg-fam-list" hidden>
-                  {g.items.map((s) => <a class="fg-az-link" href={`#style-${s.id}`}>{s.name}</a>)}
-                </div>
-              </div>
+              <button type="button" class="fg-fam-btn" data-fam={g.id} aria-expanded="false" aria-controls={`fam-${g.id}`}>{g.name}<span class="n">{g.items.length}</span></button>
             ))}
           </div>
+          {byGroup.map((g) => (
+            <div class="fg-fam-list" id={`fam-${g.id}`} hidden>
+              {g.items.map((s) => <button type="button" class="fg-az-link" data-style={s.id} aria-pressed="false">{s.name}</button>)}
+            </div>
+          ))}
         </section>
       </div>
     </header>
@@ -210,13 +210,13 @@ const fonts =
     q.addEventListener("input", () => { state.q = q.value; apply(); });
     document.querySelectorAll("button[data-group]").forEach((b) => b.addEventListener("click", () => { state.group = b.dataset.group; apply(); }));
     document.querySelectorAll("button[data-order]").forEach((b) => b.addEventListener("click", () => { state.order = b.dataset.order; apply(); }));
-    // Family rows in the header: open one to filter the grid to it and list its styles; close it to show all again.
+    // Family rows in the header behave like the catalogue's style box: opening one only reveals its styles
+    // (one family open at a time); the grid below stays as it is.
     const famBtns = [...document.querySelectorAll(".fg-fam-btn")];
     famBtns.forEach((b) => b.addEventListener("click", () => {
       const opening = b.getAttribute("aria-expanded") !== "true";
-      famBtns.forEach((o) => { o.setAttribute("aria-expanded", "false"); o.nextElementSibling.hidden = true; });
-      if (opening) { b.setAttribute("aria-expanded", "true"); b.nextElementSibling.hidden = false; }
-      state.group = opening ? b.dataset.fam : "all"; apply();
+      famBtns.forEach((o) => { o.setAttribute("aria-expanded", "false"); document.getElementById(`fam-${o.dataset.fam}`).hidden = true; });
+      if (opening) { b.setAttribute("aria-expanded", "true"); document.getElementById(`fam-${b.dataset.fam}`).hidden = false; }
     }));
 
     // ---- plate view ----
@@ -287,11 +287,16 @@ const fonts =
       (back || opener)?.focus();
     });
 
-    // Style links in the header box open the plate directly
-    document.querySelectorAll(".fg-az-link").forEach((a) => a.addEventListener("click", (e) => {
-      e.preventDefault();
-      const t = document.getElementById(a.getAttribute("href").slice(1));
-      if (t) open(t, a);
+    // Style buttons in the header box: pressing one selects it (as in the catalogue) and opens its plate;
+    // pressing the selected one again clears it.
+    const styleBtns = [...document.querySelectorAll(".fg-az-link")];
+    styleBtns.forEach((b) => b.addEventListener("click", () => {
+      const on = b.getAttribute("aria-pressed") === "true";
+      styleBtns.forEach((o) => o.setAttribute("aria-pressed", "false"));
+      if (on) return;
+      b.setAttribute("aria-pressed", "true");
+      const t = document.getElementById(`style-${b.dataset.style}`);
+      if (t) { clearFilters(); open(t, b); }
     }));
 
     // Copy prompt (inside the plate view)
@@ -334,7 +339,7 @@ const fonts =
     --rule: #c9c7d2;
     --display: "Gloock", Georgia, serif;
     --body: "Archivo", "Helvetica Neue", Arial, sans-serif;  /* same body face as the catalogue */
-    --blue: #2448e0;       /* cobalt: second accent against the signal red */
+    --blue: #0a6b60;       /* deep teal: second accent and subtitle, the complement of the signal red */
     --mono: "Courier Prime", "Courier New", monospace;
   }
   html body:has(.fg) { background: #dcdbe3; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
@@ -354,7 +359,7 @@ const fonts =
   .fg { overflow-x: clip; }
   .fg .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
   .fg-spec img { display: block; max-width: 100%; height: auto; }
-  .fg-cover, .fg-tools, .fg-group, .fg-foot, .fg-empty { padding-left: max(16px, 4vw); padding-right: max(16px, 4vw); }
+  .fg-cover, .fg-tools, .fg-group, .fg-foot, .fg-empty { padding-left: max(16px, 3vw); padding-right: max(16px, 3vw); }
 
   /* cover */
   .fg-cover { display: grid; grid-template-columns: 260px minmax(0, 1fr); margin: 16px max(16px, 3vw) 18px; padding: 0 !important; border: 1px solid rgba(226,38,46,.45); background: transparent; color: var(--maroon); }
@@ -368,7 +373,7 @@ const fonts =
   .fg-cover h1 { position: relative; isolation: isolate; font-family: "League Gothic", "Archivo", sans-serif; text-transform: uppercase; font-size: clamp(72px, 9.6vw, 152px); line-height: 0.84; letter-spacing: 0.004em; color: var(--maroon); }
   .fg-cover h1 span { display: block; white-space: nowrap; }
   .fg-cover h1::before { content: ""; position: absolute; z-index: -1; width: .92em; height: .92em; border-radius: 50%; background: var(--blue); left: 2.2em; top: .32em; }
-  .fg-sub { width: 0; min-width: 66.6%; margin: 16px 0 0; font-family: "Josefin Sans", "Gill Sans", sans-serif; font-size: 17.5px; line-height: 1.45; color: var(--maroon); }
+  .fg-sub { width: 0; min-width: 66.6%; margin: 16px 0 0; font-family: "Josefin Sans", "Gill Sans", sans-serif; font-size: 17.5px; line-height: 1.45; color: var(--blue); }
   .fg-azbox { flex: 0 0 280px; align-self: flex-start; margin-top: 4px; border: 1px solid rgba(226,38,46,.45); background: rgba(255,255,255,.35); padding: 16px 18px 14px; display: flex; flex-direction: column; gap: 8px; color: var(--ink); }
   .fg-azbox-h { font: 400 19px/1.1 var(--display); padding-bottom: 8px; border-bottom: 1.5px solid var(--ink); }
 
@@ -380,15 +385,14 @@ const fonts =
   .fg-search input:focus-visible { outline: 2px solid var(--maroon); outline-offset: 0; }
   /* header box: families that open into style links (mirrors the catalogue's style box) */
   .fg-fams { display: flex; flex-direction: column; }
-  .fg-fam-btn { display: flex; justify-content: space-between; align-items: baseline; width: 100%; text-align: left; background: none; border: 0; padding: 5px 0; cursor: pointer; font: 14.5px var(--body); color: var(--ink); }
+  .fg-fam-btn { display: flex; justify-content: space-between; align-items: baseline; width: 100%; text-align: left; background: none; border: 0; padding: 5px 0; cursor: pointer; font: 14.5px/1.45 var(--body); color: var(--ink); }
   .fg-fam-btn::after { content: "+"; font-size: 17px; line-height: 1; color: var(--muted); }
   .fg-fam-btn[aria-expanded="true"] { font-weight: 600; }
-  .fg-fam-btn[aria-expanded="true"]::after { content: "–"; color: var(--blue); }
-  .fg-fam-btn:hover { color: var(--blue); }
-  .fg-fam-btn .n { margin-left: auto; margin-right: 12px; font: 12.5px var(--mono); color: var(--muted); }
-  .fg-fam-list { display: flex; flex-wrap: wrap; gap: 5px; padding: 6px 0 8px; }
-  .fg .fg-az-link { background: #fff; border: 1px solid #d3d3cc; padding: 4px 9px; font-size: 13px; text-decoration: none; color: var(--ink); }
-  .fg .fg-az-link:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
+  .fg-fam-btn[aria-expanded="true"]::after { content: "–"; }
+  .fg-fam-btn .n { margin-left: auto; margin-right: 12px; font: 12.5px var(--body); color: var(--muted); }
+  .fg-fam-list { display: flex; flex-wrap: wrap; gap: 5px; padding: 6px 0 4px; }
+  .fg .fg-az-link { background: #fff; border: 1px solid #d3d3cc; padding: 4px 9px; font: 13px/1.45 var(--body); color: var(--ink); cursor: pointer; }
+  .fg .fg-az-link[aria-pressed="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
   .fg-empty { margin: 30px 0 0; font-size: 18px; }
 
   /* groups: compact specimen drawers */
