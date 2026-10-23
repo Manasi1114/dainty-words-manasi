@@ -30,10 +30,27 @@ const fonts =
 
   <div class="fg" id="top">
     <header class="fg-cover">
-      <p class="fg-eyebrow">Dainty Archive · Design notes · 50 styles</p>
-      <h1>Field Guide – Design Styles</h1>
-      <p class="fg-sub">A visual vocabulary for recognising, exploring, and combining design languages.</p>
-      <p class="fg-xlink">See also: <a href="/design-source-catalogue">Design Source Catalogue</a>, the sites and archives behind these styles.</p>
+      <div class="fg-side">
+        <a class="fg-back" href="/">Dainty Archive</a>
+        <span class="fg-meta"><b>50 styles</b>in five families</span>
+        <span class="fg-meta"><b>Updated</b>October 2026</span>
+        <span class="fg-meta fg-xlink"><b>See also</b><a href="/design-source-catalogue">Design Source Catalogue</a></span>
+      </div>
+      <div class="fg-main">
+        <div class="fg-tblock">
+          <h1><span>Field Guide –</span><span>Design Styles</span></h1>
+          <p class="fg-sub">A visual vocabulary for recognising, exploring, and combining design languages.</p>
+        </div>
+        <section class="fg-azbox" aria-label="Jump to a style">
+          <span class="fg-azbox-h">Jump to a style</span>
+          <details class="fg-az">
+            <summary>All 50 styles, A–Z</summary>
+            <ul>
+          {az.map((s) => <li><a href={`#style-${s.id}`}>{s.name}</a></li>)}
+            </ul>
+          </details>
+        </section>
+      </div>
     </header>
 
     <div class="fg-tools" role="search">
@@ -56,19 +73,6 @@ const fonts =
       </div>
     </div>
 
-    <nav class="fg-index" aria-label="Jump to a group">
-      <ol>
-        {byGroup.map((g) => (
-          <li><a href={`#g-${g.id}`}>{g.name} <span>{g.items.length}</span></a></li>
-        ))}
-      </ol>
-      <details class="fg-az">
-        <summary>All 50 styles, A–Z</summary>
-        <ul>
-          {az.map((s) => <li><a href={`#style-${s.id}`}>{s.name}</a></li>)}
-        </ul>
-      </details>
-    </nav>
 
     <p class="fg-empty" id="fg-empty" hidden>No style matches that search. Try a broader word, pick “All”, or press Reset.</p>
 
@@ -210,7 +214,6 @@ const fonts =
     document.querySelectorAll("button[data-group]").forEach((b) => b.addEventListener("click", () => { state.group = b.dataset.group; apply(); }));
     document.querySelectorAll("button[data-order]").forEach((b) => b.addEventListener("click", () => { state.order = b.dataset.order; apply(); }));
     document.getElementById("fg-reset").addEventListener("click", () => { state.q = ""; state.group = "all"; state.order = "n"; q.value = ""; apply(); });
-    document.querySelectorAll(".fg-index ol a").forEach((a) => a.addEventListener("click", clearFilters));
 
     // ---- plate view ----
     const view = document.querySelector(".fg-view");
@@ -346,15 +349,23 @@ const fonts =
   .fg { overflow-x: clip; }
   .fg .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
   .fg-spec img { display: block; max-width: 100%; height: auto; }
-  .fg-cover, .fg-tools, .fg-index, .fg-group, .fg-foot, .fg-empty { padding-left: max(16px, 4vw); padding-right: max(16px, 4vw); }
+  .fg-cover, .fg-tools, .fg-group, .fg-foot, .fg-empty { padding-left: max(16px, 4vw); padding-right: max(16px, 4vw); }
 
   /* cover */
-  .fg-cover { background: var(--plate); color: var(--maroon); padding-top: 52px; padding-bottom: 44px; display: grid; gap: 16px; }
-  .fg-eyebrow { margin: 0; font: 13px var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--warm-deep); }
-  .fg-cover h1 { font-family: "League Gothic", "Archivo", sans-serif; text-transform: uppercase; font-size: clamp(4.4rem, 10.5vw, 10.5rem); line-height: 0.86; letter-spacing: 0.004em; color: var(--maroon); }
-  .fg-sub { margin: 0; font-size: clamp(1.1rem, 2vw, 1.4rem); max-width: 46ch; }
-  .fg-xlink { margin: 0; font: 13px var(--mono); color: var(--ink); }
-  .fg-cover .fg-xlink a { color: var(--maroon); font-weight: 700; }
+  .fg-cover { display: grid; grid-template-columns: 260px minmax(0, 1fr); margin: 16px max(16px, 3vw) 22px; padding: 0 !important; border: 1px solid rgba(217,44,54,.45); background: var(--plate); color: var(--maroon); }
+  .fg-side { display: flex; flex-direction: column; gap: 14px; padding: 20px 18px 18px 14px; border-right: 1px solid rgba(217,44,54,.45); font: 13px/1.35 var(--mono); color: var(--muted); }
+  .fg-side b { display: block; font-weight: 700; color: var(--ink); }
+  .fg .fg-back { font: 700 13px var(--mono); color: var(--ink); text-decoration: none; align-self: flex-start; }
+  .fg .fg-back:hover, .fg .fg-xlink a:hover { color: var(--maroon); }
+  .fg .fg-xlink a { color: var(--maroon); font-weight: 700; text-underline-offset: 3px; }
+  .fg-main { display: flex; align-items: flex-start; justify-content: space-between; gap: 36px 56px; padding: 34px 34px 38px clamp(22px, 3.4vw, 56px); min-width: 0; }
+  .fg-tblock { display: inline-block; min-width: 0; }
+  .fg-cover h1 { position: relative; isolation: isolate; font-family: "League Gothic", "Archivo", sans-serif; text-transform: uppercase; font-size: clamp(4.4rem, 8.6vw, 9.4rem); line-height: 0.84; letter-spacing: 0.004em; color: var(--maroon); }
+  .fg-cover h1 span { display: block; }
+  .fg-cover h1::before { content: ""; position: absolute; z-index: -1; width: .92em; height: .92em; border-radius: 50%; background: var(--warm); left: 3.1em; top: .3em; }
+  .fg-sub { width: 0; min-width: 66.6%; margin: 20px 0 0; font-size: 17.5px; line-height: 1.45; color: var(--maroon); }
+  .fg-azbox { flex: 0 0 300px; align-self: center; border: 1px solid rgba(217,44,54,.45); background: rgba(255,255,255,.5); padding: 16px 18px 14px; display: flex; flex-direction: column; gap: 8px; color: var(--ink); }
+  .fg-azbox-h { font: 400 19px/1.1 var(--display); padding-bottom: 8px; border-bottom: 1.5px solid var(--ink); }
 
   /* tools + index */
   .fg-tools { position: sticky; top: 0; z-index: 20; background: var(--ink); color: var(--page); padding-top: 12px; padding-bottom: 12px; display: grid; gap: 10px; }
@@ -367,12 +378,8 @@ const fonts =
   .fg-order button:hover, .fg-chips button:hover { border-color: var(--page); }
   .fg-status { margin: 0; font: 13px var(--mono); display: flex; gap: 12px; align-items: center; }
   .fg-status button { background: none; border: 0; color: var(--warm); text-decoration: underline; cursor: pointer; padding: 0; }
-  .fg-index { padding-top: 22px; padding-bottom: 6px; display: grid; gap: 10px; }
-  .fg-index ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 24px; }
-  .fg-index ol a { font: 600 15px var(--body); text-decoration: none; border-bottom: 2px solid var(--warm); }
-  .fg-index ol span { font: 12px var(--mono); color: var(--muted); }
   .fg-az summary { cursor: pointer; font: 13px var(--mono); color: var(--muted); }
-  .fg-az ul { list-style: none; margin: 10px 0 0; padding: 0; columns: 5 150px; column-gap: 20px; font-size: 14px; }
+  .fg-az ul { list-style: none; margin: 10px 0 0; padding: 0; columns: 2; column-gap: 16px; font-size: 14px; }
   .fg-az li { break-inside: avoid; padding: 2px 0; }
   .fg-empty { margin: 30px 0 0; font-size: 18px; }
 
@@ -750,8 +757,9 @@ const fonts =
   .sp-neobrutalism .btn { font: 700 5cqw "Space Mono", monospace; background: #ff8fd0; border: .8cqw solid #111; box-shadow: 1.6cqw 1.6cqw 0 #111; padding: 2cqw 5cqw; justify-self: end; margin-right: 12%; color: #111; }
 
   /* ---------- responsive + motion ---------- */
-  @media (max-width: 1024px) { .fg-cover { padding-top: 32px; } }
-  @media (max-width: 600px) { .fg-cover h1 { font-size: clamp(3.6rem, 19vw, 5.5rem); } }
+  @media (max-width: 1100px) { .fg-main { flex-direction: column; gap: 26px; } .fg-azbox { flex-basis: auto; align-self: stretch; max-width: 420px; } }
+  @media (max-width: 860px) { .fg-cover { grid-template-columns: 1fr; } .fg-side { flex-direction: row; flex-wrap: wrap; justify-content: space-between; gap: 8px 16px; border-right: 0; padding: 14px 12px 0; } .fg-side b { display: inline; margin-right: 6px; } .fg-main { padding: 14px 12px 22px; } }
+  @media (max-width: 600px) { .fg-cover h1 { font-size: clamp(3.6rem, 18vw, 5.5rem); } .fg-sub { font-size: 14px; } .fg-azbox { max-width: none; } }
   @media (max-width: 760px) {
     .fg-view { width: 100vw; max-width: 100vw; height: 100dvh; max-height: 100dvh; }
     .fg-view-body { grid-template-columns: minmax(0, 1fr); overflow-y: auto; }
