@@ -11,7 +11,7 @@ const groupName = Object.fromEntries(GROUPS.map((g) => [g.id, g.name]));
 const byGroup = GROUPS.map((g) => ({ ...g, items: STYLES.filter((s) => s.group === g.id).sort((a, b) => a.n - b.n) }));
 const az = [...STYLES].sort((a, b) => a.name.localeCompare(b.name));
 const fonts =
-  "family=Gloock&family=Josefin+Sans:wght@300;400;600&family=Courier+Prime:wght@400;700" +
+  "family=Gloock&family=League+Gothic&family=Josefin+Sans:wght@300;400;600&family=Courier+Prime:wght@400;700" +
   "&family=Cinzel:wght@500;700&family=Bodoni+Moda:opsz,wght@6..96,500&family=Poiret+One&family=UnifrakturMaguntia" +
   "&family=Press+Start+2P&family=VT323&family=Rye&family=Fredoka:wght@600&family=Cormorant+Garamond:ital,wght@0,400;1,300;1,500" +
   "&family=IM+Fell+English:ital@0;1&family=Allerta+Stencil&family=Sedgwick+Ave+Display&family=Archivo+Black&family=Space+Mono" +
@@ -19,7 +19,7 @@ const fonts =
 ---
 
 <MainLayout
-  title="A Field Guide to Design Styles · Dainty Archive"
+  title="Field Guide – Design Styles · Dainty Archive"
   description="A visual vocabulary for recognising, exploring and combining design languages: 50 styles with specimens, references and reusable prompts."
 >
   <Fragment slot="head">
@@ -31,7 +31,7 @@ const fonts =
   <div class="fg" id="top">
     <header class="fg-cover">
       <p class="fg-eyebrow">Dainty Archive · Design notes · 50 styles</p>
-      <h1>A Field Guide to Design Styles</h1>
+      <h1>Field Guide – Design Styles</h1>
       <p class="fg-sub">A visual vocabulary for recognising, exploring, and combining design languages.</p>
     </header>
 
@@ -312,22 +312,27 @@ const fonts =
 
 <style is:global>
   /* FIELD GUIDE · tokens
-     Layout: a naturalist's field guide. A warm apricot cover, a sticky key,
+     Layout: a naturalist's field guide. A cool white cover with a red League Gothic title, a sticky key,
      then plates grouped like families, each with a drawn specimen above its field notes. */
   .fg {
-    --warm: #f2c4a2;       /* warm apricot: cover, active chips, key underlines */
-    --warm-deep: #7a3417;  /* burnt sienna: eyebrow, prompt rule */
-    --page: #fbf4ea;       /* warm paper */
-    --plate: #fffaf3;
-    --ink: #05162e;        /* site navy */
-    --muted: #6a5a4c;
-    --maroon: #89023e;     /* site hover colour, used for group labels and focus */
-    --rule: #e8d7c3;
+    /* palette 3B, from the "Inner Weather" spread: lilac-grey page, white cover, signal red */
+    --warm: #f1a7ab;       /* pale red: active chips, key underlines */
+    --warm-deep: #151515;  /* eyebrow, prompt rule */
+    --page: #dcdbe3;       /* lilac-grey page */
+    --plate: #f3f2f2;      /* cool white: cover, tiles, plate view */
+    --ink: #151515;
+    --muted: #57565e;
+    --maroon: #d92c36;     /* signal red: title, group labels, links and focus */
+    --rule: #c9c7d2;
     --display: "Gloock", Georgia, serif;
     --body: "Josefin Sans", "Gill Sans", "Trebuchet MS", sans-serif;
     --mono: "Courier Prime", "Courier New", monospace;
   }
-  html body:has(.fg) { background: #fbf4ea; overflow-x: hidden; }
+  html body:has(.fg) { background: #dcdbe3; overflow-x: hidden; display: flex; flex-direction: column; min-height: 100vh; }
+  /* on this page the site links sit at the bottom instead of over the cover */
+  html body:has(.fg) .main-content { order: 1; width: 100%; }
+  html body:has(.fg) .archive-nav { order: 2; position: static; top: auto; right: auto; padding: 28px max(16px, 4vw) 44px; border-top: 1px solid #c9c7d2; }
+  @media (min-width: 769px) { html body:has(.fg) .nav-links { display: flex; flex-wrap: wrap; gap: 10px; } }
   html body .main-content:has(.fg) { max-width: none; padding: 0; }
   .fg { color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.5; }
   .fg *, .fg *::before, .fg *::after { box-sizing: border-box; }
@@ -343,9 +348,9 @@ const fonts =
   .fg-cover, .fg-tools, .fg-index, .fg-group, .fg-foot, .fg-empty { padding-left: max(16px, 4vw); padding-right: max(16px, 4vw); }
 
   /* cover */
-  .fg-cover { background: var(--warm); padding-top: 200px; padding-bottom: 40px; display: grid; gap: 16px; }
+  .fg-cover { background: var(--plate); color: var(--maroon); padding-top: 52px; padding-bottom: 44px; display: grid; gap: 16px; }
   .fg-eyebrow { margin: 0; font: 13px var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--warm-deep); }
-  .fg-cover h1 { font-size: clamp(2.6rem, 7.5vw, 6.5rem); line-height: 0.95; max-width: 14ch; }
+  .fg-cover h1 { font-family: "League Gothic", "Archivo", sans-serif; text-transform: uppercase; font-size: clamp(4.4rem, 10.5vw, 10.5rem); line-height: 0.86; letter-spacing: 0.004em; color: var(--maroon); }
   .fg-sub { margin: 0; font-size: clamp(1.1rem, 2vw, 1.4rem); max-width: 46ch; }
 
   /* tools + index */
@@ -354,7 +359,7 @@ const fonts =
   .fg-search { flex: 1 1 260px; min-width: 0; }
   .fg-search input { width: 100%; font: 15px var(--body); padding: 9px 12px; border: 1px solid var(--warm); border-radius: 4px; background: var(--page); color: var(--ink); }
   .fg-order, .fg-chips { display: flex; flex-wrap: wrap; gap: 6px; }
-  .fg-order button, .fg-chips button { font-size: 13.5px; padding: 6px 11px; border: 1px solid rgba(242,196,162,.6); border-radius: 999px; background: transparent; color: var(--page); cursor: pointer; }
+  .fg-order button, .fg-chips button { font-size: 13.5px; padding: 6px 11px; border: 1px solid rgba(241,167,171,.75); border-radius: 999px; background: transparent; color: var(--page); cursor: pointer; }
   .fg-order button[aria-pressed="true"], .fg-chips button[aria-pressed="true"] { background: var(--warm); color: var(--ink); border-color: var(--warm); }
   .fg-order button:hover, .fg-chips button:hover { border-color: var(--page); }
   .fg-status { margin: 0; font: 13px var(--mono); display: flex; gap: 12px; align-items: center; }
@@ -396,7 +401,7 @@ const fonts =
   .fg-view[open] { display: grid; grid-template-rows: auto minmax(0, 1fr); }
   .fg-view::backdrop { background: rgba(5,22,46,.72); }
   .fg-view-bar { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: var(--ink); color: var(--page); }
-  .fg-view-bar button { font: 13px var(--mono); background: transparent; color: var(--page); border: 1px solid rgba(242,196,162,.6); border-radius: 999px; padding: 6px 12px; cursor: pointer; }
+  .fg-view-bar button { font: 13px var(--mono); background: transparent; color: var(--page); border: 1px solid rgba(241,167,171,.75); border-radius: 999px; padding: 6px 12px; cursor: pointer; }
   .fg-view-bar button:hover { background: var(--warm); color: var(--ink); }
   .fg-view-bar button:disabled { opacity: .4; cursor: default; }
   .fg-view-pos { font: 13px var(--mono); color: var(--warm); min-width: 7ch; text-align: center; }
@@ -743,6 +748,7 @@ const fonts =
 
   /* ---------- responsive + motion ---------- */
   @media (max-width: 1024px) { .fg-cover { padding-top: 32px; } }
+  @media (max-width: 600px) { .fg-cover h1 { font-size: clamp(3.6rem, 19vw, 5.5rem); } }
   @media (max-width: 760px) {
     .fg-view { width: 100vw; max-width: 100vw; height: 100dvh; max-height: 100dvh; }
     .fg-view-body { grid-template-columns: minmax(0, 1fr); overflow-y: auto; }
