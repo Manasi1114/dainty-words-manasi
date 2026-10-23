@@ -6,7 +6,7 @@
 <title>Design Source Catalogue</title>
 <meta name="description" content="A curated catalogue of websites, archives, publishers, image libraries and tools for studying and sourcing design, filterable by project, need, usage rights and design style.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Archivo:wdth,wght@62..125,400..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=League+Gothic&family=Archivo:wdth,wght@62..125,400..900&display=swap">
 <style>
 :root{--edge:max(16px,3vw);--guide:rgba(226,38,46,.45);--red:#e2262e;
   --paper:#ece8ed;--ink:#0d1a33;--grey:#5a6070;--steel:#4c6c9c;--magenta:#d6366f;--ice:#c9dbec;--line:#d3d3cc;
@@ -198,6 +198,29 @@ footer{margin-top:36px}
 .cover .lede{min-width:66.6%;text-align:left;margin-top:10px;font-size:16.5px}
 footer{margin:44px 0 0 auto;max-width:46ch;text-align:right;font-size:12px;line-height:1.55;color:#77747a}
 @media (max-width:600px){.cover .lede{font-size:13px;line-height:1.4}}
+/* round 7: League Gothic title; design-style browser moved into the header in its own box; roomier header; short justified footer */
+.cover>.main{display:flex;align-items:flex-start;justify-content:space-between;gap:40px 56px;padding:34px 34px 38px clamp(22px,3.4vw,56px)}
+.tblock{flex:0 1 auto;min-width:0}
+.cover h1{font-family:"League Gothic","Archivo",sans-serif;font-weight:400;font-variation-settings:normal;font-stretch:normal;
+  font-size:clamp(86px,12.5vw,196px);line-height:.84;letter-spacing:.004em;text-transform:uppercase}
+.cover h1 span{transform:none;margin-bottom:0}
+.cover h1 span:last-child{margin-bottom:0}
+.cover h1::before{width:.92em;height:.92em;left:1.55em;top:.34em}
+.cover .lede{margin-top:20px;font-size:16.5px;line-height:1.45}
+.stylebox{flex:0 0 300px;align-self:center;border:1px solid var(--guide);background:rgba(255,255,255,.35);padding:16px 18px 14px;display:flex;flex-direction:column;gap:8px}
+.sb-h{font-family:"Gloock",serif;font-size:19px;line-height:1.1;padding-bottom:8px;border-bottom:1.5px solid var(--ink)}
+.stylebox .fams{display:flex;flex-direction:column}
+.stylebox button.fam{display:flex;justify-content:space-between;align-items:baseline;text-align:left;background:none;border:0;padding:5px 0;cursor:pointer;font-size:14.5px;color:var(--ink)}
+.stylebox button.fam::after{content:"+";font-size:17px;line-height:1;color:var(--grey)}
+.stylebox button.fam[aria-expanded="true"]{font-weight:700}
+.stylebox button.fam[aria-expanded="true"]::after{content:"–"}
+.stylebox .fam .n{margin-left:auto;margin-right:12px;color:var(--grey);font-size:12.5px;font-weight:400}
+.stylebox .stylechips{display:flex;flex-wrap:wrap;gap:5px;padding:6px 0 4px}
+.stylebox .stylechips button{background:#fff;border:1px solid var(--line);padding:4px 9px;font-size:13px;cursor:pointer;color:var(--ink)}
+.stylebox .stylechips button[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+footer{margin:40px 0 0 auto;max-width:34ch;text-align:justify;hyphens:auto;-webkit-hyphens:auto;font-size:11.5px;line-height:1.55;color:#77747a}
+@media (max-width:1100px){.cover>.main{flex-direction:column;gap:26px}.stylebox{flex-basis:auto;align-self:stretch;max-width:420px}}
+@media (max-width:600px){.cover>.main{padding:16px 12px 22px}.cover h1{font-size:clamp(70px,22vw,110px)}.cover .lede{font-size:13px;line-height:1.45;margin-top:14px}.stylebox{max-width:none}}
 </style>
 </head>
 <body>
@@ -212,6 +235,11 @@ footer{margin:44px 0 0 auto;max-width:46ch;text-align:right;font-size:12px;line-
       <h1><span>Source</span><span>Catalogue</span></h1>
       <p class="lede">A resource sandbox categorized and designed to help you explore the elements of visual design better than your usual suspects.</p>
     </div>
+    <section class="stylebox" aria-label="Browse by design style">
+      <span class="sb-h">Browse by design style</span>
+      <div class="fams" id="fams"></div>
+      <div class="stylechips" id="stylechips" hidden></div>
+    </section>
   </div>
 </header>
 
@@ -224,7 +252,6 @@ footer{margin:44px 0 0 auto;max-width:46ch;text-align:right;font-size:12px;line-
       <div class="blk"><span class="blk-h">Project</span><div class="stack" id="projects"></div></div>
       <div class="blk"><span class="blk-h">What you need</span><div class="checks" id="needs"></div></div>
       <div class="blk"><span class="blk-h">Rights</span><div class="keys" id="rightsRow"></div></div>
-      <div class="blk"><span class="blk-h">Design style</span><div class="fams" id="fams"></div><div class="stylechips" id="stylechips" hidden></div></div>
     </div>
   </aside>
   <div class="results">
@@ -234,7 +261,7 @@ footer{margin:44px 0 0 auto;max-width:46ch;text-align:right;font-size:12px;line-
     
     <div class="status"><span id="count"></span><button id="reset" type="button">Clear filters</button></div>
     <div id="grid"></div>
-    <footer>Images are stand-ins from Wikimedia Commons that show the kind of material each site holds; they are not taken from the sites. The three images on each source change every day. Hover over an image for its title and licence. Rights labels are a starting point, not legal advice: always check the licence or rights statement on the individual item before using it in your work. All descriptions are my own summaries; every site belongs to its owners. Last updated October 2026.</footer>
+    <footer>Images are Wikimedia Commons stand-ins, reshuffled daily; hover for credits. Rights labels are a guide, not legal advice, so check each item's licence. Descriptions are my own; every site belongs to its owners.</footer>
   </div>
 </main>
 <script>
