@@ -33,6 +33,7 @@ const fonts =
       <p class="fg-eyebrow">Dainty Archive · Design notes · 50 styles</p>
       <h1>Field Guide – Design Styles</h1>
       <p class="fg-sub">A visual vocabulary for recognising, exploring, and combining design languages.</p>
+      <p class="fg-xlink">See also: <a href="/design-source-catalogue">Design Source Catalogue</a>, the sites and archives behind these styles.</p>
     </header>
 
     <div class="fg-tools" role="search">
@@ -352,6 +353,8 @@ const fonts =
   .fg-eyebrow { margin: 0; font: 13px var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--warm-deep); }
   .fg-cover h1 { font-family: "League Gothic", "Archivo", sans-serif; text-transform: uppercase; font-size: clamp(4.4rem, 10.5vw, 10.5rem); line-height: 0.86; letter-spacing: 0.004em; color: var(--maroon); }
   .fg-sub { margin: 0; font-size: clamp(1.1rem, 2vw, 1.4rem); max-width: 46ch; }
+  .fg-xlink { margin: 0; font: 13px var(--mono); color: var(--ink); }
+  .fg-cover .fg-xlink a { color: var(--maroon); font-weight: 700; }
 
   /* tools + index */
   .fg-tools { position: sticky; top: 0; z-index: 20; background: var(--ink); color: var(--page); padding-top: 12px; padding-bottom: 12px; display: grid; gap: 10px; }

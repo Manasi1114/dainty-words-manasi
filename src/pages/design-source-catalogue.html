@@ -6,7 +6,7 @@
 <title>Design Source Catalogue</title>
 <meta name="description" content="A curated catalogue of websites, archives, publishers, image libraries and tools for studying and sourcing design, filterable by project, need, usage rights and design style.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=League+Gothic&family=Archivo:wdth,wght@62..125,400..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=League+Gothic&family=Josefin+Sans:wght@400;600&family=Archivo:wdth,wght@62..125,400..900&display=swap">
 <style>
 :root{--edge:max(16px,3vw);--guide:rgba(226,38,46,.45);--red:#e2262e;
   --paper:#ece8ed;--ink:#0d1a33;--grey:#5a6070;--steel:#4c6c9c;--magenta:#d6366f;--ice:#c9dbec;--line:#d3d3cc;
@@ -219,8 +219,12 @@ footer{margin:44px 0 0 auto;max-width:46ch;text-align:right;font-size:12px;line-
 .stylebox .stylechips button{background:#fff;border:1px solid var(--line);padding:4px 9px;font-size:13px;cursor:pointer;color:var(--ink)}
 .stylebox .stylechips button[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
 footer{margin:40px 0 0 auto;max-width:34ch;text-align:justify;hyphens:auto;-webkit-hyphens:auto;font-size:11.5px;line-height:1.55;color:#77747a}
+/* round 8: subtitle shares the Field Guide's subtitle face; cross-link to the Field Guide */
+.cover .lede{font-family:"Josefin Sans","Gill Sans","Trebuchet MS",sans-serif;font-size:17.5px;line-height:1.45}
+.xlink a{color:var(--magenta);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.xlink a:hover{color:var(--ink)}
 @media (max-width:1100px){.cover>.main{flex-direction:column;gap:26px}.stylebox{flex-basis:auto;align-self:stretch;max-width:420px}}
-@media (max-width:600px){.cover>.main{padding:16px 12px 22px}.cover h1{font-size:clamp(70px,22vw,110px)}.cover .lede{font-size:13px;line-height:1.45;margin-top:14px}.stylebox{max-width:none}}
+@media (max-width:600px){.cover>.main{padding:16px 12px 22px}.cover h1{font-size:clamp(70px,22vw,110px)}.cover .lede{font-size:14px;line-height:1.45;margin-top:14px}.stylebox{max-width:none}}
 </style>
 </head>
 <body>
@@ -229,6 +233,7 @@ footer{margin:40px 0 0 auto;max-width:34ch;text-align:justify;hyphens:auto;-webk
   <div class="side">
     <a class="back" href="/">Dainty Archive</a>
     <span class="hmeta"><b>Updated</b>October 2026</span>
+    <span class="hmeta xlink"><b>See also</b><a href="/design/styles">Field Guide – Design Styles</a></span>
   </div>
   <div class="main">
     <div class="tblock">
