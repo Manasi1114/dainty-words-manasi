@@ -38,39 +38,31 @@ const fonts =
       </div>
       <div class="fg-main">
         <div class="fg-tblock">
-          <h1><span>Field Guide –</span><span>Design Styles</span></h1>
+          <h1><span>Field Guide</span><span>Design Styles</span></h1>
           <p class="fg-sub">A visual vocabulary for recognising, exploring, and combining design languages.</p>
         </div>
         <section class="fg-azbox" aria-label="Jump to a style">
           <span class="fg-azbox-h">Jump to a style</span>
-          <details class="fg-az">
-            <summary>All 50 styles, A–Z</summary>
-            <ul>
-          {az.map((s) => <li><a href={`#style-${s.id}`}>{s.name}</a></li>)}
-            </ul>
-          </details>
+          <div class="fg-fams">
+            {byGroup.map((g) => (
+              <div class="fg-fam">
+                <button type="button" class="fg-fam-btn" data-fam={g.id} aria-expanded="false">{g.name}<span class="n">{g.items.length}</span></button>
+                <div class="fg-fam-list" hidden>
+                  {g.items.map((s) => <a class="fg-az-link" href={`#style-${s.id}`}>{s.name}</a>)}
+                </div>
+              </div>
+            ))}
+          </div>
         </section>
       </div>
     </header>
 
     <div class="fg-tools" role="search">
-      <div class="fg-tools-row">
-        <label class="fg-search">
-          <span class="sr-only">Search styles</span>
-          <input id="fg-q" type="search" placeholder="Search a style or trait: gold, grid, pixel…" autocomplete="off" />
-        </label>
-        <div class="fg-order" role="group" aria-label="Order">
-          <button type="button" data-order="n" aria-pressed="true">Article order</button>
-          <button type="button" data-order="az" aria-pressed="false">A–Z</button>
-        </div>
-      </div>
-      <div class="fg-tools-row">
-        <div class="fg-chips" role="group" aria-label="Filter by group">
-          <button type="button" data-group="all" aria-pressed="true">All</button>
-          {GROUPS.map((g) => <button type="button" data-group={g.id} aria-pressed="false">{g.name}</button>)}
-        </div>
-        <p class="fg-status"><span id="fg-count" aria-live="polite">50 of 50 styles</span> <button type="button" id="fg-reset">Reset</button></p>
-      </div>
+      <label class="fg-search">
+        <span class="sr-only">Search styles</span>
+        <input id="fg-q" type="search" placeholder="Search a style or trait: gold, grid, pixel…" autocomplete="off" />
+      </label>
+      <span id="fg-count" class="sr-only" aria-live="polite">50 of 50 styles</span>
     </div>
 
 
@@ -213,7 +205,14 @@ const fonts =
     q.addEventListener("input", () => { state.q = q.value; apply(); });
     document.querySelectorAll("button[data-group]").forEach((b) => b.addEventListener("click", () => { state.group = b.dataset.group; apply(); }));
     document.querySelectorAll("button[data-order]").forEach((b) => b.addEventListener("click", () => { state.order = b.dataset.order; apply(); }));
-    document.getElementById("fg-reset").addEventListener("click", () => { state.q = ""; state.group = "all"; state.order = "n"; q.value = ""; apply(); });
+    // Family rows in the header: open one to filter the grid to it and list its styles; close it to show all again.
+    const famBtns = [...document.querySelectorAll(".fg-fam-btn")];
+    famBtns.forEach((b) => b.addEventListener("click", () => {
+      const opening = b.getAttribute("aria-expanded") !== "true";
+      famBtns.forEach((o) => { o.setAttribute("aria-expanded", "false"); o.nextElementSibling.hidden = true; });
+      if (opening) { b.setAttribute("aria-expanded", "true"); b.nextElementSibling.hidden = false; }
+      state.group = opening ? b.dataset.fam : "all"; apply();
+    }));
 
     // ---- plate view ----
     const view = document.querySelector(".fg-view");
@@ -283,9 +282,9 @@ const fonts =
       (back || opener)?.focus();
     });
 
-    // A–Z list opens the plate directly
-    document.querySelectorAll(".fg-az a").forEach((a) => a.addEventListener("click", (e) => {
-      e.preventDefault(); clearFilters();
+    // Style links in the header box open the plate directly
+    document.querySelectorAll(".fg-az-link").forEach((a) => a.addEventListener("click", (e) => {
+      e.preventDefault();
       const t = document.getElementById(a.getAttribute("href").slice(1));
       if (t) open(t, a);
     }));
@@ -352,35 +351,37 @@ const fonts =
   .fg-cover, .fg-tools, .fg-group, .fg-foot, .fg-empty { padding-left: max(16px, 4vw); padding-right: max(16px, 4vw); }
 
   /* cover */
-  .fg-cover { display: grid; grid-template-columns: 260px minmax(0, 1fr); margin: 16px max(16px, 3vw) 22px; padding: 0 !important; border: 1px solid rgba(217,44,54,.45); background: var(--plate); color: var(--maroon); }
-  .fg-side { display: flex; flex-direction: column; gap: 14px; padding: 20px 18px 18px 14px; border-right: 1px solid rgba(217,44,54,.45); font: 13px/1.35 var(--mono); color: var(--muted); }
+  .fg-cover { display: grid; grid-template-columns: 260px minmax(0, 1fr); margin: 16px max(16px, 3vw) 18px; padding: 0 !important; border: 1px solid rgba(226,38,46,.45); background: #ece8ed; color: var(--maroon); }
+  .fg-side { display: flex; flex-direction: column; gap: 14px; padding: 20px 18px 18px 14px; border-right: 1px solid rgba(226,38,46,.45); font: 13px/1.35 var(--mono); color: var(--muted); }
   .fg-side b { display: block; font-weight: 700; color: var(--ink); }
   .fg .fg-back { font: 700 13px var(--mono); color: var(--ink); text-decoration: none; align-self: flex-start; }
   .fg .fg-back:hover, .fg .fg-xlink a:hover { color: var(--maroon); }
   .fg .fg-xlink a { color: var(--maroon); font-weight: 700; text-underline-offset: 3px; }
-  .fg-main { display: flex; align-items: flex-start; justify-content: space-between; gap: 36px 56px; padding: 34px 34px 38px clamp(22px, 3.4vw, 56px); min-width: 0; }
+  .fg-main { display: flex; align-items: flex-start; justify-content: space-between; gap: 40px 56px; padding: 34px 34px 38px clamp(22px, 3.4vw, 56px); min-width: 0; }
   .fg-tblock { display: inline-block; min-width: 0; }
-  .fg-cover h1 { position: relative; isolation: isolate; font-family: "League Gothic", "Archivo", sans-serif; text-transform: uppercase; font-size: clamp(4.4rem, 8.6vw, 9.4rem); line-height: 0.84; letter-spacing: 0.004em; color: var(--maroon); }
-  .fg-cover h1 span { display: block; }
-  .fg-cover h1::before { content: ""; position: absolute; z-index: -1; width: .92em; height: .92em; border-radius: 50%; background: var(--warm); left: 3.1em; top: .3em; }
+  .fg-cover h1 { position: relative; isolation: isolate; font-family: "League Gothic", "Archivo", sans-serif; text-transform: uppercase; font-size: clamp(5.4rem, 11vw, 11.2rem); line-height: 0.84; letter-spacing: 0.004em; color: var(--maroon); }
+  .fg-cover h1 span { display: block; white-space: nowrap; }
+  .fg-cover h1::before { content: ""; position: absolute; z-index: -1; width: .92em; height: .92em; border-radius: 50%; background: var(--warm); left: 2.2em; top: .32em; }
   .fg-sub { width: 0; min-width: 66.6%; margin: 20px 0 0; font-size: 17.5px; line-height: 1.45; color: var(--maroon); }
-  .fg-azbox { flex: 0 0 300px; align-self: center; border: 1px solid rgba(217,44,54,.45); background: rgba(255,255,255,.5); padding: 16px 18px 14px; display: flex; flex-direction: column; gap: 8px; color: var(--ink); }
+  .fg-azbox { flex: 0 0 300px; align-self: center; border: 1px solid rgba(226,38,46,.45); background: rgba(255,255,255,.35); padding: 16px 18px 14px; display: flex; flex-direction: column; gap: 8px; color: var(--ink); }
   .fg-azbox-h { font: 400 19px/1.1 var(--display); padding-bottom: 8px; border-bottom: 1.5px solid var(--ink); }
 
   /* tools + index */
-  .fg-tools { position: sticky; top: 0; z-index: 20; background: var(--ink); color: var(--page); padding-top: 12px; padding-bottom: 12px; display: grid; gap: 10px; }
-  .fg-tools-row { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between; }
-  .fg-search { flex: 1 1 260px; min-width: 0; }
-  .fg-search input { width: 100%; font: 15px var(--body); padding: 9px 12px; border: 1px solid var(--warm); border-radius: 4px; background: var(--page); color: var(--ink); }
-  .fg-order, .fg-chips { display: flex; flex-wrap: wrap; gap: 6px; }
-  .fg-order button, .fg-chips button { font-size: 13.5px; padding: 6px 11px; border: 1px solid rgba(241,167,171,.75); border-radius: 999px; background: transparent; color: var(--page); cursor: pointer; }
-  .fg-order button[aria-pressed="true"], .fg-chips button[aria-pressed="true"] { background: var(--warm); color: var(--ink); border-color: var(--warm); }
-  .fg-order button:hover, .fg-chips button:hover { border-color: var(--page); }
-  .fg-status { margin: 0; font: 13px var(--mono); display: flex; gap: 12px; align-items: center; }
-  .fg-status button { background: none; border: 0; color: var(--warm); text-decoration: underline; cursor: pointer; padding: 0; }
-  .fg-az summary { cursor: pointer; font: 13px var(--mono); color: var(--muted); }
-  .fg-az ul { list-style: none; margin: 10px 0 0; padding: 0; columns: 2; column-gap: 16px; font-size: 14px; }
-  .fg-az li { break-inside: avoid; padding: 2px 0; }
+  /* search bar only, on the page colour */
+  .fg-tools { position: sticky; top: 0; z-index: 20; background: var(--page); padding-top: 10px; padding-bottom: 12px; }
+  .fg-search { display: block; }
+  .fg-search input { width: 100%; font: 15px var(--body); padding: 10px 14px; border: 1px solid rgba(226,38,46,.45); border-radius: 0; background: var(--plate); color: var(--ink); }
+  .fg-search input:focus-visible { outline: 2px solid var(--maroon); outline-offset: 0; }
+  /* header box: families that open into style links (mirrors the catalogue's style box) */
+  .fg-fams { display: flex; flex-direction: column; }
+  .fg-fam-btn { display: flex; justify-content: space-between; align-items: baseline; width: 100%; text-align: left; background: none; border: 0; padding: 5px 0; cursor: pointer; font: 14.5px var(--body); color: var(--ink); }
+  .fg-fam-btn::after { content: "+"; font-size: 17px; line-height: 1; color: var(--muted); }
+  .fg-fam-btn[aria-expanded="true"] { font-weight: 600; }
+  .fg-fam-btn[aria-expanded="true"]::after { content: "–"; }
+  .fg-fam-btn .n { margin-left: auto; margin-right: 12px; font: 12.5px var(--mono); color: var(--muted); }
+  .fg-fam-list { display: flex; flex-wrap: wrap; gap: 5px; padding: 6px 0 8px; }
+  .fg .fg-az-link { background: #fff; border: 1px solid #d3d3cc; padding: 4px 9px; font-size: 13px; text-decoration: none; color: var(--ink); }
+  .fg .fg-az-link:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
   .fg-empty { margin: 30px 0 0; font-size: 18px; }
 
   /* groups: compact specimen drawers */
@@ -757,6 +758,10 @@ const fonts =
   .sp-neobrutalism .btn { font: 700 5cqw "Space Mono", monospace; background: #ff8fd0; border: .8cqw solid #111; box-shadow: 1.6cqw 1.6cqw 0 #111; padding: 2cqw 5cqw; justify-self: end; margin-right: 12%; color: #111; }
 
   /* ---------- responsive + motion ---------- */
+  /* same box height as the catalogue header at each width */
+  .fg-cover { min-height: max(480px, 34vw); }
+  @media (max-width: 1100px) { .fg-cover { min-height: 700px; } }
+  @media (max-width: 600px) { .fg-cover { min-height: 650px; } }
   @media (max-width: 1100px) { .fg-main { flex-direction: column; gap: 26px; } .fg-azbox { flex-basis: auto; align-self: stretch; max-width: 420px; } }
   @media (max-width: 860px) { .fg-cover { grid-template-columns: 1fr; } .fg-side { flex-direction: row; flex-wrap: wrap; justify-content: space-between; gap: 8px 16px; border-right: 0; padding: 14px 12px 0; } .fg-side b { display: inline; margin-right: 6px; } .fg-main { padding: 14px 12px 22px; } }
   @media (max-width: 600px) { .fg-cover h1 { font-size: clamp(3.6rem, 18vw, 5.5rem); } .fg-sub { font-size: 14px; } .fg-azbox { max-width: none; } }
