@@ -207,7 +207,7 @@ footer{margin:44px 0 0 auto;max-width:46ch;text-align:right;font-size:12px;line-
 .cover h1 span:last-child{margin-bottom:0}
 .cover h1::before{width:.92em;height:.92em;left:1.55em;top:.34em}
 .cover .lede{margin-top:16px;font-size:16.5px;line-height:1.45}
-.stylebox{flex:0 0 300px;align-self:center;border:1px solid var(--guide);background:rgba(255,255,255,.35);padding:16px 18px 14px;display:flex;flex-direction:column;gap:8px}
+.stylebox{position:relative;flex:0 0 300px;align-self:flex-start;margin-top:4px;border:1px solid var(--guide);background:rgba(255,255,255,.35);padding:16px 18px 14px;display:flex;flex-direction:column;gap:8px}
 .sb-h{font-family:"Gloock",serif;font-size:19px;line-height:1.1;padding-bottom:8px;border-bottom:1.5px solid var(--ink)}
 .stylebox .fams{display:flex;flex-direction:column}
 .stylebox button.fam{display:flex;justify-content:space-between;align-items:baseline;text-align:left;background:none;border:0;padding:5px 0;cursor:pointer;font-size:14.5px;color:var(--ink)}
@@ -216,6 +216,14 @@ footer{margin:44px 0 0 auto;max-width:46ch;text-align:right;font-size:12px;line-
 .stylebox button.fam[aria-expanded="true"]::after{content:"–"}
 .stylebox .fam .n{margin-left:auto;margin-right:12px;color:var(--grey);font-size:12.5px;font-weight:400}
 .stylebox .stylechips{display:flex;flex-wrap:wrap;gap:5px;padding:6px 0 4px}
+/* wide screens: the styles of an open family slide out to the left of the box (same as Design Styles) */
+@media (min-width:1241px){
+  .stylebox #stylechips{position:absolute;right:calc(100% + 12px);top:var(--fly-top,0px);width:300px;z-index:5;align-content:flex-start;padding:14px 16px;background:#e9e6ec;border:1px solid var(--guide);box-shadow:0 14px 30px -18px rgba(13,26,51,.45);
+    opacity:1;visibility:visible;transform:none;transition:opacity .22s ease,transform .26s cubic-bezier(.2,.7,.2,1),visibility 0s}
+  .stylebox #stylechips[hidden]{display:flex!important;opacity:0;visibility:hidden;transform:translateX(14px);transition:opacity .22s ease,transform .26s cubic-bezier(.2,.7,.2,1),visibility 0s linear .26s}
+  .stylebox #stylechips::after{content:"";position:absolute;right:-7px;top:18px;width:12px;height:12px;background:#e9e6ec;border-top:1px solid var(--guide);border-right:1px solid var(--guide);transform:rotate(45deg)}
+}
+@media (prefers-reduced-motion:reduce){.stylebox #stylechips{transition:none!important}}
 .stylebox .stylechips button{background:#fff;border:1px solid var(--line);padding:4px 9px;font-size:13px;cursor:pointer;color:var(--ink)}
 .stylebox .stylechips button[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
 footer{margin:40px 0 0 auto;max-width:34ch;text-align:justify;hyphens:auto;-webkit-hyphens:auto;font-size:11.5px;line-height:1.55;color:#77747a}
@@ -289,6 +297,7 @@ function CARD(s,p){return `<article class="card"><div class="fan">${pics(s,"fp")
 
 
 function AFTER(){
+  {const open=document.querySelector("#fams button[aria-expanded=true]");if(open)document.getElementById("stylechips").style.setProperty("--fly-top",(open.offsetTop-10)+"px");}
   const J=document.getElementById("jump");J.innerHTML=[...document.querySelectorAll(".grp")].map(g=>`<li><a href="#${g.id}">${g.dataset.name}<span>${g.dataset.n}</span></a></li>`).join("");
   document.querySelectorAll("#needs button").forEach(b=>{if(b.querySelector(".n"))return;const id=(NEEDS.find(n=>n[1]===b.textContent)||[])[0];if(!id)return;const s=document.createElement("span");s.className="n";s.textContent=S.filter(x=>x.k.includes(id)).length;b.appendChild(s)});
   const t=document.querySelector(".rail-toggle");const n=(st.project!=="all")+st.needs.size+(st.rights!=="any")+(st.style?1:0)+(st.q?1:0);
