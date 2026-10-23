@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Archivo:wdth,wght@62..125,400..900&display=swap">
 <style>
 :root{--edge:max(16px,3vw);--guide:rgba(226,38,46,.45);--red:#e2262e;
-  --paper:#edede9;--ink:#0d1a33;--grey:#5a6070;--steel:#4c6c9c;--magenta:#d6366f;--ice:#c9dbec;--line:#d3d3cc;
+  --paper:#ece8ed;--ink:#0d1a33;--grey:#5a6070;--steel:#4c6c9c;--magenta:#d6366f;--ice:#c9dbec;--line:#d3d3cc;
   --use:#2f7d4f;--lic:#d6366f;--ref:#4c6c9c;--tool:#0d1a33}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
@@ -191,6 +191,13 @@ footer{margin-top:36px}
 .cover h1::before{width:.98em;height:.98em;left:2.05em;top:.36em;transform:none}
 .cover .lede{width:0;min-width:100%;margin:12px 0 0;text-align:center;font-size:17px;line-height:1.4}
 @media (max-width:860px){.cover{grid-template-columns:1fr}.cover>.main{padding:14px 12px 22px}.cover .lede{font-size:16px}}
+/* round 6: page colour sampled from the Electro spread's paper; taller title; subtitle left aligned to two thirds of it; quieter footer */
+.cover h1 span{transform:scaleY(1.55);margin-bottom:.45em}
+.cover h1 span:last-child{margin-bottom:.44em}
+.cover h1::before{width:1.12em;height:1.12em;left:2.0em;top:.5em}
+.cover .lede{min-width:66.6%;text-align:left;margin-top:10px;font-size:16.5px}
+footer{margin:44px 0 0 auto;max-width:46ch;text-align:right;font-size:12px;line-height:1.55;color:#77747a}
+@media (max-width:600px){.cover .lede{font-size:13px;line-height:1.4}}
 </style>
 </head>
 <body>
